@@ -31,6 +31,21 @@ Self-attention 需要让每个 token 和所有其他 token 算一次分数。$n$
 
 ## 方向一：不改数学，改工程
 
+```mermaid
+flowchart LR
+    subgraph 标准实现["标准 Attention"]
+        direction TB
+        S1["Q,K → 计算 n×n 分数矩阵"] --> S2["写入GPU主存 (慢)"]
+        S2 --> S3["读出做Softmax"] --> S4["写回主存"]
+        S4 --> S5["读出 × V"] --> S6["写回主存"]
+    end
+    subgraph Flash["FlashAttention"]
+        direction TB
+        F1["分块加载 Q,K,V 到快速缓存"] --> F2["在缓存内完成全部计算"]
+        F2 --> F3["只写最终结果到主存"]
+    end
+```
+
 ### FlashAttention：聪明地使用硬件 (2022)
 
 Tri Dao（斯坦福博士生，后来成了 Mamba 的作者之一）做了一个精妙的观察：GPU 的真正瓶颈不是算力，是**内存搬运**。
@@ -71,6 +86,13 @@ FlashAttention 的意义在于：它把"能处理多长的序列"这个上限从
 解决方案：**KV Cache**。把之前每一步的 Key 和 Value 缓存下来，生成新词时只需要算新词的 Query 和所有缓存的 Key 的内积。这样每一步只需 $O(n)$ 而非 $O(n^2)$。
 
 但这个缓存本身会线性增长：每一层、每个注意力头都要存 Key 和 Value。一个 70B 参数的模型处理 32K 序列，KV cache 可能需要 32GB 显存——比模型本身还大！
+
+```mermaid
+flowchart LR
+    MHA["MHA<br/>每头独立KV<br/>32组KV"] -->|"太占显存"| MQA["MQA<br/>所有头共享1组KV<br/>压缩32×"]
+    MQA -->|"质量有损"| GQA["GQA<br/>分组共享<br/>8组KV (压缩4×)"]
+    GQA -->|"更进一步"| MLA["MLA<br/>低秩压缩<br/>质量更好"]
+```
 
 ### 从 MHA 到 MQA 到 GQA：共享 KV
 

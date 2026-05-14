@@ -103,6 +103,15 @@ DeepSeek 进一步简化：PPO 需要一个 "critic 模型"来评估每一步的
 
 GRPO 被用在 DeepSeek-R1 上训练数学推理能力——没有任何人工标注的推理示范数据，纯靠"自我对弈 + 组内比较"就学会了复杂推理。
 
+```mermaid
+flowchart LR
+    RLHF["RLHF 2022<br/>3个模型<br/>SFT+RM+PPO"] --> DPO["DPO 2023<br/>1个模型<br/>直接偏好优化"]
+    DPO --> GRPO["GRPO 2024<br/>1个模型<br/>组内相对优化"]
+    
+    RLHF ---|"复杂度高"| DPO
+    DPO ---|"更简化"| GRPO
+```
+
 ### 对齐技术的方向
 
 RLHF (2022) → DPO (2023) → GRPO (2024)：

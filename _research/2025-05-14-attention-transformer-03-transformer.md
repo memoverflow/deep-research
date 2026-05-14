@@ -29,6 +29,19 @@ Google 的 Vaswani 等人想：attention 已经可以让任意两个位置直接
 
 他们提出的架构叫 Transformer。让我们看看它怎么工作——但先不急看公式，先理解直觉。
 
+```mermaid
+flowchart TD
+    Input["输入序列"] --> Emb["Embedding + 位置编码"]
+    Emb --> Block["×N 层 Transformer Block"]
+    subgraph Block["Transformer Block (重复N次)"]
+        direction TB
+        MA["Multi-Head Self-Attention"] --> AN1["Add & Norm"]
+        AN1 --> FFN["前馈网络 (FFN)"]
+        FFN --> AN2["Add & Norm"]
+    end
+    Block --> Output["输出"]
+```
+
 ### Self-Attention：每个词看所有其他词
 
 这是 Transformer 最核心的操作。在一个句子中：
@@ -72,6 +85,18 @@ Transformer 的做法是把 self-attention 层**叠很多层**。原始论文叠
 **Self-Attention → 处理 → Feed-Forward → 处理**
 
 （这里的"处理"指残差连接和层归一化——确保信息流动顺畅，训练稳定。）
+
+```mermaid
+flowchart LR
+    subgraph RNN["RNN: 信息逐步传递"]
+        direction LR
+        R1["词1"] -->|"h₁"| R2["词2"] -->|"h₂"| R3["词3"] -->|"h₃"| R4["..."] -->|"h₉₉"| R5["词100"]
+    end
+    subgraph Transformer["Transformer: 一步直达"]
+        direction LR
+        T1["词1"] <-->|"1步attention"| T5["词100"]
+    end
+```
 
 ## 为什么它比 RNN 好
 
