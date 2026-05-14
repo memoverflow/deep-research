@@ -1,0 +1,34 @@
+title: Deep Research Archive
+description: 穷尽式深度研究归档 — Exhaustive research reports on AI/ML topics
+baseurl: "/deep-research"
+url: "https://memoverflow.github.io"
+theme: minima
+markdown: kramdown
+kramdown:
+  input: GFM
+  math_engine: mathjax
+
+# Build settings
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# Collections for research posts
+collections:
+  research:
+    output: true
+    permalink: /:collection/:name/
+
+# Default front matter
+defaults:
+  - scope:
+      path: ""
+      type: "research"
+    values:
+      layout: "research"
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - .gitignore
