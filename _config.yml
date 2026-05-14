@@ -1,8 +1,7 @@
 title: Deep Research Archive
-description: 穷尽式深度研究归档 — Exhaustive research reports on AI/ML topics
+description: "穷尽式深度研究归档 — Exhaustive research reports on AI/ML topics"
 baseurl: "/deep-research"
 url: "https://memoverflow.github.io"
-theme: minima
 markdown: kramdown
 kramdown:
   input: GFM
@@ -32,3 +31,4 @@ exclude:
   - Gemfile
   - Gemfile.lock
   - .gitignore
+  - research/
