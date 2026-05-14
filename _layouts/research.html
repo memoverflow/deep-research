@@ -3,12 +3,16 @@ layout: default
 ---
 <article class="research-post">
   <header class="post-header">
+    {% if page.series %}
+    <div class="series-nav-top">
+      📚 <a href="{{ '/' | relative_url }}">{{ page.series }}</a>
+      <span class="series-progress">（{{ page.series_order }} / {{ page.series_total }}）</span>
+    </div>
+    {% endif %}
     <h1 class="post-title">{{ page.title }}</h1>
     <div class="post-meta">
       <span class="date">{{ page.date | date: "%Y-%m-%d" }}</span>
-      <span class="level">Level {{ page.level }}</span>
-      <span class="sources">{{ page.sources_count }} sources</span>
-      {% if page.arxiv_count %}<span class="arxiv">{{ page.arxiv_count }} arxiv papers</span>{% endif %}
+      {% if page.level %}<span class="level">Level {{ page.level }}</span>{% endif %}
     </div>
     {% if page.tags %}
     <div class="post-tags">
@@ -16,7 +20,32 @@ layout: default
     </div>
     {% endif %}
   </header>
+
   <div class="post-content">
     {{ content }}
   </div>
+
+  {% if page.series %}
+  <nav class="series-nav-bottom">
+    {% assign all_in_series = site.research | where: 'series', page.series | sort: 'series_order' %}
+    {% assign prev_order = page.series_order | minus: 1 %}
+    {% assign next_order = page.series_order | plus: 1 %}
+
+    <div class="nav-prev">
+    {% for p in all_in_series %}
+      {% if p.series_order == prev_order %}
+      <a href="{{ p.url | relative_url }}">← 上一篇：{{ p.title }}</a>
+      {% endif %}
+    {% endfor %}
+    </div>
+
+    <div class="nav-next">
+    {% for p in all_in_series %}
+      {% if p.series_order == next_order %}
+      <a href="{{ p.url | relative_url }}">下一篇：{{ p.title }} →</a>
+      {% endif %}
+    {% endfor %}
+    </div>
+  </nav>
+  {% endif %}
 </article>
