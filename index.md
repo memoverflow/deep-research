@@ -8,16 +8,20 @@ title: Home
   <p class="hero-desc">穷尽式深度研究，以教学系列文章的形式呈现。<br>每个系列从零开始讲透一个领域。</p>
 </section>
 
-{% assign sorted = site.research | sort: 'series_order' %}
+{% assign all_posts = site.research | sort: 'date' | reverse %}
+{% assign series_names = all_posts | map: 'series' | uniq %}
 
-{% if sorted.size > 0 %}
+{% for series_name in series_names %}
+{% if series_name %}
+{% assign series_posts = all_posts | where: 'series', series_name | sort: 'series_order' %}
+{% assign first = series_posts | first %}
 
 <section class="series-section">
-  <h2 class="series-heading">理解 Attention 与 Transformer</h2>
-  <p class="series-desc">8 篇系列教程 · 从 2014 年 Attention 的诞生到 2025 年的架构大融合</p>
+  <h2 class="series-heading">{{ series_name }}</h2>
+  <p class="series-desc">{{ series_posts.size }} 篇系列教程 · Level {{ first.level }}</p>
 
   <div class="article-list">
-  {% for post in sorted %}
+  {% for post in series_posts %}
     <a href="{{ post.url | relative_url }}" class="article-card">
       <span class="article-num">{{ post.series_order }}</span>
       <div class="article-info">
@@ -27,10 +31,11 @@ title: Home
           {% for tag in post.tags limit:3 %}<span class="article-tag">{{ tag }}</span>{% endfor %}
         </div>
       </div>
-      <span class="article-arrow">→</span>
+      <span class="article-arrow">&rarr;</span>
     </a>
   {% endfor %}
   </div>
 </section>
 
 {% endif %}
+{% endfor %}
