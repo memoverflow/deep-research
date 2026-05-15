@@ -329,6 +329,36 @@ body {
 .nav-prev, .nav-next { max-width: 48%; }
 .nav-next { text-align: right; }
 
+/* Tag Filter */
+.tag-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 28px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border);
+}
+.filter-btn {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  padding: 5px 12px;
+  border-radius: 6px;
+  font-size: 0.78rem;
+  cursor: pointer;
+  transition: all 0.15s;
+  font-family: inherit;
+}
+.filter-btn:hover {
+  border-color: var(--accent);
+  color: var(--text-secondary);
+}
+.filter-btn.active {
+  background: var(--accent-soft, #6e8eff18);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
 /* Footer */
 .site-footer {
   padding: 24px 0;
