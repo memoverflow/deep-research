@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BPE Tokenization Animation</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.11.3/p5.min.js"></script>
+<style>
+  html, body { margin: 0; padding: 0; background: #0a0a0f; overflow: hidden; }
+  canvas { display: block; margin: 0 auto; }
+</style>
+</head>
+<body>
+<script>
+p5.disableFriendlyErrors = true;
+
+const COLORS = {
+  bg: '#0a0a0f', surface: '#13131a', border: '#23232e',
+  text: '#ededf0', muted: '#6b6b78', accent: '#6e8eff',
+  merge: ['#22d3ee','#34d399','#fbbf24','#a78bfa','#fb7185','#fb923c','#2dd4bf'],
+  highlight: '#fb7185'
+};
+
+// BPE state
+let corpus = [
+  {word: 'low', freq: 5, tokens: []},
+  {word: 'lower', freq: 2, tokens: []},
+  {word: 'newest', freq: 6, tokens: []},
+  {word: 'widest', freq: 3, tokens: []}
+];
+let merges = [];
+let mergeStep = 0;
+let vocab = new Set();
+let animState = 'idle'; // idle, counting, merging, done
+let animProgress = 0;
+let currentPair = null;
+let pairCounts = {};
+let btnNext, btnAuto, btnReset;
+let autoPlay = false;
+let autoTimer = 0;
+
+function setup() {
+  let w = min(windowWidth, 860);
+  let h = min(windowHeight, 520);
+  createCanvas(w, h);
+  textFont('system-ui');
+  resetBPE();
+}
+
+function resetBPE() {
+  corpus.forEach(c => { c.tokens = c.word.split(''); });
+  merges = [];
+  mergeStep = 0;
+  vocab = new Set('abcdefghijklmnopqrstuvwxyz'.split(''));
+  animState = 'idle';
+  currentPair = null;
+  pairCounts = {};
+  autoPlay = false;
+}
+
+function draw() {
+  background(COLORS.bg);
+  drawTitle();
+  drawCorpus();
+  drawPairCounts();
+  drawVocab();
+  drawMergeHistory();
+  drawControls();
+
+  if (autoPlay && animState === 'idle') {
+    autoTimer++;
+    if (autoTimer > 90) { autoTimer = 0; doNextStep(); }
+  }
+
+  if (animState === 'counting') {
+    animProgress += 0.03;
+    if (animProgress >= 1) { animState = 'idle'; }
+  }
+  if (animState === 'merging') {
+    animProgress += 0.04;
+    if (animProgress >= 1) { applyMerge(); animState = 'idle'; }
+  }
+}
+
+function drawTitle() {
+  noStroke(); fill(COLORS.text);
+  textSize(15); textAlign(CENTER);
+  text('BPE (Byte Pair Encoding) 逐步合并演示', width/2, 25);
+  fill(COLORS.muted); textSize(10);
+  text(`合并步骤: ${mergeStep} | 词表大小: ${vocab.size}`, width/2, 42);
+}
+
+function drawCorpus() {
+  let startY = 65;
+  noStroke(); fill(COLORS.accent); textSize(11); textAlign(LEFT);
+  text('语料库:', 20, startY);
+
+  for (let i = 0; i < corpus.length; i++) {
+    let c = corpus[i];
+    let y = startY + 20 + i * 45;
+    // Frequency
+    fill(COLORS.muted); textSize(9); textAlign(LEFT);
+    text(`×${c.freq}`, 20, y + 4);
+    // Token boxes
+    let x = 55;
+    for (let j = 0; j < c.tokens.length; j++) {
+      let tok = c.tokens[j];
+      let tw = max(textWidth(tok) + 14, 24);
+      // Check if this token pair is the current merge target
+      let isHighlight = false;
+      if (currentPair && j < c.tokens.length - 1) {
+        if (c.tokens[j] === currentPair[0] && c.tokens[j+1] === currentPair[1]) {
+          isHighlight = true;
+        }
+      }
+      // Determine color
+      let tokColor = COLORS.border;
+      let mergeIdx = merges.findIndex(m => m.result === tok);
+      if (mergeIdx >= 0) tokColor = COLORS.merge[mergeIdx % COLORS.merge.length];
+
+      stroke(isHighlight ? COLORS.highlight : tokColor);
+      strokeWeight(isHighlight ? 2 : 1);
+      fill(COLORS.surface);
+      rect(x, y - 12, tw, 24, 4);
+      noStroke(); fill(isHighlight ? COLORS.highlight : COLORS.text);
+      textSize(10); textAlign(CENTER);
+      text(tok, x + tw/2, y + 4);
+      x += tw + 3;
+    }
+  }
+}
+
+function drawPairCounts() {
+  let px = 20, py = 260;
+  noStroke(); fill(COLORS.accent); textSize(11); textAlign(LEFT);
+  text('相邻对频次:', px, py);
+
+  let sorted = Object.entries(pairCounts).sort((a,b) => b[1] - a[1]);
+  let maxCount = sorted.length > 0 ? sorted[0][1] : 1;
+
+  for (let i = 0; i < min(sorted.length, 8); i++) {
+    let [pair, count] = sorted[i];
+    let y = py + 18 + i * 22;
+    let isWinner = (i === 0 && animState !== 'merging');
+    fill(isWinner ? COLORS.highlight : COLORS.muted);
+    textSize(9); textAlign(LEFT);
+    text(`(${pair.replace(',', ', ')})`, px, y);
+    // Bar
+    let barW = (count / maxCount) * 120;
+    noStroke();
+    fill(isWinner ? COLORS.highlight : COLORS.border);
+    rect(px + 80, y - 9, barW, 12, 2);
+    fill(COLORS.text); textSize(8); textAlign(LEFT);
+    text(count, px + 85 + barW, y);
+  }
+}
+
+function drawVocab() {
+  let vx = width - 200, vy = 65;
+  noStroke(); fill(COLORS.accent); textSize(11); textAlign(LEFT);
+  text('词表 (Vocabulary):', vx, vy);
+  fill(COLORS.muted); textSize(8);
+  text(`共 ${vocab.size} 个 token`, vx, vy + 15);
+
+  // Show merged tokens only
+  let merged = merges.map(m => m.result);
+  let y = vy + 32;
+  for (let i = 0; i < merged.length; i++) {
+    let col = COLORS.merge[i % COLORS.merge.length];
+    stroke(col); strokeWeight(1); fill(COLORS.surface);
+    let tw = max(textWidth(merged[i]) + 12, 30);
+    rect(vx + (i % 4) * 48, y + floor(i/4) * 26, tw, 20, 4);
+    noStroke(); fill(col); textSize(9); textAlign(CENTER);
+    text(merged[i], vx + (i%4)*48 + tw/2, y + floor(i/4)*26 + 13);
+  }
+}
+
+function drawMergeHistory() {
+  let hx = width - 200, hy = 250;
+  noStroke(); fill(COLORS.accent); textSize(11); textAlign(LEFT);
+  text('合并历史:', hx, hy);
+
+  for (let i = 0; i < merges.length; i++) {
+    let m = merges[i];
+    let y = hy + 18 + i * 20;
+    let col = COLORS.merge[i % COLORS.merge.length];
+    fill(col); textSize(9); textAlign(LEFT);
+    text(`#${i+1}: "${m.pair[0]}" + "${m.pair[1]}" → "${m.result}"`, hx, y);
+  }
+}
+
+function drawControls() {
+  let bx = width/2 - 120, by = height - 45;
+  // Next button
+  drawButton(bx, by, 70, 28, '下一步', COLORS.accent, () => { doNextStep(); });
+  // Auto button
+  drawButton(bx + 80, by, 70, 28, autoPlay ? '暂停' : '自动', autoPlay ? COLORS.highlight : COLORS.merge[1], () => { autoPlay = !autoPlay; });
+  // Reset button
+  drawButton(bx + 160, by, 70, 28, '重置', COLORS.muted, () => { resetBPE(); countPairs(); });
+
+  fill(COLORS.muted); textSize(9); textAlign(CENTER);
+  text('点击「下一步」逐步观察 BPE 合并过程', width/2, height - 10);
+}
+
+function drawButton(x, y, w, h, label, col, action) {
+  let hover = mouseX > x && mouseX < x+w && mouseY > y && mouseY < y+h;
+  stroke(col); strokeWeight(hover ? 2 : 1); fill(hover ? col + '22' : COLORS.surface);
+  rect(x, y, w, h, 6);
+  noStroke(); fill(col); textSize(10); textAlign(CENTER, CENTER);
+  text(label, x + w/2, y + h/2);
+  if (hover) cursor(HAND); 
+}
+
+function mousePressed() {
+  let bx = width/2 - 120, by = height - 45;
+  if (mouseX > bx && mouseX < bx+70 && mouseY > by && mouseY < by+28) doNextStep();
+  else if (mouseX > bx+80 && mouseX < bx+150 && mouseY > by && mouseY < by+28) autoPlay = !autoPlay;
+  else if (mouseX > bx+160 && mouseX < bx+230 && mouseY > by && mouseY < by+28) { resetBPE(); countPairs(); }
+}
+
+function doNextStep() {
+  if (mergeStep === 0 && Object.keys(pairCounts).length === 0) {
+    countPairs();
+    animState = 'counting';
+    animProgress = 0;
+    return;
+  }
+  // Find top pair
+  let sorted = Object.entries(pairCounts).sort((a,b) => b[1] - a[1]);
+  if (sorted.length === 0) { animState = 'done'; return; }
+  let [pairStr, count] = sorted[0];
+  let pair = pairStr.split(',');
+  currentPair = pair;
+  animState = 'merging';
+  animProgress = 0;
+}
+
+function applyMerge() {
+  if (!currentPair) return;
+  let merged = currentPair[0] + currentPair[1];
+  merges.push({pair: currentPair, result: merged});
+  vocab.add(merged);
+  mergeStep++;
+
+  // Apply merge to corpus
+  corpus.forEach(c => {
+    let newTokens = [];
+    let i = 0;
+    while (i < c.tokens.length) {
+      if (i < c.tokens.length - 1 && c.tokens[i] === currentPair[0] && c.tokens[i+1] === currentPair[1]) {
+        newTokens.push(merged);
+        i += 2;
+      } else {
+        newTokens.push(c.tokens[i]);
+        i++;
+      }
+    }
+    c.tokens = newTokens;
+  });
+
+  currentPair = null;
+  countPairs();
+}
+
+function countPairs() {
+  pairCounts = {};
+  corpus.forEach(c => {
+    for (let i = 0; i < c.tokens.length - 1; i++) {
+      let pair = c.tokens[i] + ',' + c.tokens[i+1];
+      pairCounts[pair] = (pairCounts[pair] || 0) + c.freq;
+    }
+  });
+}
+
+function windowResized() {
+  resizeCanvas(min(windowWidth, 860), min(windowHeight, 520));
+}
+</script>
+</body>
+</html>
