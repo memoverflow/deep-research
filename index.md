@@ -3,10 +3,7 @@ layout: default
 title: Home
 ---
 
-<section class="hero">
-  <h1>Lucas's Blog</h1>
-  <p class="hero-desc">AI、技术与思考</p>
-</section>
+
 
 {% assign all_posts = site.research | sort: 'date' | reverse %}
 {% assign series_names = all_posts | map: 'series' | uniq %}
