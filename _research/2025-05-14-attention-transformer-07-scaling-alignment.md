@@ -103,14 +103,21 @@ DeepSeek 进一步简化：PPO 需要一个 "critic 模型"来评估每一步的
 
 GRPO 被用在 DeepSeek-R1 上训练数学推理能力——没有任何人工标注的推理示范数据，纯靠"自我对弈 + 组内比较"就学会了复杂推理。
 
-```mermaid
-flowchart LR
-    RLHF["RLHF 2022<br/>3个模型<br/>SFT+RM+PPO"] --> DPO["DPO 2023<br/>1个模型<br/>直接偏好优化"]
-    DPO --> GRPO["GRPO 2024<br/>1个模型<br/>组内相对优化"]
-    
-    RLHF ---|"复杂度高"| DPO
-    DPO ---|"更简化"| GRPO
-```
+<svg viewBox="0 0 550 70" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:550px;margin:20px auto;display:block;">
+  <defs><marker id="a07" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#6e8eff"/></marker></defs>
+  <rect x="10" y="15" width="130" height="40" rx="6" fill="#1e1e2a" stroke="#fb7185" stroke-width="1.5"/>
+  <text x="75" y="33" text-anchor="middle" fill="#fb7185" font-size="9" font-family="system-ui" font-weight="bold">RLHF 2022</text>
+  <text x="75" y="47" text-anchor="middle" fill="#6b6b78" font-size="7" font-family="system-ui">3模型 · 复杂 · 不稳定</text>
+  <line x1="140" y1="35" x2="175" y2="35" stroke="#6e8eff" stroke-width="1.5" marker-end="url(#a07)"/>
+  <rect x="180" y="15" width="130" height="40" rx="6" fill="#1e1e2a" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="245" y="33" text-anchor="middle" fill="#fbbf24" font-size="9" font-family="system-ui" font-weight="bold">DPO 2023</text>
+  <text x="245" y="47" text-anchor="middle" fill="#6b6b78" font-size="7" font-family="system-ui">1模型 · 一行公式 · 稳定</text>
+  <line x1="310" y1="35" x2="345" y2="35" stroke="#6e8eff" stroke-width="1.5" marker-end="url(#a07)"/>
+  <rect x="350" y="15" width="130" height="40" rx="6" fill="#1e1e2a" stroke="#34d399" stroke-width="1.5"/>
+  <text x="415" y="33" text-anchor="middle" fill="#34d399" font-size="9" font-family="system-ui" font-weight="bold">GRPO 2024</text>
+  <text x="415" y="47" text-anchor="middle" fill="#6b6b78" font-size="7" font-family="system-ui">无critic · 组内对比 · 更省</text>
+</svg>
+
 
 ### 对齐技术的方向
 

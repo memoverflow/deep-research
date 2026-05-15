@@ -62,17 +62,28 @@ GPT-3 有 1750 亿参数。推理时，生成每个词都要经过所有这些�
 
 这就是 **Mixture of Experts (MoE)** 的核心思想。
 
-```mermaid
-flowchart TD
-    Token["输入 Token"] --> Router["路由器<br/>(轻量线性层+softmax)"]
-    Router --> TopK["选择 Top-K 专家"]
-    TopK --> E1["✅ 专家1<br/>FFN₁(x) × 权重₁"]
-    TopK --> E2["✅ 专家2<br/>FFN₂(x) × 权重₂"]
-    TopK -.->|"未激活"| E3["❌ 专家3"]
-    TopK -.->|"未激活"| E4["❌ 专家N"]
-    E1 --> Merge["加权合并输出"]
-    E2 --> Merge
-```
+<svg viewBox="0 0 450 180" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:450px;margin:20px auto;display:block;">
+  <defs><marker id="a06" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#6e8eff"/></marker></defs>
+  <text x="225" y="15" text-anchor="middle" fill="#9494a0" font-size="10" font-family="system-ui">MoE 路由：每个 token 只去 1-2 个专家</text>
+  <rect x="175" y="25" width="100" height="30" rx="5" fill="#1e1e2a" stroke="#22d3ee" stroke-width="1.5"/>
+  <text x="225" y="44" text-anchor="middle" fill="#ededf0" font-size="9" font-family="system-ui">输入 Token</text>
+  <line x1="225" y1="55" x2="225" y2="70" stroke="#6e8eff" stroke-width="1.2" marker-end="url(#a06)"/>
+  <rect x="175" y="73" width="100" height="25" rx="4" fill="#1e1e2a" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="225" y="90" text-anchor="middle" fill="#fbbf24" font-size="8" font-family="system-ui">Router (选 Top-2)</text>
+  <!-- Experts -->
+  <line x1="195" y1="98" x2="80" y2="118" stroke="#34d399" stroke-width="1.2" marker-end="url(#a06)"/>
+  <line x1="225" y1="98" x2="225" y2="118" stroke="#34d399" stroke-width="1.2" marker-end="url(#a06)"/>
+  <line x1="255" y1="98" x2="370" y2="118" stroke="#6b6b78" stroke-width="0.8" stroke-dasharray="3,2"/>
+  <rect x="40" y="120" width="80" height="25" rx="4" fill="#1e1e2a" stroke="#34d399" stroke-width="1.5"/><text x="80" y="136" text-anchor="middle" fill="#34d399" font-size="8" font-family="system-ui">✅ 专家 1</text>
+  <rect x="185" y="120" width="80" height="25" rx="4" fill="#1e1e2a" stroke="#34d399" stroke-width="1.5"/><text x="225" y="136" text-anchor="middle" fill="#34d399" font-size="8" font-family="system-ui">✅ 专家 2</text>
+  <rect x="330" y="120" width="80" height="25" rx="4" fill="#1e1e2a" stroke="#3a3a4a" stroke-width="1"/><text x="370" y="136" text-anchor="middle" fill="#6b6b78" font-size="8" font-family="system-ui">❌ 专家 N</text>
+  <!-- Merge -->
+  <line x1="80" y1="145" x2="200" y2="162" stroke="#34d399" stroke-width="1"/>
+  <line x1="225" y1="145" x2="225" y2="162" stroke="#34d399" stroke-width="1"/>
+  <rect x="175" y="160" width="100" height="20" rx="4" fill="#1e1e2a" stroke="#22d3ee" stroke-width="1"/>
+  <text x="225" y="174" text-anchor="middle" fill="#ededf0" font-size="8" font-family="system-ui">加权合并输出</text>
+</svg>
+
 
 
 在标准 Transformer 中，每层有一个"前馈网络"（FFN）——所有 token 都经过同一个网络。MoE 的做法是：把这一个 FFN 替换成**N 个独立的小 FFN**（称为"专家"），加一个"路由器"来决定每个 token 去哪些专家。

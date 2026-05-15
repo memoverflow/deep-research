@@ -13,6 +13,20 @@ summary: "Attention 机制是怎么被发明的？它到底在做什么？用最
 
 ## 困境：信息瓶颈
 
+<svg viewBox="0 0 620 100" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:620px;margin:20px auto;display:block;">
+  <defs><marker id="a02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#6e8eff"/></marker></defs>
+  <rect x="10" y="25" width="130" height="40" rx="6" fill="#1e1e2a" stroke="#22d3ee" stroke-width="1.5"/>
+  <text x="75" y="49" text-anchor="middle" fill="#ededf0" font-size="11" font-family="system-ui">输入: 词₁ 词₂ ... 词ₙ</text>
+  <line x1="140" y1="45" x2="185" y2="45" stroke="#6e8eff" stroke-width="1.5" marker-end="url(#a02)"/>
+  <rect x="190" y="20" width="120" height="50" rx="6" fill="#1e1e2a" stroke="#fb7185" stroke-width="2"/>
+  <text x="250" y="42" text-anchor="middle" fill="#fb7185" font-size="10" font-family="system-ui" font-weight="bold">固定向量</text>
+  <text x="250" y="58" text-anchor="middle" fill="#6b6b78" font-size="8" font-family="system-ui">所有信息挤在这里</text>
+  <line x1="310" y1="45" x2="355" y2="45" stroke="#6e8eff" stroke-width="1.5" marker-end="url(#a02)"/>
+  <rect x="360" y="25" width="130" height="40" rx="6" fill="#1e1e2a" stroke="#34d399" stroke-width="1.5"/>
+  <text x="425" y="49" text-anchor="middle" fill="#ededf0" font-size="11" font-family="system-ui">解码器 → 翻译</text>
+  <text x="310" y="88" text-anchor="middle" fill="#fb7185" font-size="9" font-family="system-ui">⚠️ 句子越长，信息丢失越严重</text>
+</svg>
+
 <svg viewBox="0 0 650 130" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:650px;margin:20px auto;display:block;">
   <defs><marker id="a1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#6e8eff"/></marker></defs>
   <text x="325" y="15" text-anchor="middle" fill="#9494a0" font-size="10" font-family="system-ui">Seq2seq 的信息瓶颈</text>
@@ -56,6 +70,29 @@ Bahdanau 的想法（2014 年）是这样的：
 打个比方。之前的模型像是一场考试：考试前只能看一遍教材，然后闭卷答题。Attention 之后，变成了开卷考试——答每道题时都可以翻教材，而且会自动翻到最相关的那一页。
 
 ## 具体是怎么做到的
+
+<svg viewBox="0 0 580 120" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:580px;margin:20px auto;display:block;">
+  <defs><marker id="b02" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#6e8eff"/></marker></defs>
+  <rect x="5" y="20" width="95" height="45" rx="6" fill="#1e1e2a" stroke="#a78bfa" stroke-width="1.5"/>
+  <text x="52" y="40" text-anchor="middle" fill="#ededf0" font-size="9" font-family="system-ui">编码器各位置</text>
+  <text x="52" y="55" text-anchor="middle" fill="#9494a0" font-size="8" font-family="system-ui">h₁, h₂, ... hₙ</text>
+  <line x1="100" y1="42" x2="130" y2="42" stroke="#6e8eff" stroke-width="1.2" marker-end="url(#b02)"/>
+  <rect x="135" y="20" width="95" height="45" rx="6" fill="#1e1e2a" stroke="#22d3ee" stroke-width="1.5"/>
+  <text x="182" y="40" text-anchor="middle" fill="#ededf0" font-size="9" font-family="system-ui">逐位置打分</text>
+  <text x="182" y="55" text-anchor="middle" fill="#9494a0" font-size="8" font-family="system-ui">score(s, hⱼ)</text>
+  <line x1="230" y1="42" x2="260" y2="42" stroke="#6e8eff" stroke-width="1.2" marker-end="url(#b02)"/>
+  <rect x="265" y="20" width="80" height="45" rx="6" fill="#1e1e2a" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="305" y="40" text-anchor="middle" fill="#ededf0" font-size="9" font-family="system-ui">Softmax</text>
+  <text x="305" y="55" text-anchor="middle" fill="#9494a0" font-size="8" font-family="system-ui">→ 权重 αⱼ</text>
+  <line x1="345" y1="42" x2="375" y2="42" stroke="#6e8eff" stroke-width="1.2" marker-end="url(#b02)"/>
+  <rect x="380" y="20" width="100" height="45" rx="6" fill="#1e1e2a" stroke="#34d399" stroke-width="1.5"/>
+  <text x="430" y="40" text-anchor="middle" fill="#ededf0" font-size="9" font-family="system-ui">加权求和</text>
+  <text x="430" y="55" text-anchor="middle" fill="#9494a0" font-size="8" font-family="system-ui">c = Σ αⱼ·hⱼ</text>
+  <line x1="480" y1="42" x2="510" y2="42" stroke="#6e8eff" stroke-width="1.2" marker-end="url(#b02)"/>
+  <rect x="515" y="25" width="55" height="35" rx="6" fill="#1e1e2a" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="542" y="47" text-anchor="middle" fill="#ededf0" font-size="9" font-family="system-ui">预测词</text>
+  <text x="290" y="95" text-anchor="middle" fill="#34d399" font-size="9" font-family="system-ui">每一步解码，权重动态变化 → 关注不同位置</text>
+</svg>
 
 <svg viewBox="0 0 600 180" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:600px;margin:20px auto;display:block;">
   <defs><marker id="a2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#6e8eff"/></marker></defs>

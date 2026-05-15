@@ -111,14 +111,19 @@ TTT 的核心想法：模型的"记忆状态"不是一个被动的向量或矩�
 - **Jamba**：每 8 层中 7 层用 Mamba，1 层用 Attention。约 15% 是 Attention。
 - **Zamba**：整个模型只有一个共享的 Attention 模块，每 6 层 Mamba 复用一次。
 
-```mermaid
-flowchart LR
-    subgraph Jamba["Jamba 重复单元"]
-        direction LR
-        M1["🟢Mamba"] --> M2["🟢Mamba"] --> M3["🟢Mamba"] --> M4["🟢Mamba"] --> M5["🟢Mamba"] --> M6["🟢Mamba"] --> M7["🟢Mamba"] --> A["🔵Attention<br/>+MoE"]
-    end
-    A -->|"循环"| M1
-```
+<svg viewBox="0 0 580 60" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:580px;margin:20px auto;display:block;">
+  <text x="290" y="12" text-anchor="middle" fill="#9494a0" font-size="9" font-family="system-ui">Jamba 重复单元：7层 Mamba + 1层 Attention</text>
+  <rect x="20" y="22" width="50" height="25" rx="4" fill="#1e1e2a" stroke="#34d399" stroke-width="1.5"/><text x="45" y="38" text-anchor="middle" fill="#34d399" font-size="7">Mamba</text>
+  <rect x="75" y="22" width="50" height="25" rx="4" fill="#1e1e2a" stroke="#34d399" stroke-width="1.5"/><text x="100" y="38" text-anchor="middle" fill="#34d399" font-size="7">Mamba</text>
+  <rect x="130" y="22" width="50" height="25" rx="4" fill="#1e1e2a" stroke="#34d399" stroke-width="1.5"/><text x="155" y="38" text-anchor="middle" fill="#34d399" font-size="7">Mamba</text>
+  <rect x="185" y="22" width="50" height="25" rx="4" fill="#1e1e2a" stroke="#34d399" stroke-width="1.5"/><text x="210" y="38" text-anchor="middle" fill="#34d399" font-size="7">Mamba</text>
+  <rect x="240" y="22" width="50" height="25" rx="4" fill="#1e1e2a" stroke="#34d399" stroke-width="1.5"/><text x="265" y="38" text-anchor="middle" fill="#34d399" font-size="7">Mamba</text>
+  <rect x="295" y="22" width="50" height="25" rx="4" fill="#1e1e2a" stroke="#34d399" stroke-width="1.5"/><text x="320" y="38" text-anchor="middle" fill="#34d399" font-size="7">Mamba</text>
+  <rect x="350" y="22" width="50" height="25" rx="4" fill="#1e1e2a" stroke="#34d399" stroke-width="1.5"/><text x="375" y="38" text-anchor="middle" fill="#34d399" font-size="7">Mamba</text>
+  <rect x="405" y="22" width="80" height="25" rx="4" fill="#1e1e2a" stroke="#6e8eff" stroke-width="2"/><text x="445" y="38" text-anchor="middle" fill="#6e8eff" font-size="7" font-weight="bold">Attention</text>
+  <text x="510" y="38" fill="#6b6b78" font-size="8" font-family="system-ui">× 重复</text>
+</svg>
+
 
 这些混合模型的性能匹配纯 Transformer，但长序列效率好得多。
 

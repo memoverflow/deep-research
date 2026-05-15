@@ -101,13 +101,19 @@ YaRN 的做法：对不同频率分量采用不同的处理策略。高频保持
 
 初步结果表明，大规模模型在某些情况下确实能做到。但目前还不如 RoPE 稳定可靠——这个方向更多是学术探索。
 
-```mermaid
-flowchart LR
-    A["Sinusoidal 2017<br/>固定·绝对位置"] --> B["Relative PE 2018<br/>建模词间距离"]
-    B --> C["RoPE 2021<br/>旋转矩阵·相对位置"]
-    C --> D["ALiBi 2022<br/>线性偏置·免训练外推"]
-    D --> E["YaRN 2023<br/>频率插值·长上下文"]
-```
+<svg viewBox="0 0 650 80" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:650px;margin:20px auto;display:block;">
+  <defs><marker id="a04" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#6e8eff"/></marker></defs>
+  <!-- Timeline line -->
+  <line x1="30" y1="35" x2="620" y2="35" stroke="#3a3a4a" stroke-width="2"/>
+  <!-- Nodes -->
+  <circle cx="70" cy="35" r="6" fill="#22d3ee"/><text x="70" y="55" text-anchor="middle" fill="#22d3ee" font-size="8" font-family="system-ui">Sinusoidal</text><text x="70" y="67" text-anchor="middle" fill="#6b6b78" font-size="7" font-family="system-ui">2017 固定</text>
+  <circle cx="190" cy="35" r="6" fill="#34d399"/><text x="190" y="55" text-anchor="middle" fill="#34d399" font-size="8" font-family="system-ui">Relative PE</text><text x="190" y="67" text-anchor="middle" fill="#6b6b78" font-size="7" font-family="system-ui">2018 相对</text>
+  <circle cx="330" cy="35" r="8" fill="#fbbf24"/><text x="330" y="55" text-anchor="middle" fill="#fbbf24" font-size="9" font-family="system-ui" font-weight="bold">RoPE</text><text x="330" y="67" text-anchor="middle" fill="#6b6b78" font-size="7" font-family="system-ui">2021 旋转</text>
+  <circle cx="450" cy="35" r="6" fill="#a78bfa"/><text x="450" y="55" text-anchor="middle" fill="#a78bfa" font-size="8" font-family="system-ui">ALiBi</text><text x="450" y="67" text-anchor="middle" fill="#6b6b78" font-size="7" font-family="system-ui">2022 线性偏置</text>
+  <circle cx="570" cy="35" r="6" fill="#fb7185"/><text x="570" y="55" text-anchor="middle" fill="#fb7185" font-size="8" font-family="system-ui">YaRN</text><text x="570" y="67" text-anchor="middle" fill="#6b6b78" font-size="7" font-family="system-ui">2023 频率插值</text>
+  <text x="330" y="18" text-anchor="middle" fill="#9494a0" font-size="9" font-family="system-ui">位置编码演进</text>
+</svg>
+
 
 ## 位置编码的演进告诉了我们什么
 

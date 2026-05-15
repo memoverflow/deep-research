@@ -31,20 +31,23 @@ Self-attention 需要让每个 token 和所有其他 token 算一次分数。$n$
 
 ## 方向一：不改数学，改工程
 
-```mermaid
-flowchart LR
-    subgraph 标准实现["标准 Attention"]
-        direction TB
-        S1["Q,K → 计算 n×n 分数矩阵"] --> S2["写入GPU主存 (慢)"]
-        S2 --> S3["读出做Softmax"] --> S4["写回主存"]
-        S4 --> S5["读出 × V"] --> S6["写回主存"]
-    end
-    subgraph Flash["FlashAttention"]
-        direction TB
-        F1["分块加载 Q,K,V 到快速缓存"] --> F2["在缓存内完成全部计算"]
-        F2 --> F3["只写最终结果到主存"]
-    end
-```
+<svg viewBox="0 0 620 130" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:620px;margin:20px auto;display:block;">
+  <!-- Standard -->
+  <rect x="10" y="10" width="280" height="105" rx="8" fill="#1a1a24" stroke="#fb7185" stroke-width="1"/>
+  <text x="150" y="28" text-anchor="middle" fill="#fb7185" font-size="9" font-family="system-ui" font-weight="bold">标准实现：反复搬运数据</text>
+  <text x="150" y="48" fill="#9494a0" font-size="8" font-family="system-ui">GPU主存(慢) ↔ 计算 ↔ 写回 ↔ 读取 ↔ 计算...</text>
+  <rect x="30" y="60" width="240" height="20" rx="3" fill="#fb7185" opacity="0.2"/>
+  <text x="150" y="74" text-anchor="middle" fill="#fb7185" font-size="8" font-family="system-ui">n×n 中间矩阵反复读写主存 (带宽瓶颈)</text>
+  <text x="150" y="100" text-anchor="middle" fill="#6b6b78" font-size="8" font-family="system-ui">内存 O(n²) · 慢</text>
+  <!-- Flash -->
+  <rect x="320" y="10" width="290" height="105" rx="8" fill="#1a1a24" stroke="#34d399" stroke-width="1"/>
+  <text x="465" y="28" text-anchor="middle" fill="#34d399" font-size="9" font-family="system-ui" font-weight="bold">FlashAttention：全在快速缓存中完成</text>
+  <text x="465" y="48" fill="#9494a0" font-size="8" font-family="system-ui">分块加载 → SRAM内算完 → 只写最终结果</text>
+  <rect x="340" y="60" width="250" height="20" rx="3" fill="#34d399" opacity="0.2"/>
+  <text x="465" y="74" text-anchor="middle" fill="#34d399" font-size="8" font-family="system-ui">n×n 矩阵从不完整存在于主存中</text>
+  <text x="465" y="100" text-anchor="middle" fill="#34d399" font-size="8" font-family="system-ui">内存 O(n) · 快 2-4× · 结果完全精确</text>
+</svg>
+
 
 ### FlashAttention：聪明地使用硬件 (2022)
 
@@ -87,12 +90,26 @@ FlashAttention 的意义在于：它把"能处理多长的序列"这个上限从
 
 但这个缓存本身会线性增长：每一层、每个注意力头都要存 Key 和 Value。一个 70B 参数的模型处理 32K 序列，KV cache 可能需要 32GB 显存——比模型本身还大！
 
-```mermaid
-flowchart LR
-    MHA["MHA<br/>每头独立KV<br/>32组KV"] -->|"太占显存"| MQA["MQA<br/>所有头共享1组KV<br/>压缩32×"]
-    MQA -->|"质量有损"| GQA["GQA<br/>分组共享<br/>8组KV (压缩4×)"]
-    GQA -->|"更进一步"| MLA["MLA<br/>低秩压缩<br/>质量更好"]
-```
+<svg viewBox="0 0 580 90" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:580px;margin:20px auto;display:block;">
+  <defs><marker id="a05" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#6e8eff"/></marker></defs>
+  <rect x="10" y="20" width="90" height="45" rx="6" fill="#1e1e2a" stroke="#fb7185" stroke-width="1.5"/>
+  <text x="55" y="40" text-anchor="middle" fill="#fb7185" font-size="9" font-family="system-ui" font-weight="bold">MHA</text>
+  <text x="55" y="55" text-anchor="middle" fill="#6b6b78" font-size="7" font-family="system-ui">32组KV·1×</text>
+  <line x1="100" y1="42" x2="130" y2="42" stroke="#6e8eff" stroke-width="1.2" marker-end="url(#a05)"/>
+  <rect x="135" y="20" width="90" height="45" rx="6" fill="#1e1e2a" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="180" y="40" text-anchor="middle" fill="#fbbf24" font-size="9" font-family="system-ui" font-weight="bold">MQA</text>
+  <text x="180" y="55" text-anchor="middle" fill="#6b6b78" font-size="7" font-family="system-ui">共享1组·32×压缩</text>
+  <line x1="225" y1="42" x2="255" y2="42" stroke="#6e8eff" stroke-width="1.2" marker-end="url(#a05)"/>
+  <rect x="260" y="20" width="90" height="45" rx="6" fill="#1e1e2a" stroke="#34d399" stroke-width="1.5"/>
+  <text x="305" y="40" text-anchor="middle" fill="#34d399" font-size="9" font-family="system-ui" font-weight="bold">GQA</text>
+  <text x="305" y="55" text-anchor="middle" fill="#6b6b78" font-size="7" font-family="system-ui">8组共享·4×压缩</text>
+  <line x1="350" y1="42" x2="380" y2="42" stroke="#6e8eff" stroke-width="1.2" marker-end="url(#a05)"/>
+  <rect x="385" y="20" width="90" height="45" rx="6" fill="#1e1e2a" stroke="#a78bfa" stroke-width="1.5"/>
+  <text x="430" y="40" text-anchor="middle" fill="#a78bfa" font-size="9" font-family="system-ui" font-weight="bold">MLA</text>
+  <text x="430" y="55" text-anchor="middle" fill="#6b6b78" font-size="7" font-family="system-ui">低秩潜向量·16-32×</text>
+  <text x="290" y="82" text-anchor="middle" fill="#9494a0" font-size="8" font-family="system-ui">KV Cache 压缩演进：质量几乎不变，内存逐步缩小</text>
+</svg>
+
 
 ### 从 MHA 到 MQA 到 GQA：共享 KV
 

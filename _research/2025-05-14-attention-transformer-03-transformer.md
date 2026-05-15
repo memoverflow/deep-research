@@ -29,18 +29,35 @@ Google 的 Vaswani 等人想：attention 已经可以让任意两个位置直接
 
 他们提出的架构叫 Transformer。让我们看看它怎么工作——但先不急看公式，先理解直觉。
 
-```mermaid
-flowchart TD
-    Input["输入序列"] --> Emb["Embedding + 位置编码"]
-    Emb --> Block["×N 层 Transformer Block"]
-    subgraph Block["Transformer Block (重复N次)"]
-        direction TB
-        MA["Multi-Head Self-Attention"] --> AN1["Add & Norm"]
-        AN1 --> FFN["前馈网络 (FFN)"]
-        FFN --> AN2["Add & Norm"]
-    end
-    Block --> Output["输出"]
-```
+<svg viewBox="0 0 500 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:500px;margin:20px auto;display:block;">
+  <defs><marker id="a03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#6e8eff"/></marker></defs>
+  <text x="250" y="15" text-anchor="middle" fill="#9494a0" font-size="10" font-family="system-ui">Transformer Block × N层</text>
+  <rect x="30" y="25" width="440" height="155" rx="10" fill="#1a1a24" stroke="#3a3a4a" stroke-width="1"/>
+  <!-- Input -->
+  <rect x="60" y="75" width="70" height="35" rx="5" fill="#1e1e2a" stroke="#22d3ee" stroke-width="1.5"/>
+  <text x="95" y="97" text-anchor="middle" fill="#ededf0" font-size="9" font-family="system-ui">输入</text>
+  <line x1="130" y1="92" x2="155" y2="92" stroke="#6e8eff" stroke-width="1.2" marker-end="url(#a03)"/>
+  <!-- Self-Attention -->
+  <rect x="160" y="70" width="90" height="45" rx="5" fill="#1e1e2a" stroke="#a78bfa" stroke-width="1.5"/>
+  <text x="205" y="88" text-anchor="middle" fill="#a78bfa" font-size="9" font-family="system-ui">Multi-Head</text>
+  <text x="205" y="103" text-anchor="middle" fill="#a78bfa" font-size="9" font-family="system-ui">Self-Attention</text>
+  <line x1="250" y1="92" x2="275" y2="92" stroke="#6e8eff" stroke-width="1.2" marker-end="url(#a03)"/>
+  <!-- Add & Norm -->
+  <rect x="280" y="78" width="55" height="28" rx="4" fill="#1e1e2a" stroke="#fbbf24" stroke-width="1"/>
+  <text x="307" y="96" text-anchor="middle" fill="#fbbf24" font-size="8" font-family="system-ui">Add&Norm</text>
+  <line x1="335" y1="92" x2="355" y2="92" stroke="#6e8eff" stroke-width="1.2" marker-end="url(#a03)"/>
+  <!-- FFN -->
+  <rect x="360" y="75" width="50" height="35" rx="5" fill="#1e1e2a" stroke="#34d399" stroke-width="1.5"/>
+  <text x="385" y="97" text-anchor="middle" fill="#34d399" font-size="9" font-family="system-ui">FFN</text>
+  <line x1="410" y1="92" x2="430" y2="92" stroke="#6e8eff" stroke-width="1.2" marker-end="url(#a03)"/>
+  <!-- Output -->
+  <rect x="435" y="78" width="25" height="28" rx="4" fill="#1e1e2a" stroke="#fbbf24" stroke-width="1"/>
+  <text x="447" y="96" text-anchor="middle" fill="#fbbf24" font-size="7" font-family="system-ui">A&N</text>
+  <!-- Residual arrows -->
+  <path d="M95 110 L95 140 L307 140 L307 110" fill="none" stroke="#6b6b78" stroke-width="0.8" stroke-dasharray="3,2"/>
+  <text x="200" y="152" text-anchor="middle" fill="#6b6b78" font-size="7" font-family="system-ui">残差连接 (skip connection)</text>
+</svg>
+
 
 ### Self-Attention：每个词看所有其他词
 
@@ -86,17 +103,34 @@ Transformer 的做法是把 self-attention 层**叠很多层**。原始论文叠
 
 （这里的"处理"指残差连接和层归一化——确保信息流动顺畅，训练稳定。）
 
-```mermaid
-flowchart LR
-    subgraph RNN["RNN: 信息逐步传递"]
-        direction LR
-        R1["词1"] -->|"h₁"| R2["词2"] -->|"h₂"| R3["词3"] -->|"h₃"| R4["..."] -->|"h₉₉"| R5["词100"]
-    end
-    subgraph Transformer["Transformer: 一步直达"]
-        direction LR
-        T1["词1"] <-->|"1步attention"| T5["词100"]
-    end
-```
+<svg viewBox="0 0 600 150" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:600px;margin:20px auto;display:block;">
+  <defs><marker id="c03" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#6e8eff"/></marker></defs>
+  <!-- RNN side -->
+  <text x="150" y="15" text-anchor="middle" fill="#fb7185" font-size="10" font-family="system-ui" font-weight="bold">RNN: 逐步传递，O(n)路径</text>
+  <rect x="20" y="30" width="35" height="25" rx="4" fill="#1e1e2a" stroke="#fb7185" stroke-width="1"/><text x="37" y="46" text-anchor="middle" fill="#fff" font-size="8">词₁</text>
+  <line x1="55" y1="42" x2="70" y2="42" stroke="#fb7185" stroke-width="1" marker-end="url(#c03)"/>
+  <rect x="72" y="30" width="35" height="25" rx="4" fill="#1e1e2a" stroke="#fb7185" stroke-width="1"/><text x="89" y="46" text-anchor="middle" fill="#fff" font-size="8">词₂</text>
+  <line x1="107" y1="42" x2="122" y2="42" stroke="#fb7185" stroke-width="1" marker-end="url(#c03)"/>
+  <rect x="124" y="30" width="35" height="25" rx="4" fill="#1e1e2a" stroke="#fb7185" stroke-width="1"/><text x="141" y="46" text-anchor="middle" fill="#fff" font-size="8">词₃</text>
+  <line x1="159" y1="42" x2="170" y2="42" stroke="#6b6b78" stroke-width="1" stroke-dasharray="2,2"/>
+  <text x="183" y="46" fill="#6b6b78" font-size="8">...</text>
+  <line x1="193" y1="42" x2="208" y2="42" stroke="#6b6b78" stroke-width="1" stroke-dasharray="2,2"/>
+  <rect x="210" y="30" width="45" height="25" rx="4" fill="#1e1e2a" stroke="#fb7185" stroke-width="1"/><text x="232" y="46" text-anchor="middle" fill="#fff" font-size="8">词₁₀₀</text>
+  <text x="150" y="75" text-anchor="middle" fill="#6b6b78" font-size="8" font-family="system-ui">词₁ 到 词₁₀₀ 信号经过 99 步传递 → 衰减</text>
+  <!-- Transformer side -->
+  <text x="450" y="15" text-anchor="middle" fill="#34d399" font-size="10" font-family="system-ui" font-weight="bold">Transformer: 一步直达，O(1)路径</text>
+  <rect x="350" y="30" width="40" height="25" rx="4" fill="#1e1e2a" stroke="#34d399" stroke-width="1.5"/><text x="370" y="46" text-anchor="middle" fill="#fff" font-size="8">词₁</text>
+  <rect x="510" y="30" width="50" height="25" rx="4" fill="#1e1e2a" stroke="#34d399" stroke-width="1.5"/><text x="535" y="46" text-anchor="middle" fill="#fff" font-size="8">词₁₀₀</text>
+  <path d="M390 42 C430 42, 430 42, 510 42" fill="none" stroke="#34d399" stroke-width="2" marker-end="url(#c03)"/>
+  <text x="450" y="35" text-anchor="middle" fill="#34d399" font-size="8" font-family="system-ui">1 步 attention</text>
+  <text x="450" y="75" text-anchor="middle" fill="#6b6b78" font-size="8" font-family="system-ui">任意两位置直接交互，信息无损</text>
+  <!-- Bottom comparison -->
+  <rect x="50" y="95" width="200" height="35" rx="5" fill="#1a1a24" stroke="#fb7185" stroke-width="0.8"/>
+  <text x="150" y="116" text-anchor="middle" fill="#fb7185" font-size="9" font-family="system-ui">串行 · 不能并行 · 长距离衰减</text>
+  <rect x="350" y="95" width="200" height="35" rx="5" fill="#1a1a24" stroke="#34d399" stroke-width="0.8"/>
+  <text x="450" y="116" text-anchor="middle" fill="#34d399" font-size="9" font-family="system-ui">并行 · GPU友好 · 长距离无损</text>
+</svg>
+
 
 ## 为什么它比 RNN 好
 
