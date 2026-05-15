@@ -4,8 +4,8 @@ title: Home
 ---
 
 <section class="hero">
-  <h1>Deep Research Archive</h1>
-  <p class="hero-desc">穷尽式深度研究，以教学系列文章的形式呈现。<br>每个系列从零开始讲透一个领域。</p>
+  <h1>Lucas's Blog</h1>
+  <p class="hero-desc">AI、技术与思考</p>
 </section>
 
 {% assign all_posts = site.research | sort: 'date' | reverse %}

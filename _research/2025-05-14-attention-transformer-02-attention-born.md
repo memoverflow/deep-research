@@ -13,15 +13,21 @@ summary: "Attention 机制是怎么被发明的？它到底在做什么？用最
 
 ## 困境：信息瓶颈
 
-```mermaid
-flowchart LR
-    subgraph Seq2seq["Seq2seq: 信息瓶颈"]
-        direction LR
-        I1["词1"] --> I2["词2"] --> I3["词3"] --> I4["..."] --> I5["词n"]
-        I5 --> FV["固定向量<br/>全部信息挤在这里"]
-        FV --> D1["翻译词1"] --> D2["翻译词2"] --> D3["..."]
-    end
-```
+<svg viewBox="0 0 650 130" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:650px;margin:20px auto;display:block;">
+  <defs><marker id="a1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#6e8eff"/></marker></defs>
+  <text x="325" y="15" text-anchor="middle" fill="#9494a0" font-size="10" font-family="system-ui">Seq2seq 的信息瓶颈</text>
+  <rect x="20" y="35" width="80" height="35" rx="6" fill="#1e1e2a" stroke="#22d3ee" stroke-width="1.5"/>
+  <text x="60" y="57" text-anchor="middle" fill="#ededf0" font-size="10" font-family="system-ui">词₁词₂...词ₙ</text>
+  <line x1="100" y1="52" x2="140" y2="52" stroke="#6e8eff" stroke-width="1.5" marker-end="url(#a1)"/>
+  <rect x="145" y="30" width="100" height="45" rx="6" fill="#1e1e2a" stroke="#fb7185" stroke-width="2"/>
+  <text x="195" y="50" text-anchor="middle" fill="#fb7185" font-size="9" font-family="system-ui">固定向量</text>
+  <text x="195" y="65" text-anchor="middle" fill="#6b6b78" font-size="8" font-family="system-ui">所有信息挤在这</text>
+  <line x1="245" y1="52" x2="285" y2="52" stroke="#6e8eff" stroke-width="1.5" marker-end="url(#a1)"/>
+  <rect x="290" y="35" width="100" height="35" rx="6" fill="#1e1e2a" stroke="#34d399" stroke-width="1.5"/>
+  <text x="340" y="57" text-anchor="middle" fill="#ededf0" font-size="10" font-family="system-ui">解码 → 翻译</text>
+  <text x="325" y="100" text-anchor="middle" fill="#fb7185" font-size="9" font-family="system-ui">⚠️ 句子越长，瓶颈越严重——信息必然丢失</text>
+</svg>
+
 
 
 
@@ -51,19 +57,30 @@ Bahdanau 的想法（2014 年）是这样的：
 
 ## 具体是怎么做到的
 
-```mermaid
-flowchart TD
-    subgraph 编码器
-        E["保存每个位置的状态<br/>h₁, h₂, h₃, ... hₙ"]
-    end
-    subgraph 解码器每一步
-        S["当前解码状态"] --> Score["与每个 hⱼ 打分"]
-        Score --> Soft["Softmax 归一化<br/>得到权重 α₁, α₂, ... αₙ"]
-        Soft --> Sum["加权求和<br/>c = Σ αⱼ·hⱼ"]
-        Sum --> Predict["预测下一个词"]
-    end
-    E --> Score
-```
+<svg viewBox="0 0 600 180" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:600px;margin:20px auto;display:block;">
+  <defs><marker id="a2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#6e8eff"/></marker></defs>
+  <text x="300" y="15" text-anchor="middle" fill="#9494a0" font-size="10" font-family="system-ui">Attention 计算流程</text>
+  <rect x="20" y="30" width="100" height="40" rx="6" fill="#1e1e2a" stroke="#a78bfa" stroke-width="1.5"/>
+  <text x="70" y="50" text-anchor="middle" fill="#ededf0" font-size="9" font-family="system-ui">编码器状态</text>
+  <text x="70" y="63" text-anchor="middle" fill="#9494a0" font-size="8" font-family="system-ui">h₁, h₂, ... hₙ</text>
+  <line x1="120" y1="50" x2="155" y2="50" stroke="#6e8eff" stroke-width="1.2" marker-end="url(#a2)"/>
+  <rect x="160" y="30" width="90" height="40" rx="6" fill="#1e1e2a" stroke="#22d3ee" stroke-width="1.5"/>
+  <text x="205" y="50" text-anchor="middle" fill="#ededf0" font-size="9" font-family="system-ui">打分匹配</text>
+  <text x="205" y="63" text-anchor="middle" fill="#9494a0" font-size="8" font-family="system-ui">eᵢⱼ = score(s,h)</text>
+  <line x1="250" y1="50" x2="285" y2="50" stroke="#6e8eff" stroke-width="1.2" marker-end="url(#a2)"/>
+  <rect x="290" y="30" width="80" height="40" rx="6" fill="#1e1e2a" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="330" y="50" text-anchor="middle" fill="#ededf0" font-size="9" font-family="system-ui">Softmax</text>
+  <text x="330" y="63" text-anchor="middle" fill="#9494a0" font-size="8" font-family="system-ui">α₁...αₙ (权重)</text>
+  <line x1="370" y1="50" x2="405" y2="50" stroke="#6e8eff" stroke-width="1.2" marker-end="url(#a2)"/>
+  <rect x="410" y="30" width="100" height="40" rx="6" fill="#1e1e2a" stroke="#34d399" stroke-width="1.5"/>
+  <text x="460" y="50" text-anchor="middle" fill="#ededf0" font-size="9" font-family="system-ui">加权求和</text>
+  <text x="460" y="63" text-anchor="middle" fill="#9494a0" font-size="8" font-family="system-ui">c = Σαⱼhⱼ</text>
+  <!-- Bottom annotation -->
+  <rect x="100" y="100" width="400" height="50" rx="8" fill="#1a1a24" stroke="#3a3a4a" stroke-width="0.5"/>
+  <text x="300" y="120" text-anchor="middle" fill="#ededf0" font-size="9" font-family="system-ui">每一步解码都重新打分 → 不同时刻关注不同位置</text>
+  <text x="300" y="138" text-anchor="middle" fill="#34d399" font-size="9" font-family="system-ui">翻译"猫"时看 cat 位置，翻译"桌子"时看 table 位置</text>
+</svg>
+
 
 
 
