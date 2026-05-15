@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MoE Router Animation</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.11.3/p5.min.js"></script>
+<style>
+  html, body { margin: 0; padding: 0; overflow: hidden; background: #0a0a0f; }
+  canvas { display: block; margin: 0 auto; }
+</style>
+</head>
+<body>
+<script>
+p5.disableFriendlyErrors = true;
+
+const PALETTE = {
+  bg: '#0a0a0f',
+  surface: '#13131a',
+  border: '#23232e',
+  text: '#ededf0',
+  muted: '#6b6b78',
+  accent: '#6e8eff',
+  experts: ['#22d3ee', '#34d399', '#fbbf24', '#a78bfa', '#fb7185', '#fb923c'],
+  token_colors: ['#60a5fa', '#4ade80', '#facc15', '#c084fc', '#f472b6', '#fb923c', '#2dd4bf', '#e879f9']
+};
+
+let tokens = [];
+let experts = [];
+let router;
+let phase = 'idle'; // idle, routing, flying, computing, output
+let currentTokenIdx = 0;
+let animFrame = 0;
+let particles = [];
+let capacity = [0,0,0,0];
+const MAX_CAPACITY = 3;
+const NUM_EXPERTS = 4;
+const NUM_TOKENS = 8;
+const TOKEN_WORDS = ['The', 'cat', 'sat', 'on', 'the', 'mat', '.', '!'];
+
+function setup() {
+  let w = min(windowWidth, 900);
+  let h = min(windowHeight, 550);
+  createCanvas(w, h);
+  textFont('system-ui');
+  initScene();
+}
+
+function initScene() {
+  tokens = [];
+  experts = [];
+  capacity = [0,0,0,0];
+  currentTokenIdx = 0;
+  phase = 'idle';
+  animFrame = 0;
+  particles = [];
+
+  // Create tokens on left
+  for (let i = 0; i < NUM_TOKENS; i++) {
+    tokens.push({
+      x: 60, y: 80 + i * 52,
+      targetX: 60, targetY: 80 + i * 52,
+      word: TOKEN_WORDS[i],
+      color: PALETTE.token_colors[i],
+      state: 'waiting', // waiting, toRouter, routing, toExpert, computing, done, dropped
+      assignedExpert: -1,
+      routerProbs: [],
+      alpha: 255,
+      progress: 0
+    });
+  }
+
+  // Router in center
+  router = { x: width * 0.38, y: height * 0.45, w: 120, h: 60 };
+
+  // Experts on right
+  for (let i = 0; i < NUM_EXPERTS; i++) {
+    experts.push({
+      x: width * 0.72, y: 80 + i * 110,
+      w: 130, h: 80,
+      color: PALETTE.experts[i],
+      name: `Expert ${i+1}`,
+      glow: 0
+    });
+  }
+
+  // Start animation
+  setTimeout(() => { phase = 'routing'; }, 800);
+}
+
+function draw() {
+  background(PALETTE.bg);
+  animFrame++;
+
+  drawTitle();
+  drawTokens();
+  drawRouter();
+  drawExperts();
+  drawConnections();
+  drawParticles();
+  drawCapacityBars();
+  drawLegend();
+
+  updateAnimation();
+}
+
+function drawTitle() {
+  noStroke();
+  fill(PALETTE.text);
+  textSize(16);
+  textAlign(CENTER);
+  text('MoE Router: Token 如何被分配到 Expert', width/2, 30);
+  fill(PALETTE.muted);
+  textSize(11);
+  text('点击任意位置重新播放', width/2, height - 15);
+}
+
+function drawTokens() {
+  for (let t of tokens) {
+    push();
+    let alpha = t.state === 'dropped' ? 80 : 255;
+    // Token circle
+    noStroke();
+    fill(color(t.color + hex(alpha, 2).slice(-2)));
+    if (t.state === 'dropped') {
+      stroke(PALETTE.muted);
+      strokeWeight(1);
+      drawingContext.setLineDash([3,3]);
+    }
+    ellipse(t.x, t.y, 36, 36);
+    drawingContext.setLineDash([]);
+    // Token text
+    noStroke();
+    fill(t.state === 'dropped' ? PALETTE.muted : '#fff');
+    textSize(9);
+    textAlign(CENTER, CENTER);
+    text(t.word, t.x, t.y);
+    // Dropped label
+    if (t.state === 'dropped') {
+      fill(PALETTE.experts[4]);
+      textSize(7);
+      text('DROPPED', t.x, t.y + 24);
+    }
+    pop();
+  }
+}
+
+function drawRouter() {
+  push();
+  let glowIntensity = phase === 'routing' ? sin(animFrame * 0.1) * 30 + 30 : 0;
+  // Glow
+  if (glowIntensity > 0) {
+    noStroke();
+    fill(color(red(color(PALETTE.accent)), green(color(PALETTE.accent)), blue(color(PALETTE.accent)), glowIntensity));
+    rect(router.x - 5, router.y - 5, router.w + 10, router.h + 10, 14);
+  }
+  // Box
+  stroke(PALETTE.accent);
+  strokeWeight(1.5);
+  fill(color('#1e1e2a'));
+  rect(router.x, router.y, router.w, router.h, 10);
+  // Text
+  noStroke();
+  fill(PALETTE.accent);
+  textSize(12);
+  textAlign(CENTER, CENTER);
+  text('Router', router.x + router.w/2, router.y + router.h/2 - 8);
+  fill(PALETTE.muted);
+  textSize(8);
+  text('W·x → softmax → top-2', router.x + router.w/2, router.y + router.h/2 + 10);
+
+  // Show current routing probs
+  let ct = tokens[min(currentTokenIdx, NUM_TOKENS-1)];
+  if (ct && ct.routerProbs.length > 0 && (ct.state === 'routing' || ct.state === 'toExpert')) {
+    let barY = router.y + router.h + 8;
+    for (let i = 0; i < NUM_EXPERTS; i++) {
+      let barW = ct.routerProbs[i] * 100;
+      fill(color(experts[i].color));
+      noStroke();
+      rect(router.x + 5, barY + i * 10, barW, 7, 2);
+      fill(PALETTE.muted);
+      textSize(7);
+      textAlign(LEFT);
+      text((ct.routerProbs[i]*100).toFixed(0)+'%', router.x + 8 + barW, barY + i * 10 + 6);
+    }
+  }
+  pop();
+}
+
+function drawExperts() {
+  for (let i = 0; i < experts.length; i++) {
+    let e = experts[i];
+    push();
+    // Glow when computing
+    if (e.glow > 0) {
+      noStroke();
+      fill(color(red(color(e.color)), green(color(e.color)), blue(color(e.color)), e.glow));
+      rect(e.x - 4, e.y - 4, e.w + 8, e.h + 8, 12);
+      e.glow = max(0, e.glow - 2);
+    }
+    // Box
+    stroke(e.color);
+    strokeWeight(capacity[i] >= MAX_CAPACITY ? 2.5 : 1.5);
+    fill(color('#1e1e2a'));
+    rect(e.x, e.y, e.w, e.h, 8);
+    // Name
+    noStroke();
+    fill(e.color);
+    textSize(11);
+    textAlign(CENTER, CENTER);
+    text(e.name, e.x + e.w/2, e.y + e.h/2 - 10);
+    fill(PALETTE.muted);
+    textSize(8);
+    text('FFN Layer', e.x + e.w/2, e.y + e.h/2 + 8);
+    // Full indicator
+    if (capacity[i] >= MAX_CAPACITY) {
+      fill(PALETTE.experts[4]);
+      textSize(8);
+      text('FULL!', e.x + e.w/2, e.y + e.h/2 + 22);
+    }
+    pop();
+  }
+}
+
+function drawCapacityBars() {
+  for (let i = 0; i < NUM_EXPERTS; i++) {
+    let e = experts[i];
+    let barX = e.x + e.w + 8;
+    let barY = e.y + 10;
+    let barH = e.h - 20;
+    // Background
+    noStroke();
+    fill(color('#1a1a24'));
+    rect(barX, barY, 12, barH, 3);
+    // Fill
+    let fillH = (capacity[i] / MAX_CAPACITY) * barH;
+    let fillColor = capacity[i] >= MAX_CAPACITY ? PALETTE.experts[4] : experts[i].color;
+    fill(color(fillColor));
+    rect(barX, barY + barH - fillH, 12, fillH, 3);
+    // Label
+    fill(PALETTE.muted);
+    textSize(7);
+    textAlign(CENTER);
+    text(`${capacity[i]}/${MAX_CAPACITY}`, barX + 6, barY + barH + 12);
+  }
+}
+
+function drawConnections() {
+  for (let t of tokens) {
+    if (t.state === 'toExpert' && t.assignedExpert >= 0) {
+      let e = experts[t.assignedExpert];
+      stroke(color(e.color + '44'));
+      strokeWeight(1);
+      noFill();
+      let cx = (router.x + router.w + e.x) / 2;
+      bezier(router.x + router.w, router.y + router.h/2, cx, router.y + router.h/2, cx, e.y + e.h/2, e.x, e.y + e.h/2);
+    }
+  }
+}
+
+function drawParticles() {
+  for (let i = particles.length - 1; i >= 0; i--) {
+    let p = particles[i];
+    p.x += p.vx;
+    p.y += p.vy;
+    p.life -= 3;
+    if (p.life <= 0) { particles.splice(i, 1); continue; }
+    noStroke();
+    fill(color(red(color(p.color)), green(color(p.color)), blue(color(p.color)), p.life));
+    ellipse(p.x, p.y, p.size, p.size);
+  }
+}
+
+function drawLegend() {
+  let lx = 15, ly = height - 55;
+  fill(PALETTE.muted);
+  noStroke();
+  textSize(9);
+  textAlign(LEFT);
+  text(`Token ${min(currentTokenIdx+1, NUM_TOKENS)}/${NUM_TOKENS}`, lx, ly);
+  text(`Phase: ${phase}`, lx, ly + 14);
+}
+
+function updateAnimation() {
+  if (phase === 'idle') return;
+  if (currentTokenIdx >= NUM_TOKENS) { phase = 'idle'; return; }
+
+  let t = tokens[currentTokenIdx];
+
+  switch(t.state) {
+    case 'waiting':
+      t.state = 'toRouter';
+      t.targetX = router.x - 25;
+      t.targetY = router.y + router.h/2;
+      break;
+
+    case 'toRouter':
+      t.x = lerp(t.x, t.targetX, 0.08);
+      t.y = lerp(t.y, t.targetY, 0.08);
+      if (dist(t.x, t.y, t.targetX, t.targetY) < 3) {
+        t.state = 'routing';
+        t.progress = 0;
+        // Generate routing probs
+        let probs = [];
+        for (let i = 0; i < NUM_EXPERTS; i++) probs.push(random(0.1, 1));
+        let sum = probs.reduce((a,b)=>a+b);
+        probs = probs.map(p => p/sum);
+        // Make one clearly dominant
+        let topIdx = floor(random(NUM_EXPERTS));
+        probs[topIdx] += 0.3;
+        sum = probs.reduce((a,b)=>a+b);
+        probs = probs.map(p => p/sum);
+        t.routerProbs = probs;
+      }
+      break;
+
+    case 'routing':
+      t.progress += 0.02;
+      if (t.progress >= 1) {
+        // Find top-1 expert
+        let maxP = 0, bestE = 0;
+        for (let i = 0; i < NUM_EXPERTS; i++) {
+          if (t.routerProbs[i] > maxP) { maxP = t.routerProbs[i]; bestE = i; }
+        }
+        // Check capacity
+        if (capacity[bestE] >= MAX_CAPACITY) {
+          // Token gets dropped!
+          t.state = 'dropped';
+          t.targetX = width * 0.72 + 50;
+          t.targetY = experts[bestE].y + experts[bestE].h/2;
+          t.assignedExpert = bestE;
+          // Spawn rejection particles
+          for (let j = 0; j < 8; j++) {
+            particles.push({x: t.x, y: t.y, vx: random(-2,2), vy: random(-2,2), life: 150, color: PALETTE.experts[4], size: random(2,5)});
+          }
+          setTimeout(() => advanceToken(), 600);
+        } else {
+          t.assignedExpert = bestE;
+          t.state = 'toExpert';
+          let e = experts[bestE];
+          t.targetX = e.x + e.w/2;
+          t.targetY = e.y + e.h/2;
+        }
+      }
+      break;
+
+    case 'toExpert':
+      t.x = lerp(t.x, t.targetX, 0.06);
+      t.y = lerp(t.y, t.targetY, 0.06);
+      if (dist(t.x, t.y, t.targetX, t.targetY) < 5) {
+        t.state = 'computing';
+        t.progress = 0;
+        capacity[t.assignedExpert]++;
+        experts[t.assignedExpert].glow = 80;
+        // Particles
+        for (let j = 0; j < 12; j++) {
+          particles.push({x: t.x, y: t.y, vx: random(-3,3), vy: random(-3,3), life: 120, color: experts[t.assignedExpert].color, size: random(2,4)});
+        }
+      }
+      break;
+
+    case 'computing':
+      t.progress += 0.03;
+      if (t.progress >= 1) {
+        t.state = 'done';
+        t.alpha = 150;
+        advanceToken();
+      }
+      break;
+
+    case 'dropped':
+      t.x = lerp(t.x, 60, 0.05);
+      t.y = lerp(t.y, tokens[currentTokenIdx] ? tokens[currentTokenIdx].y : t.y, 0.05);
+      break;
+  }
+}
+
+function advanceToken() {
+  currentTokenIdx++;
+  if (currentTokenIdx >= NUM_TOKENS) {
+    phase = 'idle';
+  }
+}
+
+function mousePressed() {
+  initScene();
+}
+
+function windowResized() {
+  let w = min(windowWidth, 900);
+  let h = min(windowHeight, 550);
+  resizeCanvas(w, h);
+  initScene();
+}
+</script>
+</body>
+</html>
