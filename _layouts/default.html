@@ -25,6 +25,15 @@
     </div>
   </footer>
   <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
-  <script>mermaid.initialize({startOnLoad:true, theme:'dark', themeVariables:{primaryColor:'#1e1e2a',primaryTextColor:'#ededf0',primaryBorderColor:'#3a3a4a',lineColor:'#6e8eff',secondaryColor:'#13131a',tertiaryColor:'#0a0a0f'}});</script>
+  <script>
+    document.querySelectorAll('code.language-mermaid').forEach(function(el) {
+      var pre = el.parentElement;
+      var div = document.createElement('pre');
+      div.className = 'mermaid';
+      div.textContent = el.textContent;
+      pre.parentNode.replaceChild(div, pre);
+    });
+    mermaid.initialize({startOnLoad:true, theme:'dark', themeVariables:{primaryColor:'#1e1e2a',primaryTextColor:'#ededf0',primaryBorderColor:'#3a3a4a',lineColor:'#6e8eff',secondaryColor:'#13131a',tertiaryColor:'#0a0a0f'}});
+  </script>
 </body>
 </html>
