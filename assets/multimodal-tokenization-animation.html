@@ -90,7 +90,7 @@ let particles = [];
 
 function setup() {
   let w = min(windowWidth, 900);
-  let h = min(windowHeight, 580);
+  let h = min(windowHeight, 520);
   createCanvas(w, h);
   textFont('system-ui');
 }
@@ -345,7 +345,7 @@ function drawUnifiedView() {
 }
 
 function drawControls() {
-  let btnY = height - 45;
+  let btnY = height - 40;
   let btnW = 70;
   
   // Auto toggle
@@ -403,7 +403,7 @@ function mousePressed() {
   }
   
   // Auto toggle
-  let btnY = height - 45;
+  let btnY = height - 40;
   let btnW = 70;
   let autoX = width/2 - btnW/2;
   if (mouseX > autoX && mouseX < autoX + btnW && mouseY > btnY && mouseY < btnY + 30) {
@@ -413,7 +413,7 @@ function mousePressed() {
 }
 
 function windowResized() {
-  resizeCanvas(min(windowWidth, 900), min(windowHeight, 580));
+  resizeCanvas(min(windowWidth, 900), min(windowHeight, 520));
 }
 </script>
 </body>

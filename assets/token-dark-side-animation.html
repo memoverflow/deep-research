@@ -72,7 +72,7 @@ let btnNext, btnAuto, btnReset, btnMode;
 
 function setup() {
   let w = min(windowWidth, 900);
-  let h = min(windowHeight, 580);
+  let h = min(windowHeight, 520);
   createCanvas(w, h);
   textFont('system-ui');
   updateMaxStep();
@@ -330,7 +330,7 @@ function drawGlitchMode() {
 }
 
 function drawControls() {
-  let btnY = height - 50;
+  let btnY = height - 45;
   let btnW = 80;
   let spacing = 15;
   let startX = (width - btnW * 3 - spacing * 2) / 2;
@@ -396,7 +396,7 @@ function mousePressed() {
   }
   
   // Check control buttons
-  let btnY = height - 50;
+  let btnY = height - 45;
   let btnW = 80;
   let spacing = 15;
   let startBtnX = (width - btnW * 3 - spacing * 2) / 2;
@@ -420,7 +420,7 @@ function mousePressed() {
 }
 
 function windowResized() {
-  resizeCanvas(min(windowWidth, 900), min(windowHeight, 580));
+  resizeCanvas(min(windowWidth, 900), min(windowHeight, 520));
 }
 </script>
 </body>

@@ -127,7 +127,7 @@ Meta 的 EnCodec 和 Google 的 SoundStream 用了一个巧妙的层级方案—
 - **AudioLM（Google, 2023）：** 先生成语义 token（粗粒度），再生成声学 token（细粒度）——两级 token 对应不同抽象层次。
 - **VALL-E（Microsoft, 2023）：** 3 秒语音 → 提取说话人的 codec token 特征 → 生成任意文本的语音 token。
 
-<iframe src="/assets/multimodal-tokenization-animation.html" width="100%" height="580"
+<iframe src="/assets/multimodal-tokenization-animation.html" width="100%" height="560"
   style="border:1px solid #23232e; border-radius:12px; background:#0a0a0f;"
   loading="lazy"></iframe>
 

@@ -59,7 +59,7 @@ let showBPE = false;
 
 function setup() {
   let w = min(windowWidth, 900);
-  let h = min(windowHeight, 580);
+  let h = min(windowHeight, 520);
   createCanvas(w, h);
   textFont('system-ui');
   
@@ -295,7 +295,7 @@ function drawPatches() {
 }
 
 function drawStats() {
-  let y = height - 110;
+  let y = height - 105;
   let x = 40;
   
   fill(PALETTE.border);
@@ -317,7 +317,7 @@ function drawStats() {
 }
 
 function drawControls() {
-  let btnY = height - 40;
+  let btnY = height - 38;
   let btnW = 70;
   let spacing = 15;
   let startX = (width - btnW * 3 - spacing * 2) / 2;
@@ -358,7 +358,7 @@ function mousePressed() {
   }
   
   // Controls
-  let btnY = height - 40;
+  let btnY = height - 38;
   let btnW = 70;
   let spacing = 15;
   let startX = (width - btnW * 3 - spacing * 2) / 2;
@@ -379,7 +379,7 @@ function mousePressed() {
 }
 
 function windowResized() {
-  resizeCanvas(min(windowWidth, 900), min(windowHeight, 580));
+  resizeCanvas(min(windowWidth, 900), min(windowHeight, 520));
 }
 </script>
 </body>

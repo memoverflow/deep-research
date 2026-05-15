@@ -32,5 +32,52 @@
     </div>
   </footer>
 
+<!-- Fullscreen modal for iframe animations -->
+<div id="iframe-modal" style="display:none; position:fixed; inset:0; z-index:9999; background:rgba(0,0,0,0.92); backdrop-filter:blur(8px); cursor:pointer;" onclick="closeModal()">
+  <button onclick="closeModal()" style="position:absolute; top:16px; right:20px; z-index:10000; background:#23232e; border:1px solid #3a3a4a; color:#ededf0; font-size:18px; width:40px; height:40px; border-radius:8px; cursor:pointer; display:flex; align-items:center; justify-content:center;">✕</button>
+  <iframe id="modal-iframe" src="" style="position:absolute; inset:60px 24px 24px 24px; width:calc(100% - 48px); height:calc(100% - 84px); border:1px solid #23232e; border-radius:12px; background:#0a0a0f;" loading="lazy"></iframe>
+</div>
+<script>
+// Add expand buttons to all animation iframes
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.post-content iframe[src*="/assets/"]').forEach(function(iframe) {
+    var wrapper = document.createElement('div');
+    wrapper.style.cssText = 'position:relative; margin:24px 0;';
+    iframe.parentNode.insertBefore(wrapper, iframe);
+    wrapper.appendChild(iframe);
+    
+    var btn = document.createElement('button');
+    btn.innerHTML = '⛶ 全屏查看';
+    btn.style.cssText = 'position:absolute; top:8px; right:8px; z-index:10; background:#23232ecc; border:1px solid #3a3a4a; color:#ededf0; font-size:12px; padding:5px 12px; border-radius:6px; cursor:pointer; opacity:0.7; transition:opacity 0.2s;';
+    btn.onmouseenter = function() { this.style.opacity = '1'; };
+    btn.onmouseleave = function() { this.style.opacity = '0.7'; };
+    btn.onclick = function(e) {
+      e.preventDefault();
+      openModal(iframe.src);
+    };
+    wrapper.appendChild(btn);
+  });
+});
+
+function openModal(src) {
+  var modal = document.getElementById('iframe-modal');
+  var mIframe = document.getElementById('modal-iframe');
+  mIframe.src = src;
+  modal.style.display = 'block';
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  var modal = document.getElementById('iframe-modal');
+  var mIframe = document.getElementById('modal-iframe');
+  modal.style.display = 'none';
+  mIframe.src = '';
+  document.body.style.overflow = '';
+}
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeModal();
+});
+</script>
 </body>
 </html>
