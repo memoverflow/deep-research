@@ -4,7 +4,7 @@ date: 2025-05-15
 level: 3
 series: "理解 Tokenization"
 series_order: 3
-series_total: 3
+series_total: 6
 tags: [tokenization, 多语言, token-healing, 工程实践]
 summary: "为什么 LLM 数不清字母？为什么中文用户 API 费用更高？为什么 prompt 末尾加个空格就影响生成质量？这些奇怪现象背后都是 tokenization 的锅。"
 ---

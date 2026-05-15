@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>万物皆可 Token：多模态 Tokenization 可视化</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.11.3/p5.min.js"></script>
+<style>
+  html, body { margin: 0; padding: 0; overflow: hidden; background: #0a0a0f; }
+  canvas { display: block; margin: 0 auto; }
+</style>
+</head>
+<body>
+<script>
+p5.disableFriendlyErrors = true;
+
+const PALETTE = {
+  bg: '#0a0a0f',
+  surface: '#13131a',
+  border: '#23232e',
+  text: '#ededf0',
+  muted: '#6b6b78',
+  accent: '#6e8eff',
+  cyan: '#22d3ee',
+  emerald: '#34d399',
+  amber: '#fbbf24',
+  violet: '#a78bfa',
+  rose: '#fb7185',
+  orange: '#fb923c'
+};
+
+const MODALITIES = [
+  {
+    name: '文本',
+    icon: 'Aa',
+    color: PALETTE.cyan,
+    input: '"Hello world"',
+    method: 'BPE 子词切分',
+    tokens: ['Hel', 'lo', ' world'],
+    tokenType: '子词 ID',
+    vocabSize: '32K-256K'
+  },
+  {
+    name: '图像',
+    icon: '🖼',
+    color: PALETTE.emerald,
+    input: '256×256 像素图片',
+    method: 'VQ-VAE / VQGAN 编码',
+    tokens: ['c₁₂', 'c₄₅₆', 'c₇₈', 'c₂₃₁', '...'],
+    tokenType: 'Codebook 索引',
+    vocabSize: '1K-262K'
+  },
+  {
+    name: '音频',
+    icon: '♪',
+    color: PALETTE.amber,
+    input: '1 秒 24kHz 音频',
+    method: 'EnCodec RVQ 编码',
+    tokens: ['层1:', 'a₃', 'a₇', '层2:', 'b₁', 'b₅'],
+    tokenType: 'Codec token (多层)',
+    vocabSize: '1K×N层'
+  },
+  {
+    name: '机器人动作',
+    icon: '🤖',
+    color: PALETTE.violet,
+    input: '[x, y, z, grip, ...]',
+    method: '256-bin 离散化',
+    tokens: ['128', '64', '200', '255'],
+    tokenType: '动作 bin ID',
+    vocabSize: '256/维度'
+  },
+  {
+    name: 'DNA',
+    icon: '🧬',
+    color: PALETTE.rose,
+    input: 'ATCGATCG...',
+    method: 'BPE / k-mer',
+    tokens: ['ATC', 'GAT', 'CG'],
+    tokenType: '基因子词',
+    vocabSize: '4K-32K'
+  }
+];
+
+let currentIdx = 0;
+let animPhase = 0; // 0=input, 1=encoding, 2=tokens, 3=unified
+let phaseTimer = 0;
+let autoPlay = true;
+let particles = [];
+
+function setup() {
+  let w = min(windowWidth, 900);
+  let h = min(windowHeight, 580);
+  createCanvas(w, h);
+  textFont('system-ui');
+}
+
+function draw() {
+  background(PALETTE.bg);
+  
+  // Title
+  fill(PALETTE.text);
+  noStroke();
+  textSize(18);
+  textAlign(CENTER, TOP);
+  text('万物皆可 Token：多模态 Tokenization', width/2, 12);
+  
+  textSize(12);
+  fill(PALETTE.muted);
+  text('所有模态都被转化为离散 token 序列，统一用 Transformer 处理', width/2, 36);
+  
+  // Modality selector (left side)
+  drawModalityList();
+  
+  // Main visualization (right side)
+  drawVisualization();
+  
+  // Bottom: unified view
+  drawUnifiedView();
+  
+  // Controls
+  drawControls();
+  
+  // Auto advance
+  if (autoPlay && frameCount % 120 === 0) {
+    currentIdx = (currentIdx + 1) % MODALITIES.length;
+    animPhase = 0;
+    phaseTimer = 0;
+  }
+  
+  phaseTimer++;
+  if (phaseTimer > 60 && animPhase < 3) {
+    animPhase++;
+    phaseTimer = 0;
+    // Particles on phase transition
+    for (let i = 0; i < 8; i++) {
+      particles.push({
+        x: width/2 + random(-50, 50),
+        y: 200 + random(-20, 20),
+        vx: random(-2, 2),
+        vy: random(-2, 1),
+        life: 25,
+        color: MODALITIES[currentIdx].color
+      });
+    }
+  }
+  
+  updateParticles();
+}
+
+function drawModalityList() {
+  let startX = 20;
+  let startY = 65;
+  let itemH = 45;
+  
+  for (let i = 0; i < MODALITIES.length; i++) {
+    let m = MODALITIES[i];
+    let y = startY + i * (itemH + 8);
+    let isActive = i === currentIdx;
+    
+    // Background
+    fill(isActive ? m.color + '22' : PALETTE.surface);
+    stroke(isActive ? m.color : PALETTE.border);
+    strokeWeight(isActive ? 2 : 1);
+    rect(startX, y, 130, itemH, 8);
+    
+    // Icon + name
+    fill(isActive ? m.color : PALETTE.muted);
+    noStroke();
+    textSize(18);
+    textAlign(LEFT, CENTER);
+    text(m.icon, startX + 12, y + itemH/2 - 2);
+    
+    textSize(14);
+    text(m.name, startX + 42, y + itemH/2);
+  }
+}
+
+function drawVisualization() {
+  let m = MODALITIES[currentIdx];
+  let cx = 430;
+  let startY = 70;
+  
+  // Phase 1: Input
+  let inputAlpha = animPhase >= 0 ? 255 : 0;
+  if (inputAlpha > 0) {
+    fill(PALETTE.muted);
+    textSize(11);
+    textAlign(CENTER, TOP);
+    text('原始输入', cx, startY);
+    
+    fill(m.color + '22');
+    stroke(m.color);
+    strokeWeight(1.5);
+    rect(cx - 120, startY + 18, 240, 40, 8);
+    
+    fill(PALETTE.text);
+    noStroke();
+    textSize(14);
+    textAlign(CENTER, CENTER);
+    text(m.input, cx, startY + 38);
+  }
+  
+  // Arrow 1
+  if (animPhase >= 1) {
+    stroke(PALETTE.accent);
+    strokeWeight(1.5);
+    line(cx, startY + 60, cx, startY + 80);
+    // Arrowhead
+    fill(PALETTE.accent);
+    noStroke();
+    triangle(cx - 4, startY + 76, cx + 4, startY + 76, cx, startY + 84);
+    
+    // Encoding method
+    fill(PALETTE.accent + '22');
+    stroke(PALETTE.accent);
+    strokeWeight(1);
+    rect(cx - 90, startY + 88, 180, 35, 8);
+    
+    fill(PALETTE.accent);
+    noStroke();
+    textSize(12);
+    textAlign(CENTER, CENTER);
+    text(m.method, cx, startY + 105);
+  }
+  
+  // Arrow 2
+  if (animPhase >= 2) {
+    stroke(PALETTE.accent);
+    strokeWeight(1.5);
+    line(cx, startY + 125, cx, startY + 145);
+    fill(PALETTE.accent);
+    noStroke();
+    triangle(cx - 4, startY + 141, cx + 4, startY + 141, cx, startY + 149);
+    
+    // Output tokens
+    fill(PALETTE.muted);
+    textSize(11);
+    textAlign(CENTER, TOP);
+    text('离散 Token 序列', cx, startY + 152);
+    
+    let totalW = 0;
+    textSize(13);
+    for (let t of m.tokens) totalW += textWidth(t) + 28;
+    let tx = cx - totalW/2;
+    
+    for (let i = 0; i < m.tokens.length; i++) {
+      let t = m.tokens[i];
+      textSize(13);
+      let tw = textWidth(t) + 24;
+      
+      // Animate entry
+      let delay = i * 5;
+      let entryProgress = constrain((phaseTimer - delay) / 15, 0, 1);
+      if (animPhase > 2) entryProgress = 1;
+      
+      let alpha = floor(entryProgress * 255);
+      fill(m.color + hex(floor(entryProgress * 34), 2));
+      stroke(m.color + hex(alpha, 2));
+      strokeWeight(1.5);
+      rect(tx, startY + 170, tw, 32, 6);
+      
+      fill(PALETTE.text + hex(alpha, 2));
+      noStroke();
+      textAlign(CENTER, CENTER);
+      text(t, tx + tw/2, startY + 186);
+      
+      tx += tw + 6;
+    }
+    
+    // Token type + vocab size
+    if (animPhase >= 2) {
+      fill(PALETTE.muted);
+      textSize(11);
+      textAlign(CENTER, TOP);
+      text(`类型: ${m.tokenType}  |  词表: ${m.vocabSize}`, cx, startY + 212);
+    }
+  }
+}
+
+function drawUnifiedView() {
+  let y = 370;
+  
+  // Separator
+  stroke(PALETTE.border);
+  strokeWeight(1);
+  line(20, y, width - 20, y);
+  
+  // Unified message
+  fill(PALETTE.text);
+  noStroke();
+  textSize(14);
+  textAlign(CENTER, TOP);
+  text('统一范式：一切 → 离散 Token → Transformer → 预测下一个', width/2, y + 15);
+  
+  // Draw the pipeline
+  let pipeY = y + 50;
+  let boxes = [
+    { label: '任意模态', color: PALETTE.muted, w: 90 },
+    { label: 'Tokenizer', color: PALETTE.accent, w: 90 },
+    { label: 'Token 序列', color: PALETTE.amber, w: 100 },
+    { label: 'Transformer', color: PALETTE.cyan, w: 100 },
+    { label: '下一个 Token', color: PALETTE.emerald, w: 100 }
+  ];
+  
+  let totalW = 0;
+  for (let b of boxes) totalW += b.w;
+  let gap = (width - 60 - totalW) / (boxes.length - 1);
+  let bx = 30;
+  
+  for (let i = 0; i < boxes.length; i++) {
+    let b = boxes[i];
+    
+    fill(b.color + '22');
+    stroke(b.color);
+    strokeWeight(1.5);
+    rect(bx, pipeY, b.w, 38, 8);
+    
+    fill(b.color);
+    noStroke();
+    textSize(12);
+    textAlign(CENTER, CENTER);
+    text(b.label, bx + b.w/2, pipeY + 19);
+    
+    // Arrow
+    if (i < boxes.length - 1) {
+      let arrowX = bx + b.w + 5;
+      stroke(PALETTE.accent);
+      strokeWeight(1.5);
+      line(arrowX, pipeY + 19, arrowX + gap - 10, pipeY + 19);
+      fill(PALETTE.accent);
+      noStroke();
+      triangle(arrowX + gap - 10, pipeY + 15, arrowX + gap - 10, pipeY + 23, arrowX + gap - 4, pipeY + 19);
+    }
+    
+    bx += b.w + gap;
+  }
+  
+  // Examples below
+  fill(PALETTE.muted);
+  textSize(11);
+  textAlign(CENTER, TOP);
+  text('DALL-E = 文本 token + 图像 token | MusicGen = 文本 token + 音频 codec token | RT-2 = 视觉 token + 动作 token', width/2, pipeY + 52);
+  text('Emu3 (Nature 2025): 文本 + 图像 + 视频，全部用 next-token prediction，性能匹配专用模型', width/2, pipeY + 70);
+}
+
+function drawControls() {
+  let btnY = height - 45;
+  let btnW = 70;
+  
+  // Auto toggle
+  let autoX = width/2 - btnW/2;
+  fill(PALETTE.surface);
+  stroke(autoPlay ? PALETTE.emerald : PALETTE.border);
+  strokeWeight(1.5);
+  rect(autoX, btnY, btnW, 30, 8);
+  
+  fill(autoPlay ? PALETTE.emerald : PALETTE.muted);
+  noStroke();
+  textSize(12);
+  textAlign(CENTER, CENTER);
+  text(autoPlay ? '⏸ 自动' : '▶ 自动', autoX + btnW/2, btnY + 15);
+  
+  // Step indicator
+  fill(PALETTE.muted);
+  textSize(11);
+  textAlign(CENTER, CENTER);
+  text(`${currentIdx + 1} / ${MODALITIES.length}`, width/2, btnY - 12);
+}
+
+function updateParticles() {
+  for (let i = particles.length - 1; i >= 0; i--) {
+    let p = particles[i];
+    p.x += p.vx;
+    p.y += p.vy;
+    p.life--;
+    
+    let alpha = map(p.life, 0, 25, 0, 180);
+    let c = color(p.color);
+    fill(red(c), green(c), blue(c), alpha);
+    noStroke();
+    circle(p.x, p.y, random(3, 6));
+    
+    if (p.life <= 0) particles.splice(i, 1);
+  }
+}
+
+function mousePressed() {
+  // Check modality list
+  let startX = 20;
+  let startY = 65;
+  let itemH = 45;
+  
+  for (let i = 0; i < MODALITIES.length; i++) {
+    let y = startY + i * (itemH + 8);
+    if (mouseX > startX && mouseX < startX + 130 && mouseY > y && mouseY < y + itemH) {
+      currentIdx = i;
+      animPhase = 0;
+      phaseTimer = 0;
+      autoPlay = false;
+      return;
+    }
+  }
+  
+  // Auto toggle
+  let btnY = height - 45;
+  let btnW = 70;
+  let autoX = width/2 - btnW/2;
+  if (mouseX > autoX && mouseX < autoX + btnW && mouseY > btnY && mouseY < btnY + 30) {
+    autoPlay = !autoPlay;
+    return;
+  }
+}
+
+function windowResized() {
+  resizeCanvas(min(windowWidth, 900), min(windowHeight, 580));
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Byte Latent Transformer：动态 Patching 可视化</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.11.3/p5.min.js"></script>
+<style>
+  html, body { margin: 0; padding: 0; overflow: hidden; background: #0a0a0f; }
+  canvas { display: block; margin: 0 auto; }
+</style>
+</head>
+<body>
+<script>
+p5.disableFriendlyErrors = true;
+
+const PALETTE = {
+  bg: '#0a0a0f',
+  surface: '#13131a',
+  border: '#23232e',
+  text: '#ededf0',
+  muted: '#6b6b78',
+  accent: '#6e8eff',
+  cyan: '#22d3ee',
+  emerald: '#34d399',
+  amber: '#fbbf24',
+  rose: '#fb7185',
+  violet: '#a78bfa'
+};
+
+// Example text with varying complexity
+const TEXT = "The cat sat on the mat. Pneumonoultramicroscopicsilicovolcanoconiosis is a lung disease. Hello!";
+const BYTES = TEXT.split('');
+
+// Entropy simulation: simple chars = low entropy, complex = high
+function getEntropy(idx) {
+  let ch = BYTES[idx];
+  // Punctuation/spaces are very predictable
+  if (ch === ' ' || ch === '.' || ch === '!') return 0.1;
+  // Common short words
+  let context = TEXT.substring(Math.max(0, idx - 3), idx + 1);
+  if (['The ', 'the ', 'cat ', 'sat ', 'on ', 'mat', 'is ', ' a '].some(w => context.includes(w))) return 0.2;
+  // Hello is predictable
+  if (idx >= TEXT.indexOf('Hello')) return 0.15;
+  // Long medical word is high entropy
+  let longWord = 'Pneumonoultramicroscopicsilicovolcanoconiosis';
+  let lwIdx = TEXT.indexOf(longWord);
+  if (idx >= lwIdx && idx < lwIdx + longWord.length) return 0.7 + random(-0.1, 0.1);
+  return 0.3;
+}
+
+// Pre-compute entropies
+let entropies = [];
+let patches = [];
+let animStep = 0;
+let maxSteps = 0;
+let autoPlay = false;
+let showBPE = false;
+
+function setup() {
+  let w = min(windowWidth, 900);
+  let h = min(windowHeight, 580);
+  createCanvas(w, h);
+  textFont('system-ui');
+  
+  // Compute entropies
+  randomSeed(42);
+  for (let i = 0; i < BYTES.length; i++) {
+    entropies.push(getEntropy(i));
+  }
+  
+  // Compute dynamic patches based on entropy threshold
+  computePatches();
+  maxSteps = patches.length;
+}
+
+function computePatches() {
+  patches = [];
+  let threshold = 0.4;
+  let i = 0;
+  while (i < BYTES.length) {
+    let patchStart = i;
+    let patchEnd = i;
+    
+    // Grow patch while entropy is low
+    while (patchEnd < BYTES.length - 1) {
+      if (entropies[patchEnd + 1] > threshold && patchEnd - patchStart >= 1) break;
+      if (patchEnd - patchStart >= 8 && entropies[patchEnd] < threshold) break; // max patch size for low entropy
+      if (entropies[patchEnd] > threshold && patchEnd - patchStart >= 2) break; // smaller patches for high entropy
+      patchEnd++;
+    }
+    
+    let avgEntropy = 0;
+    for (let j = patchStart; j <= patchEnd; j++) avgEntropy += entropies[j];
+    avgEntropy /= (patchEnd - patchStart + 1);
+    
+    patches.push({
+      start: patchStart,
+      end: patchEnd,
+      text: BYTES.slice(patchStart, patchEnd + 1).join(''),
+      entropy: avgEntropy,
+      size: patchEnd - patchStart + 1
+    });
+    
+    i = patchEnd + 1;
+  }
+}
+
+function draw() {
+  background(PALETTE.bg);
+  
+  // Title
+  fill(PALETTE.text);
+  noStroke();
+  textSize(16);
+  textAlign(CENTER, TOP);
+  text('Byte Latent Transformer：动态 Patching', width/2, 10);
+  
+  textSize(11);
+  fill(PALETTE.muted);
+  text('复杂文本 → 小 patch（更多计算） | 简单文本 → 大 patch（省计算）', width/2, 32);
+  
+  // Toggle BPE comparison
+  drawToggle();
+  
+  // Entropy bar chart
+  drawEntropyBars();
+  
+  // Patch visualization
+  drawPatches();
+  
+  // Stats
+  drawStats();
+  
+  // Controls
+  drawControls();
+  
+  // Auto advance
+  if (autoPlay && frameCount % 30 === 0) {
+    if (animStep < maxSteps) animStep++;
+    else animStep = 0;
+  }
+}
+
+function drawToggle() {
+  let x = width - 180;
+  let y = 12;
+  
+  fill(showBPE ? PALETTE.rose + '33' : PALETTE.surface);
+  stroke(showBPE ? PALETTE.rose : PALETTE.border);
+  strokeWeight(1.5);
+  rect(x, y, 160, 28, 6);
+  
+  fill(showBPE ? PALETTE.rose : PALETTE.muted);
+  noStroke();
+  textSize(11);
+  textAlign(CENTER, CENTER);
+  text(showBPE ? '对比: BPE 固定切分 ✓' : '点击对比 BPE 切分', x + 80, y + 14);
+}
+
+function drawEntropyBars() {
+  let startX = 40;
+  let barW = min((width - 80) / BYTES.length, 8);
+  let barMaxH = 60;
+  let baseY = 100;
+  
+  // Label
+  fill(PALETTE.muted);
+  textSize(10);
+  textAlign(LEFT, CENTER);
+  text('字节熵', 5, baseY - barMaxH/2);
+  
+  textSize(9);
+  text('高 (复杂)', 5, baseY - barMaxH + 5);
+  text('低 (简单)', 5, baseY + 5);
+  
+  for (let i = 0; i < min(BYTES.length, floor((width - 80) / barW)); i++) {
+    let x = startX + i * barW;
+    let h = entropies[i] * barMaxH;
+    
+    // Color based on entropy
+    let c;
+    if (entropies[i] > 0.5) c = color(PALETTE.rose);
+    else if (entropies[i] > 0.3) c = color(PALETTE.amber);
+    else c = color(PALETTE.emerald);
+    
+    fill(red(c), green(c), blue(c), 180);
+    noStroke();
+    rect(x, baseY - h, barW - 1, h, 1);
+  }
+  
+  // Threshold line
+  stroke(PALETTE.accent);
+  strokeWeight(1);
+  setLineDash([4, 4]);
+  line(startX, baseY - 0.4 * barMaxH, startX + BYTES.length * barW, baseY - 0.4 * barMaxH);
+  setLineDash([]);
+  
+  fill(PALETTE.accent);
+  noStroke();
+  textSize(9);
+  textAlign(LEFT, CENTER);
+  text('阈值', startX + BYTES.length * barW + 5, baseY - 0.4 * barMaxH);
+}
+
+function setLineDash(list) {
+  drawingContext.setLineDash(list);
+}
+
+function drawPatches() {
+  let startX = 40;
+  let barW = min((width - 80) / BYTES.length, 8);
+  let patchY = 130;
+  
+  // Label
+  fill(PALETTE.muted);
+  textSize(10);
+  textAlign(LEFT, TOP);
+  text('动态 Patch 结果：', startX, patchY);
+  
+  patchY += 18;
+  
+  let visiblePatches = min(animStep, patches.length);
+  
+  for (let i = 0; i < visiblePatches; i++) {
+    let p = patches[i];
+    let x = startX + p.start * barW;
+    let w = p.size * barW;
+    
+    let c = p.entropy > 0.5 ? PALETTE.rose : (p.entropy > 0.25 ? PALETTE.amber : PALETTE.emerald);
+    
+    fill(c + '22');
+    stroke(c);
+    strokeWeight(1.5);
+    rect(x, patchY, w - 2, 30, 4);
+    
+    // Patch text (truncated if too long)
+    fill(PALETTE.text);
+    noStroke();
+    textSize(min(10, w / p.text.length * 1.5));
+    textAlign(CENTER, CENTER);
+    let display = p.text.length > 10 ? p.text.substring(0, 8) + '..' : p.text;
+    text(display, x + w/2, patchY + 15);
+  }
+  
+  // BPE comparison
+  if (showBPE) {
+    let bpeY = patchY + 50;
+    fill(PALETTE.muted);
+    textSize(10);
+    textAlign(LEFT, TOP);
+    text('BPE 固定切分（对比）：', startX, bpeY);
+    
+    bpeY += 18;
+    // Simulate fixed-size BPE tokens (roughly 4 chars each)
+    let bpeSize = 4;
+    for (let i = 0; i < BYTES.length; i += bpeSize) {
+      let x = startX + i * barW;
+      let size = min(bpeSize, BYTES.length - i);
+      let w = size * barW;
+      
+      fill(PALETTE.rose + '11');
+      stroke(PALETTE.rose + '66');
+      strokeWeight(1);
+      rect(x, bpeY, w - 2, 25, 4);
+      
+      fill(PALETTE.muted);
+      noStroke();
+      textSize(8);
+      textAlign(CENTER, CENTER);
+      let t = BYTES.slice(i, i + size).join('');
+      text(t.length > 5 ? t.substring(0, 4) + '..' : t, x + w/2, bpeY + 12);
+    }
+    
+    // Annotation
+    fill(PALETTE.rose);
+    textSize(10);
+    textAlign(LEFT, TOP);
+    text('⚠ BPE: 不管复杂度，所有区域用相同大小切分', startX, bpeY + 32);
+    fill(PALETTE.emerald);
+    text('✓ BLT: 简单区域大 patch（省算力），复杂区域小 patch（精确处理）', startX, bpeY + 48);
+  }
+  
+  // Size annotation for visible patches
+  if (visiblePatches > 0) {
+    let annotY = showBPE ? patchY + 130 : patchY + 50;
+    fill(PALETTE.muted);
+    textSize(10);
+    textAlign(LEFT, TOP);
+    
+    let smallPatches = patches.slice(0, visiblePatches).filter(p => p.size <= 3).length;
+    let bigPatches = patches.slice(0, visiblePatches).filter(p => p.size > 5).length;
+    text(`已显示 ${visiblePatches} 个 patch | 小 patch (≤3字节): ${smallPatches} | 大 patch (>5字节): ${bigPatches}`, startX, annotY);
+  }
+}
+
+function drawStats() {
+  let y = height - 110;
+  let x = 40;
+  
+  fill(PALETTE.border);
+  noStroke();
+  rect(x, y, width - 80, 1);
+  
+  y += 10;
+  fill(PALETTE.text);
+  textSize(12);
+  textAlign(LEFT, TOP);
+  text('关键洞察', x, y);
+  
+  y += 20;
+  fill(PALETTE.muted);
+  textSize(11);
+  text('• 传统 BPE：固定词表，所有文本用相同的切分规则', x, y);
+  text('• BLT 动态 Patching：根据信息密度（熵）自适应调整 patch 大小', x, y + 16);
+  text('• 效果：常见模式（"the cat"）快速跳过，罕见词（医学术语）精细处理', x, y + 32);
+}
+
+function drawControls() {
+  let btnY = height - 40;
+  let btnW = 70;
+  let spacing = 15;
+  let startX = (width - btnW * 3 - spacing * 2) / 2;
+  
+  // Next
+  drawButton(startX, btnY, btnW, 30, '下一步', animStep < maxSteps);
+  // Auto
+  drawButton(startX + btnW + spacing, btnY, btnW, 30, autoPlay ? '暂停' : '自动', true);
+  // Reset
+  drawButton(startX + (btnW + spacing) * 2, btnY, btnW, 30, '重置', true);
+  
+  // Progress
+  fill(PALETTE.muted);
+  textSize(10);
+  textAlign(CENTER, CENTER);
+  text(`${animStep} / ${maxSteps} patches`, width/2, btnY - 10);
+}
+
+function drawButton(x, y, w, h, label, enabled) {
+  fill(enabled ? PALETTE.surface : PALETTE.bg);
+  stroke(enabled ? PALETTE.accent : PALETTE.border);
+  strokeWeight(1.5);
+  rect(x, y, w, h, 8);
+  
+  fill(enabled ? PALETTE.text : PALETTE.muted);
+  noStroke();
+  textSize(12);
+  textAlign(CENTER, CENTER);
+  text(label, x + w/2, y + h/2);
+}
+
+function mousePressed() {
+  // Toggle BPE comparison
+  let toggleX = width - 180;
+  if (mouseX > toggleX && mouseX < toggleX + 160 && mouseY > 12 && mouseY < 40) {
+    showBPE = !showBPE;
+    return;
+  }
+  
+  // Controls
+  let btnY = height - 40;
+  let btnW = 70;
+  let spacing = 15;
+  let startX = (width - btnW * 3 - spacing * 2) / 2;
+  
+  if (mouseX > startX && mouseX < startX + btnW && mouseY > btnY && mouseY < btnY + 30) {
+    if (animStep < maxSteps) animStep++;
+    return;
+  }
+  if (mouseX > startX + btnW + spacing && mouseX < startX + btnW * 2 + spacing && mouseY > btnY && mouseY < btnY + 30) {
+    autoPlay = !autoPlay;
+    return;
+  }
+  if (mouseX > startX + (btnW + spacing) * 2 && mouseX < startX + btnW * 3 + spacing * 2 && mouseY > btnY && mouseY < btnY + 30) {
+    animStep = 0;
+    autoPlay = false;
+    return;
+  }
+}
+
+function windowResized() {
+  resizeCanvas(min(windowWidth, 900), min(windowHeight, 580));
+}
+</script>
+</body>
+</html>

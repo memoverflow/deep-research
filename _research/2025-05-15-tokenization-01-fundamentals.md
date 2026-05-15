@@ -4,7 +4,7 @@ date: 2025-05-15
 level: 3
 series: "理解 Tokenization"
 series_order: 1
-series_total: 3
+series_total: 6
 tags: [tokenization, BPE, vocabulary, LLM]
 summary: "ChatGPT 数不清 strawberry 里有几个 r——因为它根本看不到单个字母。它看到的是 'token'：比字母大、比单词小的文本碎片。BPE 算法决定了这些碎片怎么切。"
 ---

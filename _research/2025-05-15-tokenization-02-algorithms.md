@@ -4,7 +4,7 @@ date: 2025-05-15
 level: 3
 series: "理解 Tokenization"
 series_order: 2
-series_total: 3
+series_total: 6
 tags: [BPE, WordPiece, Unigram, SentencePiece, tiktoken]
 summary: "同一段话，GPT-4 和 BERT 切出来的 token 完全不同。BPE 看频率，WordPiece 看统计显著性，Unigram 用概率论。三种哲学，殊途同归。"
 ---
