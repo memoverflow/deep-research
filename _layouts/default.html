@@ -32,51 +32,157 @@
     </div>
   </footer>
 
-<!-- Fullscreen modal for iframe animations -->
-<div id="iframe-modal" style="display:none; position:fixed; inset:0; z-index:9999; background:rgba(0,0,0,0.92); backdrop-filter:blur(8px); cursor:pointer;" onclick="closeModal()">
-  <button onclick="closeModal()" style="position:absolute; top:16px; right:20px; z-index:10000; background:#23232e; border:1px solid #3a3a4a; color:#ededf0; font-size:18px; width:40px; height:40px; border-radius:8px; cursor:pointer; display:flex; align-items:center; justify-content:center;">✕</button>
-  <iframe id="modal-iframe" src="" style="position:absolute; inset:60px 24px 24px 24px; width:calc(100% - 48px); height:calc(100% - 84px); border:1px solid #23232e; border-radius:12px; background:#0a0a0f;" loading="lazy"></iframe>
+<!-- Fullscreen modal for animations, SVGs, and images -->
+<style>
+  .expand-modal {
+    display:none; position:fixed; inset:0; z-index:9999;
+    background:rgba(0,0,0,0.92); backdrop-filter:blur(8px);
+  }
+  .expand-modal .modal-close {
+    position:absolute; top:16px; right:20px; z-index:10000;
+    background:#23232e; border:1px solid #3a3a4a; color:#ededf0;
+    font-size:18px; width:40px; height:40px; border-radius:8px;
+    cursor:pointer; display:flex; align-items:center; justify-content:center;
+  }
+  .expand-modal .modal-close:hover { background:#2d2d3a; }
+  .expand-modal iframe {
+    position:absolute; inset:60px 24px 24px 24px;
+    width:calc(100% - 48px); height:calc(100% - 84px);
+    border:1px solid #23232e; border-radius:12px; background:#0a0a0f;
+  }
+  .expand-modal .modal-svg-container {
+    position:absolute; inset:60px 24px 24px 24px;
+    display:flex; align-items:center; justify-content:center;
+    overflow:auto;
+  }
+  .expand-modal .modal-svg-container svg {
+    max-width:95vw; max-height:85vh; width:auto; height:auto;
+  }
+  .expand-wrap { position:relative; margin:24px 0; }
+  .expand-btn {
+    position:absolute; top:8px; right:8px; z-index:10;
+    background:#23232ecc; border:1px solid #3a3a4a; color:#ededf0;
+    font-size:12px; padding:5px 12px; border-radius:6px;
+    cursor:pointer; opacity:0; transition:opacity 0.2s; pointer-events:auto;
+  }
+  .expand-wrap:hover .expand-btn { opacity:0.85; }
+  .expand-btn:hover { opacity:1 !important; background:#2d2d3acc; }
+</style>
+<div id="expand-modal" class="expand-modal">
+  <button class="modal-close" onclick="closeExpandModal()">✕</button>
+  <iframe id="modal-iframe" src="" style="display:none;" loading="lazy"></iframe>
+  <div id="modal-svg-container" class="modal-svg-container" style="display:none;"></div>
 </div>
 <script>
-// Add expand buttons to all animation iframes
 document.addEventListener('DOMContentLoaded', function() {
-  document.querySelectorAll('.post-content iframe[src*="/assets/"]').forEach(function(iframe) {
-    var wrapper = document.createElement('div');
-    wrapper.style.cssText = 'position:relative; margin:24px 0;';
-    iframe.parentNode.insertBefore(wrapper, iframe);
-    wrapper.appendChild(iframe);
-    
-    var btn = document.createElement('button');
-    btn.innerHTML = '⛶ 全屏查看';
-    btn.style.cssText = 'position:absolute; top:8px; right:8px; z-index:10; background:#23232ecc; border:1px solid #3a3a4a; color:#ededf0; font-size:12px; padding:5px 12px; border-radius:6px; cursor:pointer; opacity:0.7; transition:opacity 0.2s;';
-    btn.onmouseenter = function() { this.style.opacity = '1'; };
-    btn.onmouseleave = function() { this.style.opacity = '0.7'; };
-    btn.onclick = function(e) {
-      e.preventDefault();
-      openModal(iframe.src);
-    };
-    wrapper.appendChild(btn);
+  var pc = document.querySelector('.post-content');
+  if (!pc) return;
+
+  // 1. Wrap iframes with expand button
+  pc.querySelectorAll('iframe[src*="/assets/"]').forEach(function(el) {
+    wrapWithExpand(el, function() {
+      openExpandIframe(el.src);
+    });
+  });
+
+  // 2. Wrap standalone SVGs (direct children of post-content, or inside <p>)
+  pc.querySelectorAll('svg').forEach(function(svg) {
+    // Skip tiny inline SVGs (icons etc)
+    var vb = svg.getAttribute('viewBox');
+    if (!vb) return;
+    var parts = vb.split(/[\s,]+/);
+    if (parts.length === 4 && (parseFloat(parts[2]) < 100 || parseFloat(parts[3]) < 50)) return;
+
+    wrapWithExpand(svg, function() {
+      openExpandSVG(svg);
+    });
+  });
+
+  // 3. Wrap images
+  pc.querySelectorAll('img').forEach(function(img) {
+    // Skip tiny images
+    if (img.naturalWidth > 0 && img.naturalWidth < 80) return;
+    wrapWithExpand(img, function() {
+      openExpandSVG(img);
+    });
   });
 });
 
-function openModal(src) {
-  var modal = document.getElementById('iframe-modal');
+function wrapWithExpand(el, onClick) {
+  // Don't double-wrap
+  if (el.parentNode.classList && el.parentNode.classList.contains('expand-wrap')) return;
+  var wrapper = document.createElement('div');
+  wrapper.className = 'expand-wrap';
+  el.parentNode.insertBefore(wrapper, el);
+  wrapper.appendChild(el);
+
+  var btn = document.createElement('button');
+  btn.className = 'expand-btn';
+  btn.innerHTML = '⛶ 放大';
+  btn.onclick = function(e) { e.preventDefault(); e.stopPropagation(); onClick(); };
+  wrapper.appendChild(btn);
+}
+
+function openExpandIframe(src) {
+  var modal = document.getElementById('expand-modal');
   var mIframe = document.getElementById('modal-iframe');
+  var mSvg = document.getElementById('modal-svg-container');
+  mSvg.style.display = 'none';
+  mSvg.innerHTML = '';
   mIframe.src = src;
+  mIframe.style.display = 'block';
   modal.style.display = 'block';
   document.body.style.overflow = 'hidden';
 }
 
-function closeModal() {
-  var modal = document.getElementById('iframe-modal');
+function openExpandSVG(el) {
+  var modal = document.getElementById('expand-modal');
   var mIframe = document.getElementById('modal-iframe');
-  modal.style.display = 'none';
+  var mSvg = document.getElementById('modal-svg-container');
+  mIframe.style.display = 'none';
   mIframe.src = '';
+
+  if (el.tagName.toLowerCase() === 'svg') {
+    mSvg.innerHTML = el.outerHTML;
+    // Scale up the cloned SVG
+    var cloned = mSvg.querySelector('svg');
+    if (cloned) {
+      cloned.style.width = '90vw';
+      cloned.style.maxWidth = '1200px';
+      cloned.style.height = 'auto';
+      cloned.style.maxHeight = '85vh';
+    }
+  } else if (el.tagName.toLowerCase() === 'img') {
+    var img = document.createElement('img');
+    img.src = el.src;
+    img.alt = el.alt || '';
+    img.style.cssText = 'max-width:95vw; max-height:85vh; object-fit:contain; border-radius:8px;';
+    mSvg.innerHTML = '';
+    mSvg.appendChild(img);
+  }
+  mSvg.style.display = 'flex';
+  modal.style.display = 'block';
+  document.body.style.overflow = 'hidden';
+}
+
+function closeExpandModal() {
+  var modal = document.getElementById('expand-modal');
+  modal.style.display = 'none';
+  document.getElementById('modal-iframe').src = '';
+  document.getElementById('modal-iframe').style.display = 'none';
+  var mSvg = document.getElementById('modal-svg-container');
+  mSvg.style.display = 'none';
+  mSvg.innerHTML = '';
   document.body.style.overflow = '';
 }
 
+// Close on backdrop click
+document.getElementById('expand-modal').addEventListener('click', function(e) {
+  if (e.target === this || e.target.classList.contains('modal-svg-container')) closeExpandModal();
+});
+
 document.addEventListener('keydown', function(e) {
-  if (e.key === 'Escape') closeModal();
+  if (e.key === 'Escape') closeExpandModal();
 });
 </script>
 </body>
