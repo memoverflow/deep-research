@@ -4,7 +4,7 @@ date: 2025-05-16
 level: 3
 series: "LLM 原理深度解析"
 series_order: 2
-series_total: 2
+series_total: 3
 tags: [speculative-decoding, inference, rejection-sampling, LLM]
 summary: "Speculative Decoding 用一个小模型先猜、大模型再验的方式，在数学上保证输出分布完全不变的前提下，把推理速度提升 2-3 倍。"
 ---

@@ -4,7 +4,7 @@ date: 2025-05-15
 level: 3
 series: "LLM 原理深度解析"
 series_order: 1
-series_total: 2
+series_total: 3
 tags: [optimizer, Adam, AdamW, training, LLM]
 summary: "从 SGD 的困境出发，一步步推导出 Adam 优化器为什么这样设计，以及 AdamW 解决了什么被忽视了十年的 bug。"
 ---
