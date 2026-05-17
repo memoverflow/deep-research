@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 600 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:600px;margin:24px auto;display:block;">
+  <defs>
+    <marker id="arr1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#f87171"/></marker>
+  </defs>
+  <!-- Central cycle -->
+  <rect x="30" y="70" width="130" height="50" rx="8" fill="#1e1e2a" stroke="#f87171" stroke-width="1.5"/>
+  <text x="95" y="92" text-anchor="middle" fill="#f87171" font-size="11" font-family="system-ui">Expert 3 稍好</text>
+  <text x="95" y="108" text-anchor="middle" fill="#6b6b78" font-size="9" font-family="system-ui">随机初始化</text>
+
+  <line x1="160" y1="95" x2="210" y2="95" stroke="#f87171" stroke-width="1.2" marker-end="url(#arr1)"/>
+
+  <rect x="215" y="70" width="140" height="50" rx="8" fill="#1e1e2a" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="285" y="92" text-anchor="middle" fill="#fbbf24" font-size="11" font-family="system-ui">Router 多选 E3</text>
+  <text x="285" y="108" text-anchor="middle" fill="#6b6b78" font-size="9" font-family="system-ui">loss 更低 → 梯度奖励</text>
+
+  <line x1="355" y1="95" x2="405" y2="95" stroke="#f87171" stroke-width="1.2" marker-end="url(#arr1)"/>
+
+  <rect x="410" y="70" width="160" height="50" rx="8" fill="#1e1e2a" stroke="#34d399" stroke-width="1.5"/>
+  <text x="490" y="92" text-anchor="middle" fill="#34d399" font-size="11" font-family="system-ui">E3 获得更多梯度</text>
+  <text x="490" y="108" text-anchor="middle" fill="#6b6b78" font-size="9" font-family="system-ui">参数更新更频繁</text>
+
+  <!-- Feedback arrow going back -->
+  <path d="M490 120 L490 160 L95 160 L95 120" fill="none" stroke="#f87171" stroke-width="1.2" stroke-dasharray="4,3" marker-end="url(#arr1)"/>
+  <text x="290" y="177" text-anchor="middle" fill="#f87171" font-size="10" font-family="system-ui">E3 变得更好 → 正反馈加剧</text>
+
+  <!-- Dead experts -->
+  <text x="95" y="30" text-anchor="middle" fill="#6b6b78" font-size="10" font-family="system-ui">E1, E5, E7: 零 token → 零梯度 → 参数冻结 💀</text>
+</svg>

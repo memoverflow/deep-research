@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 620 130" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:620px;margin:20px auto;display:block;">
+  <!-- Standard -->
+  <rect x="10" y="10" width="280" height="105" rx="8" fill="#1a1a24" stroke="#fb7185" stroke-width="1"/>
+  <text x="150" y="28" text-anchor="middle" fill="#fb7185" font-size="9" font-family="system-ui" font-weight="bold">标准实现：反复搬运数据</text>
+  <text x="150" y="48" fill="#9494a0" font-size="8" font-family="system-ui">GPU主存(慢) ↔ 计算 ↔ 写回 ↔ 读取 ↔ 计算...</text>
+  <rect x="30" y="60" width="240" height="20" rx="3" fill="#fb7185" opacity="0.2"/>
+  <text x="150" y="74" text-anchor="middle" fill="#fb7185" font-size="8" font-family="system-ui">n×n 中间矩阵反复读写主存 (带宽瓶颈)</text>
+  <text x="150" y="100" text-anchor="middle" fill="#6b6b78" font-size="8" font-family="system-ui">内存 O(n²) · 慢</text>
+  <!-- Flash -->
+  <rect x="320" y="10" width="290" height="105" rx="8" fill="#1a1a24" stroke="#34d399" stroke-width="1"/>
+  <text x="465" y="28" text-anchor="middle" fill="#34d399" font-size="9" font-family="system-ui" font-weight="bold">FlashAttention：全在快速缓存中完成</text>
+  <text x="465" y="48" fill="#9494a0" font-size="8" font-family="system-ui">分块加载 → SRAM内算完 → 只写最终结果</text>
+  <rect x="340" y="60" width="250" height="20" rx="3" fill="#34d399" opacity="0.2"/>
+  <text x="465" y="74" text-anchor="middle" fill="#34d399" font-size="8" font-family="system-ui">n×n 矩阵从不完整存在于主存中</text>
+  <text x="465" y="100" text-anchor="middle" fill="#34d399" font-size="8" font-family="system-ui">内存 O(n) · 快 2-4× · 结果完全精确</text>
+</svg>

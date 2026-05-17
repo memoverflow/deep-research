@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 650 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:650px;margin:24px auto;display:block;">
+  <defs>
+    <marker id="arr3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#6e8eff"/>
+    </marker>
+  </defs>
+  <text x="325" y="22" text-anchor="middle" fill="#ededf0" font-size="14" font-family="system-ui" font-weight="bold">Softmax 实现演进：从朴素到在线</text>
+  <!-- Naive -->
+  <rect x="20" y="40" width="150" height="140" rx="8" fill="#1e1e2a" stroke="#ff6b6b" stroke-width="1.5"/>
+  <text x="95" y="62" text-anchor="middle" fill="#ff6b6b" font-size="12" font-family="system-ui" font-weight="bold">朴素 Softmax</text>
+  <text x="95" y="85" text-anchor="middle" fill="#ededf0" font-size="11" font-family="system-ui">exp(z_i)</text>
+  <text x="95" y="105" text-anchor="middle" fill="#ededf0" font-size="11" font-family="system-ui">sum(exp)</text>
+  <text x="95" y="125" text-anchor="middle" fill="#ededf0" font-size="11" font-family="system-ui">exp / sum</text>
+  <text x="95" y="155" text-anchor="middle" fill="#ff6b6b" font-size="10" font-family="system-ui">❌ 溢出风险</text>
+  <text x="95" y="170" text-anchor="middle" fill="#999" font-size="10" font-family="system-ui">2 passes</text>
+  <!-- Arrow -->
+  <line x1="175" y1="110" x2="210" y2="110" stroke="#6e8eff" stroke-width="1.5" marker-end="url(#arr3)"/>
+  <!-- Safe -->
+  <rect x="215" y="40" width="170" height="140" rx="8" fill="#1e1e2a" stroke="#6e8eff" stroke-width="1.5"/>
+  <text x="300" y="62" text-anchor="middle" fill="#6e8eff" font-size="12" font-family="system-ui" font-weight="bold">Safe Softmax</text>
+  <text x="300" y="85" text-anchor="middle" fill="#ededf0" font-size="11" font-family="system-ui">① max(z)</text>
+  <text x="300" y="105" text-anchor="middle" fill="#ededf0" font-size="11" font-family="system-ui">② sum(exp(z−max))</text>
+  <text x="300" y="125" text-anchor="middle" fill="#ededf0" font-size="11" font-family="system-ui">③ 归一化</text>
+  <text x="300" y="155" text-anchor="middle" fill="#6e8eff" font-size="10" font-family="system-ui">✓ 数值稳定</text>
+  <text x="300" y="170" text-anchor="middle" fill="#999" font-size="10" font-family="system-ui">3 passes</text>
+  <!-- Arrow -->
+  <line x1="390" y1="110" x2="425" y2="110" stroke="#6e8eff" stroke-width="1.5" marker-end="url(#arr3)"/>
+  <!-- Online -->
+  <rect x="430" y="40" width="190" height="140" rx="8" fill="#1e1e2a" stroke="#34d399" stroke-width="1.5"/>
+  <text x="525" y="62" text-anchor="middle" fill="#34d399" font-size="12" font-family="system-ui" font-weight="bold">Online Softmax</text>
+  <text x="525" y="85" text-anchor="middle" fill="#ededf0" font-size="11" font-family="system-ui">①② 边扫描边更新</text>
+  <text x="525" y="105" text-anchor="middle" fill="#ededf0" font-size="11" font-family="system-ui">   max + sum 合并</text>
+  <text x="525" y="125" text-anchor="middle" fill="#ededf0" font-size="11" font-family="system-ui">③ 归一化</text>
+  <text x="525" y="155" text-anchor="middle" fill="#34d399" font-size="10" font-family="system-ui">✓ FlashAttention 基石</text>
+  <text x="525" y="170" text-anchor="middle" fill="#999" font-size="10" font-family="system-ui">2 passes（少 1 次内存读）</text>
+</svg>

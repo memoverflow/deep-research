@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 700 180" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:700px;margin:24px auto;display:block;">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#6e8eff"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="700" height="180" rx="12" fill="#13131a" stroke="#23232e" stroke-width="1"/>
+  <!-- Human view -->
+  <text x="100" y="30" text-anchor="middle" fill="#6b6b78" font-size="12" font-family="system-ui">你看到的</text>
+  <rect x="30" y="40" width="140" height="40" rx="8" fill="#1e1e2a" stroke="#34d399" stroke-width="1.5"/>
+  <text x="100" y="65" text-anchor="middle" fill="#ededf0" font-size="18" font-family="monospace">31415926</text>
+  <text x="100" y="95" fill="#34d399" font-size="11" text-anchor="middle" font-family="system-ui">一个完整的数字 (π×10⁷)</text>
+  <!-- Arrow -->
+  <line x1="180" y1="60" x2="240" y2="60" stroke="#6e8eff" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="210" y="80" text-anchor="middle" fill="#6b6b78" font-size="10" font-family="system-ui">BPE 切分</text>
+  <!-- Model view -->
+  <text x="440" y="30" text-anchor="middle" fill="#6b6b78" font-size="12" font-family="system-ui">模型看到的</text>
+  <rect x="250" y="40" width="55" height="40" rx="6" fill="#1e1e2a" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="277" y="65" text-anchor="middle" fill="#ededf0" font-size="16" font-family="monospace">314</text>
+  <rect x="315" y="40" width="55" height="40" rx="6" fill="#1e1e2a" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="342" y="65" text-anchor="middle" fill="#ededf0" font-size="16" font-family="monospace">159</text>
+  <rect x="380" y="40" width="40" height="40" rx="6" fill="#1e1e2a" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="400" y="65" text-anchor="middle" fill="#ededf0" font-size="16" font-family="monospace">26</text>
+  <text x="340" y="100" fill="#fb7185" font-size="11" text-anchor="middle" font-family="system-ui">三个毫无数学关联的碎片</text>
+  <!-- Consequence -->
+  <rect x="250" y="115" width="400" height="50" rx="8" fill="#fb718511" stroke="#fb7185" stroke-width="1"/>
+  <text x="450" y="137" text-anchor="middle" fill="#fb7185" font-size="12" font-family="system-ui">后果：模型无法进行进位、对齐、位值运算</text>
+  <text x="450" y="155" text-anchor="middle" fill="#6b6b78" font-size="11" font-family="system-ui">加法 31415926 + 1 可能得到完全错误的结果</text>
+</svg>

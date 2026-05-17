@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 600 140" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:600px;margin:24px auto;display:block;">
+  <!-- Dense model -->
+  <text x="150" y="15" text-anchor="middle" fill="#fb7185" font-size="10" font-family="system-ui" font-weight="bold">Dense 模型 (如 LLaMA 70B)</text>
+  <rect x="30" y="25" width="240" height="55" rx="6" fill="#fb7185" opacity="0.15" stroke="#fb7185" stroke-width="1"/>
+  <text x="150" y="50" text-anchor="middle" fill="#fb7185" font-size="9" font-family="system-ui">每个 token 经过全部 70B 参数</text>
+  <text x="150" y="67" text-anchor="middle" fill="#6b6b78" font-size="8" font-family="system-ui">100% 参数参与计算</text>
+  <!-- MoE model -->
+  <text x="450" y="15" text-anchor="middle" fill="#34d399" font-size="10" font-family="system-ui" font-weight="bold">MoE 模型 (DeepSeek-V3 671B)</text>
+  <rect x="320" y="25" width="260" height="55" rx="6" fill="#1e1e2a" stroke="#3a3a4a" stroke-width="1"/>
+  <rect x="325" y="30" width="40" height="45" rx="3" fill="#34d399" opacity="0.4"/><text x="345" y="56" text-anchor="middle" fill="#34d399" font-size="7">37B</text>
+  <rect x="370" y="30" width="205" height="45" rx="3" fill="#3a3a4a" opacity="0.2"/>
+  <text x="472" y="50" text-anchor="middle" fill="#6b6b78" font-size="8" font-family="system-ui">634B 未激活 (等待其他 token)</text>
+  <text x="450" y="67" text-anchor="middle" fill="#6b6b78" font-size="7" font-family="system-ui">▲ 绿色部分 = 每 token 实际计算量</text>
+  <!-- Comparison -->
+  <rect x="30" y="95" width="540" height="35" rx="6" fill="#1a1a24" stroke="#3a3a4a" stroke-width="0.5"/>
+  <text x="300" y="112" text-anchor="middle" fill="#ededf0" font-size="9" font-family="system-ui">同等质量对比：671B MoE ≈ 70B Dense 的性能 | 但计算量只有 37B Dense 的水平</text>
+  <text x="300" y="125" text-anchor="middle" fill="#34d399" font-size="8" font-family="system-ui">知识容量 671B × 计算成本 37B = 18× 效率比</text>
+</svg>

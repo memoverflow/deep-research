@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 700 320" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:700px;margin:24px auto;display:block;">
+  <defs>
+    <marker id="arrow1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#6e8eff"/>
+    </marker>
+  </defs>
+  <!-- 坐标轴 -->
+  <line x1="60" y1="260" x2="660" y2="260" stroke="#6e8eff" stroke-width="1.5"/>
+  <line x1="60" y1="260" x2="60" y2="30" stroke="#6e8eff" stroke-width="1.5"/>
+  <!-- Y轴标签 -->
+  <text x="30" y="150" text-anchor="middle" fill="#ededf0" font-size="12" font-family="system-ui" transform="rotate(-90, 30, 150)">概率</text>
+  <!-- X轴标签 -->
+  <text x="360" y="295" text-anchor="middle" fill="#ededf0" font-size="12" font-family="system-ui">Token (词表)</text>
+  <!-- 标题 -->
+  <text x="360" y="20" text-anchor="middle" fill="#ededf0" font-size="14" font-family="system-ui" font-weight="bold">接受/拒绝区域示意</text>
+  <!-- Token A: p > q (总是接受) -->
+  <rect x="100" y="80" width="60" height="180" rx="4" fill="#34d399" fill-opacity="0.3" stroke="#34d399" stroke-width="1.5"/>
+  <rect x="100" y="150" width="60" height="110" rx="4" fill="#6e8eff" fill-opacity="0.3" stroke="#6e8eff" stroke-width="1.5" stroke-dasharray="4"/>
+  <text x="130" y="275" text-anchor="middle" fill="#ededf0" font-size="11" font-family="system-ui">Token A</text>
+  <!-- Token B: q > p (部分拒绝) -->
+  <rect x="220" y="120" width="60" height="140" rx="4" fill="#6e8eff" fill-opacity="0.3" stroke="#6e8eff" stroke-width="1.5"/>
+  <rect x="220" y="160" width="60" height="100" rx="4" fill="#34d399" fill-opacity="0.3" stroke="#34d399" stroke-width="1.5" stroke-dasharray="4"/>
+  <text x="250" y="275" text-anchor="middle" fill="#ededf0" font-size="11" font-family="system-ui">Token B</text>
+  <!-- Token C: p ≈ q -->
+  <rect x="340" y="180" width="60" height="80" rx="4" fill="#34d399" fill-opacity="0.3" stroke="#34d399" stroke-width="1.5"/>
+  <rect x="340" y="180" width="60" height="80" rx="4" fill="#6e8eff" fill-opacity="0.15" stroke="#6e8eff" stroke-width="1.5" stroke-dasharray="4"/>
+  <text x="370" y="275" text-anchor="middle" fill="#ededf0" font-size="11" font-family="system-ui">Token C</text>
+  <!-- Token D -->
+  <rect x="460" y="210" width="60" height="50" rx="4" fill="#34d399" fill-opacity="0.3" stroke="#34d399" stroke-width="1.5"/>
+  <rect x="460" y="200" width="60" height="60" rx="4" fill="#6e8eff" fill-opacity="0.3" stroke="#6e8eff" stroke-width="1.5" stroke-dasharray="4"/>
+  <text x="490" y="275" text-anchor="middle" fill="#ededf0" font-size="11" font-family="system-ui">Token D</text>
+  <!-- 图例 -->
+  <rect x="500" y="40" width="15" height="15" rx="3" fill="#34d399" fill-opacity="0.5" stroke="#34d399" stroke-width="1"/>
+  <text x="520" y="52" fill="#ededf0" font-size="11" font-family="system-ui">p(x) 目标模型</text>
+  <rect x="500" y="65" width="15" height="15" rx="3" fill="#6e8eff" fill-opacity="0.5" stroke="#6e8eff" stroke-width="1"/>
+  <text x="520" y="77" fill="#ededf0" font-size="11" font-family="system-ui">q(x) 草稿模型</text>
+  <!-- 注解 -->
+  <text x="130" y="65" text-anchor="middle" fill="#34d399" font-size="10" font-family="system-ui">p &gt; q: 必接受</text>
+  <text x="250" y="107" text-anchor="middle" fill="#f87171" font-size="10" font-family="system-ui">q &gt; p: 部分拒绝</text>
+</svg>

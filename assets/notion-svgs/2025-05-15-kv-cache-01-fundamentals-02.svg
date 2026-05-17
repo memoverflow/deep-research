@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 650 220" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:650px;margin:24px auto;display:block;">
+  <!-- Background bars -->
+  <text x="20" y="25" fill="#ededf0" font-size="13" font-family="system-ui" font-weight="bold">KV Cache 内存 vs 模型权重 (FP16)</text>
+  <!-- Model weights reference -->
+  <rect x="130" y="45" width="56" height="25" rx="4" fill="#3a3a4a"/>
+  <text x="158" y="62" text-anchor="middle" fill="#ededf0" font-size="9" font-family="system-ui">模型 14GB</text>
+  <!-- LLaMA 7B bars -->
+  <text x="20" y="62" fill="#9494a0" font-size="10" font-family="system-ui">7B @ 4K</text>
+  <rect x="130" y="48" width="28" height="18" rx="3" fill="#22d3ee" opacity="0.7"/>
+  <text x="165" y="60" fill="#22d3ee" font-size="9" font-family="system-ui">2 GB</text>
+  
+  <text x="20" y="95" fill="#9494a0" font-size="10" font-family="system-ui">7B @ 32K</text>
+  <rect x="130" y="82" width="160" height="18" rx="3" fill="#22d3ee" opacity="0.7"/>
+  <text x="297" y="94" fill="#22d3ee" font-size="9" font-family="system-ui">16 GB</text>
+  
+  <text x="20" y="128" fill="#9494a0" font-size="10" font-family="system-ui">7B @ 128K</text>
+  <rect x="130" y="115" width="512" height="18" rx="3" fill="#fb7185" opacity="0.7"/>
+  <text x="520" y="127" fill="#fb7185" font-size="9" font-family="system-ui">64 GB !</text>
+  
+  <!-- LLaMA 70B GQA bars -->
+  <text x="20" y="162" fill="#9494a0" font-size="10" font-family="system-ui">70B GQA@4K</text>
+  <rect x="130" y="149" width="16" height="18" rx="3" fill="#34d399" opacity="0.7"/>
+  <text x="152" y="161" fill="#34d399" font-size="9" font-family="system-ui">1.3GB</text>
+  
+  <text x="20" y="195" fill="#9494a0" font-size="10" font-family="system-ui">70B GQA@128K</text>
+  <rect x="130" y="182" width="320" height="18" rx="3" fill="#fbbf24" opacity="0.7"/>
+  <text x="457" y="194" fill="#fbbf24" font-size="9" font-family="system-ui">40 GB</text>
+  
+  <!-- Reference line -->
+  <line x1="130" y1="40" x2="130" y2="210" stroke="#3a3a4a" stroke-width="0.5" stroke-dasharray="2,2"/>
+</svg>

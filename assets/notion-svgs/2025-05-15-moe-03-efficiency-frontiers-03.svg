@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 600 170" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:600px;margin:24px auto;display:block;">
+  <defs>
+    <marker id="arr-se" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#6e8eff"/></marker>
+  </defs>
+  
+  <!-- Input -->
+  <rect x="10" y="65" width="70" height="35" rx="6" fill="#1e1e2a" stroke="#60a5fa" stroke-width="1.5"/>
+  <text x="45" y="87" text-anchor="middle" fill="#ededf0" font-size="9" font-family="system-ui">Token</text>
+  
+  <!-- Split -->
+  <line x1="80" y1="75" x2="130" y2="40" stroke="#fbbf24" stroke-width="1.2" marker-end="url(#arr-se)"/>
+  <line x1="80" y1="90" x2="130" y2="120" stroke="#6e8eff" stroke-width="1.2" marker-end="url(#arr-se)"/>
+  
+  <!-- Shared Expert -->
+  <rect x="135" y="20" width="130" height="40" rx="6" fill="#1e1e2a" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="200" y="37" text-anchor="middle" fill="#fbbf24" font-size="9" font-family="system-ui">Shared Expert ×1</text>
+  <text x="200" y="51" text-anchor="middle" fill="#6b6b78" font-size="8" font-family="system-ui">所有 token 必经</text>
+  
+  <!-- Router + Routed Experts -->
+  <rect x="135" y="100" width="130" height="50" rx="6" fill="#1e1e2a" stroke="#6e8eff" stroke-width="1.5"/>
+  <text x="200" y="118" text-anchor="middle" fill="#6e8eff" font-size="9" font-family="system-ui">Router → Top-8</text>
+  <text x="200" y="133" text-anchor="middle" fill="#6b6b78" font-size="8" font-family="system-ui">256 个 routed experts 选 8</text>
+  
+  <!-- Merge -->
+  <line x1="265" y1="40" x2="330" y2="75" stroke="#fbbf24" stroke-width="1.2" marker-end="url(#arr-se)"/>
+  <line x1="265" y1="125" x2="330" y2="90" stroke="#6e8eff" stroke-width="1.2" marker-end="url(#arr-se)"/>
+  
+  <!-- Sum -->
+  <rect x="335" y="62" width="60" height="40" rx="20" fill="#1e1e2a" stroke="#34d399" stroke-width="1.5"/>
+  <text x="365" y="86" text-anchor="middle" fill="#34d399" font-size="12" font-family="system-ui">∑</text>
+  
+  <!-- Output -->
+  <line x1="395" y1="82" x2="430" y2="82" stroke="#6e8eff" stroke-width="1.2" marker-end="url(#arr-se)"/>
+  <rect x="435" y="65" width="70" height="35" rx="6" fill="#1e1e2a" stroke="#60a5fa" stroke-width="1.5"/>
+  <text x="470" y="87" text-anchor="middle" fill="#ededf0" font-size="9" font-family="system-ui">输出</text>
+  
+  <!-- Annotations -->
+  <text x="470" y="30" fill="#fbbf24" font-size="9" font-family="system-ui">通用知识：语法、常识</text>
+  <text x="470" y="140" fill="#6e8eff" font-size="9" font-family="system-ui">专项知识：领域、风格</text>
+</svg>

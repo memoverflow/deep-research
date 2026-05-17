@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 650 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:650px;margin:24px auto;display:block;">
+  <defs>
+    <marker id="arrow-chart" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#6e8eff"/>
+    </marker>
+  </defs>
+  <!-- Axes -->
+  <line x1="80" y1="230" x2="600" y2="230" stroke="#6e8eff" stroke-width="1.5" marker-end="url(#arrow-chart)"/>
+  <line x1="80" y1="230" x2="80" y2="30" stroke="#6e8eff" stroke-width="1.5" marker-end="url(#arrow-chart)"/>
+  
+  <!-- Y axis label -->
+  <text x="30" y="130" text-anchor="middle" fill="#ededf0" font-size="12" font-family="system-ui" transform="rotate(-90, 30, 130)">任务性能 (%)</text>
+  
+  <!-- X axis label -->
+  <text x="340" y="265" text-anchor="middle" fill="#ededf0" font-size="12" font-family="system-ui">LoRA Rank (r)</text>
+  
+  <!-- Full FT reference line -->
+  <line x1="80" y1="55" x2="590" y2="55" stroke="#34d399" stroke-width="1" stroke-dasharray="6,4"/>
+  <text x="595" y="59" fill="#34d399" font-size="11" font-family="system-ui">全量微调</text>
+  
+  <!-- Performance curve (rapid rise then plateau) -->
+  <path d="M 120 200 Q 180 100, 240 75 Q 300 60, 400 58 Q 500 56, 580 55" fill="none" stroke="#6e8eff" stroke-width="2.5"/>
+  
+  <!-- Data points -->
+  <circle cx="120" cy="200" r="5" fill="#6e8eff"/>
+  <circle cx="180" cy="110" r="5" fill="#6e8eff"/>
+  <circle cx="240" cy="75" r="5" fill="#6e8eff"/>
+  <circle cx="340" cy="62" r="5" fill="#6e8eff"/>
+  <circle cx="500" cy="57" r="5" fill="#6e8eff"/>
+  
+  <!-- X axis ticks -->
+  <text x="120" y="248" text-anchor="middle" fill="#8888aa" font-size="11" font-family="system-ui">1</text>
+  <text x="180" y="248" text-anchor="middle" fill="#8888aa" font-size="11" font-family="system-ui">4</text>
+  <text x="240" y="248" text-anchor="middle" fill="#8888aa" font-size="11" font-family="system-ui">8</text>
+  <text x="340" y="248" text-anchor="middle" fill="#8888aa" font-size="11" font-family="system-ui">16</text>
+  <text x="500" y="248" text-anchor="middle" fill="#8888aa" font-size="11" font-family="system-ui">64</text>
+  
+  <!-- Y axis ticks -->
+  <text x="70" y="203" text-anchor="end" fill="#8888aa" font-size="11" font-family="system-ui">80</text>
+  <text x="70" y="133" text-anchor="end" fill="#8888aa" font-size="11" font-family="system-ui">90</text>
+  <text x="70" y="63" text-anchor="end" fill="#8888aa" font-size="11" font-family="system-ui">100</text>
+  
+  <!-- Annotation: sweet spot -->
+  <rect x="210" y="85" width="90" height="25" rx="4" fill="#1e1e2a" stroke="#ff7b7b" stroke-width="1" stroke-dasharray="3,3"/>
+  <text x="255" y="102" text-anchor="middle" fill="#ff7b7b" font-size="11" font-family="system-ui">甜蜜区间</text>
+  
+  <!-- Arrow to sweet spot -->
+  <text x="370" y="120" fill="#8888aa" font-size="11" font-family="system-ui">r=8~16 已接近</text>
+  <text x="370" y="135" fill="#8888aa" font-size="11" font-family="system-ui">全量微调效果</text>
+  
+  <!-- Title -->
+  <text x="340" y="20" text-anchor="middle" fill="#ededf0" font-size="13" font-family="system-ui">LoRA Rank vs 任务性能（典型模式）</text>
+</svg>

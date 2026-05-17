@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 700 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:700px;margin:24px auto;display:block;">
+  <defs>
+    <marker id="arrow2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#6e8eff"/>
+    </marker>
+  </defs>
+  <!-- Timeline arrow -->
+  <line x1="50" y1="200" x2="650" y2="200" stroke="#3a3a4a" stroke-width="1.5" marker-end="url(#arrow2)"/>
+  <text x="660" y="205" fill="#94a3b8" font-size="10" font-family="system-ui">时间</text>
+  <!-- SGD box -->
+  <rect x="60" y="40" width="110" height="70" rx="8" fill="#1e1e2a" stroke="#ef4444" stroke-width="1.5"/>
+  <text x="115" y="65" text-anchor="middle" fill="#ededf0" font-size="12" font-family="system-ui" font-weight="bold">SGD</text>
+  <text x="115" y="85" text-anchor="middle" fill="#94a3b8" font-size="10" font-family="system-ui">固定学习率</text>
+  <text x="115" y="100" text-anchor="middle" fill="#94a3b8" font-size="10" font-family="system-ui">噪声大</text>
+  <line x1="115" y1="110" x2="115" y2="190" stroke="#3a3a4a" stroke-width="1" stroke-dasharray="3,3"/>
+  <text x="115" y="220" text-anchor="middle" fill="#94a3b8" font-size="9" font-family="system-ui">~1950s</text>
+  <!-- Momentum box -->
+  <rect x="200" y="40" width="110" height="70" rx="8" fill="#1e1e2a" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="255" y="65" text-anchor="middle" fill="#ededf0" font-size="12" font-family="system-ui" font-weight="bold">+ Momentum</text>
+  <text x="255" y="85" text-anchor="middle" fill="#94a3b8" font-size="10" font-family="system-ui">方向平滑</text>
+  <text x="255" y="100" text-anchor="middle" fill="#94a3b8" font-size="10" font-family="system-ui">加速收敛</text>
+  <line x1="255" y1="110" x2="255" y2="190" stroke="#3a3a4a" stroke-width="1" stroke-dasharray="3,3"/>
+  <text x="255" y="220" text-anchor="middle" fill="#94a3b8" font-size="9" font-family="system-ui">1964</text>
+  <!-- AdaGrad box -->
+  <rect x="340" y="40" width="110" height="70" rx="8" fill="#1e1e2a" stroke="#a78bfa" stroke-width="1.5"/>
+  <text x="395" y="65" text-anchor="middle" fill="#ededf0" font-size="12" font-family="system-ui" font-weight="bold">AdaGrad</text>
+  <text x="395" y="85" text-anchor="middle" fill="#94a3b8" font-size="10" font-family="system-ui">自适应步长</text>
+  <text x="395" y="100" text-anchor="middle" fill="#94a3b8" font-size="10" font-family="system-ui">会衰减到 0</text>
+  <line x1="395" y1="110" x2="395" y2="190" stroke="#3a3a4a" stroke-width="1" stroke-dasharray="3,3"/>
+  <text x="395" y="220" text-anchor="middle" fill="#94a3b8" font-size="9" font-family="system-ui">2011</text>
+  <!-- RMSProp box -->
+  <rect x="470" y="40" width="110" height="70" rx="8" fill="#1e1e2a" stroke="#22d3ee" stroke-width="1.5"/>
+  <text x="525" y="65" text-anchor="middle" fill="#ededf0" font-size="12" font-family="system-ui" font-weight="bold">RMSProp</text>
+  <text x="525" y="85" text-anchor="middle" fill="#94a3b8" font-size="10" font-family="system-ui">EMA 修复衰减</text>
+  <text x="525" y="100" text-anchor="middle" fill="#94a3b8" font-size="10" font-family="system-ui">但无动量</text>
+  <line x1="525" y1="110" x2="525" y2="190" stroke="#3a3a4a" stroke-width="1" stroke-dasharray="3,3"/>
+  <text x="525" y="220" text-anchor="middle" fill="#94a3b8" font-size="9" font-family="system-ui">2012</text>
+  <!-- Adam box (highlighted) -->
+  <rect x="590" y="30" width="90" height="80" rx="8" fill="#1e1e2a" stroke="#6e8eff" stroke-width="2.5"/>
+  <text x="635" y="55" text-anchor="middle" fill="#6e8eff" font-size="13" font-family="system-ui" font-weight="bold">Adam</text>
+  <text x="635" y="75" text-anchor="middle" fill="#ededf0" font-size="10" font-family="system-ui">动量+自适应</text>
+  <text x="635" y="92" text-anchor="middle" fill="#ededf0" font-size="10" font-family="system-ui">+偏差修正</text>
+  <line x1="635" y1="110" x2="635" y2="190" stroke="#6e8eff" stroke-width="1.5" stroke-dasharray="3,3"/>
+  <text x="635" y="220" text-anchor="middle" fill="#6e8eff" font-size="9" font-family="system-ui" font-weight="bold">2014</text>
+  <!-- Arrows between boxes -->
+  <line x1="170" y1="75" x2="198" y2="75" stroke="#3a3a4a" stroke-width="1" marker-end="url(#arrow2)"/>
+  <line x1="310" y1="75" x2="338" y2="75" stroke="#3a3a4a" stroke-width="1" marker-end="url(#arrow2)"/>
+  <line x1="450" y1="75" x2="478" y2="75" stroke="#3a3a4a" stroke-width="1" marker-end="url(#arrow2)"/>
+  <line x1="580" y1="75" x2="588" y2="75" stroke="#3a3a4a" stroke-width="1" marker-end="url(#arrow2)"/>
+</svg>

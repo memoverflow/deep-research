@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 700 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:700px;margin:24px auto;display:block;">
+  <rect x="0" y="0" width="700" height="200" rx="12" fill="#13131a" stroke="#23232e" stroke-width="1"/>
+  <!-- Normal token path -->
+  <text x="180" y="25" text-anchor="middle" fill="#34d399" font-size="12" font-family="system-ui">正常 Token</text>
+  <rect x="30" y="35" width="90" height="35" rx="6" fill="#1e1e2a" stroke="#34d399" stroke-width="1.5"/>
+  <text x="75" y="57" text-anchor="middle" fill="#ededf0" font-size="13" font-family="monospace">"hello"</text>
+  <line x1="120" y1="52" x2="160" y2="52" stroke="#34d399" stroke-width="1.5" marker-end="url(#arr)"/>
+  <rect x="160" y="35" width="100" height="35" rx="6" fill="#34d39922" stroke="#34d399" stroke-width="1"/>
+  <text x="210" y="57" text-anchor="middle" fill="#34d399" font-size="11" font-family="system-ui">训练充分的嵌入</text>
+  <line x1="260" y1="52" x2="300" y2="52" stroke="#34d399" stroke-width="1.5" marker-end="url(#arr)"/>
+  <rect x="300" y="35" width="100" height="35" rx="6" fill="#34d39922" stroke="#34d399" stroke-width="1"/>
+  <text x="350" y="57" text-anchor="middle" fill="#34d399" font-size="11" font-family="system-ui">有意义的输出</text>
+  <!-- Glitch token path -->
+  <text x="180" y="110" text-anchor="middle" fill="#fb7185" font-size="12" font-family="system-ui">Glitch Token</text>
+  <rect x="30" y="120" width="130" height="35" rx="6" fill="#1e1e2a" stroke="#fb7185" stroke-width="1.5"/>
+  <text x="95" y="142" text-anchor="middle" fill="#ededf0" font-size="11" font-family="monospace">"SolidGoldMagikarp"</text>
+  <line x1="160" y1="137" x2="200" y2="137" stroke="#fb7185" stroke-width="1.5" marker-end="url(#arr)"/>
+  <rect x="200" y="120" width="120" height="35" rx="6" fill="#fb718522" stroke="#fb7185" stroke-width="1" stroke-dasharray="4,3"/>
+  <text x="260" y="137" text-anchor="middle" fill="#fb7185" font-size="11" font-family="system-ui">未训练的嵌入 ⚠️</text>
+  <line x1="320" y1="137" x2="360" y2="137" stroke="#fb7185" stroke-width="1.5" marker-end="url(#arr)"/>
+  <rect x="360" y="120" width="120" height="35" rx="6" fill="#fb718522" stroke="#fb7185" stroke-width="1"/>
+  <text x="420" y="132" text-anchor="middle" fill="#fb7185" font-size="11" font-family="system-ui">🔥 不可预测行为</text>
+  <text x="420" y="148" text-anchor="middle" fill="#6b6b78" font-size="10" font-family="system-ui">循环/拒绝/乱码</text>
+  <!-- Root cause -->
+  <rect x="30" y="170" width="640" height="24" rx="6" fill="#fbbf2411" stroke="#fbbf24" stroke-width="1"/>
+  <text x="350" y="185" text-anchor="middle" fill="#fbbf24" font-size="11" font-family="system-ui">根因：Tokenizer 在数据 A 上训练（包含该词），模型在数据 B 上微调（不包含该词）→ embedding 区域未初始化</text>
+</svg>

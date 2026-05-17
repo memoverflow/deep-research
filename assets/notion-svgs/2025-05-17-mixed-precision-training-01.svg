@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 680 320" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:680px;margin:24px auto;display:block;">
+  <defs>
+    <marker id="arrow1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#6e8eff"/>
+    </marker>
+  </defs>
+  <!-- Title -->
+  <text x="340" y="28" text-anchor="middle" fill="#ededf0" font-size="15" font-family="system-ui" font-weight="bold">浮点格式比特分配对比</text>
+  
+  <!-- FP32 -->
+  <text x="55" y="65" text-anchor="middle" fill="#94a3b8" font-size="12" font-family="system-ui">FP32</text>
+  <rect x="90" y="50" width="20" height="24" rx="3" fill="#ef4444" opacity="0.3" stroke="#ef4444" stroke-width="1"/>
+  <text x="100" y="66" text-anchor="middle" fill="#ededf0" font-size="9" font-family="system-ui">1</text>
+  <rect x="112" y="50" width="100" height="24" rx="3" fill="#f59e0b" opacity="0.3" stroke="#f59e0b" stroke-width="1"/>
+  <text x="162" y="66" text-anchor="middle" fill="#ededf0" font-size="10" font-family="system-ui">8 位指数</text>
+  <rect x="214" y="50" width="290" height="24" rx="3" fill="#6e8eff" opacity="0.3" stroke="#6e8eff" stroke-width="1"/>
+  <text x="359" y="66" text-anchor="middle" fill="#ededf0" font-size="10" font-family="system-ui">23 位尾数</text>
+  <text x="540" y="66" text-anchor="start" fill="#64748b" font-size="10" font-family="system-ui">范围 ±3.4×10³⁸</text>
+  
+  <!-- FP16 -->
+  <text x="55" y="115" text-anchor="middle" fill="#94a3b8" font-size="12" font-family="system-ui">FP16</text>
+  <rect x="90" y="100" width="20" height="24" rx="3" fill="#ef4444" opacity="0.3" stroke="#ef4444" stroke-width="1"/>
+  <text x="100" y="116" text-anchor="middle" fill="#ededf0" font-size="9" font-family="system-ui">1</text>
+  <rect x="112" y="100" width="62" height="24" rx="3" fill="#f59e0b" opacity="0.3" stroke="#f59e0b" stroke-width="1"/>
+  <text x="143" y="116" text-anchor="middle" fill="#ededf0" font-size="10" font-family="system-ui">5 位指数</text>
+  <rect x="176" y="100" width="125" height="24" rx="3" fill="#6e8eff" opacity="0.3" stroke="#6e8eff" stroke-width="1"/>
+  <text x="238" y="116" text-anchor="middle" fill="#ededf0" font-size="10" font-family="system-ui">10 位尾数</text>
+  <text x="540" y="116" text-anchor="start" fill="#64748b" font-size="10" font-family="system-ui">范围 ±65,504</text>
+  
+  <!-- BF16 -->
+  <text x="55" y="165" text-anchor="middle" fill="#94a3b8" font-size="12" font-family="system-ui">BF16</text>
+  <rect x="90" y="150" width="20" height="24" rx="3" fill="#ef4444" opacity="0.3" stroke="#ef4444" stroke-width="1"/>
+  <text x="100" y="166" text-anchor="middle" fill="#ededf0" font-size="9" font-family="system-ui">1</text>
+  <rect x="112" y="150" width="100" height="24" rx="3" fill="#f59e0b" opacity="0.3" stroke="#f59e0b" stroke-width="1"/>
+  <text x="162" y="166" text-anchor="middle" fill="#ededf0" font-size="10" font-family="system-ui">8 位指数</text>
+  <rect x="214" y="150" width="87" height="24" rx="3" fill="#6e8eff" opacity="0.3" stroke="#6e8eff" stroke-width="1"/>
+  <text x="257" y="166" text-anchor="middle" fill="#ededf0" font-size="10" font-family="system-ui">7 位尾数</text>
+  <text x="540" y="166" text-anchor="start" fill="#64748b" font-size="10" font-family="system-ui">范围 ±3.4×10³⁸</text>
+  
+  <!-- FP8 E4M3 -->
+  <text x="55" y="215" text-anchor="middle" fill="#94a3b8" font-size="12" font-family="system-ui">FP8</text>
+  <text x="55" y="228" text-anchor="middle" fill="#94a3b8" font-size="10" font-family="system-ui">E4M3</text>
+  <rect x="90" y="204" width="20" height="24" rx="3" fill="#ef4444" opacity="0.3" stroke="#ef4444" stroke-width="1"/>
+  <text x="100" y="220" text-anchor="middle" fill="#ededf0" font-size="9" font-family="system-ui">1</text>
+  <rect x="112" y="204" width="50" height="24" rx="3" fill="#f59e0b" opacity="0.3" stroke="#f59e0b" stroke-width="1"/>
+  <text x="137" y="220" text-anchor="middle" fill="#ededf0" font-size="10" font-family="system-ui">4 位</text>
+  <rect x="164" y="204" width="37" height="24" rx="3" fill="#6e8eff" opacity="0.3" stroke="#6e8eff" stroke-width="1"/>
+  <text x="182" y="220" text-anchor="middle" fill="#ededf0" font-size="10" font-family="system-ui">3 位</text>
+  <text x="540" y="220" text-anchor="start" fill="#64748b" font-size="10" font-family="system-ui">范围 ±448</text>
+
+  <!-- FP8 E5M2 -->
+  <text x="55" y="265" text-anchor="middle" fill="#94a3b8" font-size="12" font-family="system-ui">FP8</text>
+  <text x="55" y="278" text-anchor="middle" fill="#94a3b8" font-size="10" font-family="system-ui">E5M2</text>
+  <rect x="90" y="254" width="20" height="24" rx="3" fill="#ef4444" opacity="0.3" stroke="#ef4444" stroke-width="1"/>
+  <text x="100" y="270" text-anchor="middle" fill="#ededf0" font-size="9" font-family="system-ui">1</text>
+  <rect x="112" y="254" width="62" height="24" rx="3" fill="#f59e0b" opacity="0.3" stroke="#f59e0b" stroke-width="1"/>
+  <text x="143" y="270" text-anchor="middle" fill="#ededf0" font-size="10" font-family="system-ui">5 位</text>
+  <rect x="176" y="254" width="25" height="24" rx="3" fill="#6e8eff" opacity="0.3" stroke="#6e8eff" stroke-width="1"/>
+  <text x="188" y="270" text-anchor="middle" fill="#ededf0" font-size="10" font-family="system-ui">2</text>
+  <text x="540" y="270" text-anchor="start" fill="#64748b" font-size="10" font-family="system-ui">范围 ±57,344</text>
+
+  <!-- Legend -->
+  <rect x="90" y="295" width="12" height="12" rx="2" fill="#ef4444" opacity="0.3" stroke="#ef4444" stroke-width="1"/>
+  <text x="106" y="305" fill="#94a3b8" font-size="10" font-family="system-ui">符号</text>
+  <rect x="150" y="295" width="12" height="12" rx="2" fill="#f59e0b" opacity="0.3" stroke="#f59e0b" stroke-width="1"/>
+  <text x="166" y="305" fill="#94a3b8" font-size="10" font-family="system-ui">指数（决定范围）</text>
+  <rect x="290" y="295" width="12" height="12" rx="2" fill="#6e8eff" opacity="0.3" stroke="#6e8eff" stroke-width="1"/>
+  <text x="306" y="305" fill="#94a3b8" font-size="10" font-family="system-ui">尾数（决定精度）</text>
+</svg>

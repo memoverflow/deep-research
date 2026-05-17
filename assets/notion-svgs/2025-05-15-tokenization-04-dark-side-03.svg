@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 700 220" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:700px;margin:24px auto;display:block;">
+  <rect x="0" y="0" width="700" height="220" rx="12" fill="#13131a" stroke="#23232e" stroke-width="1"/>
+  <text x="350" y="22" text-anchor="middle" fill="#6b6b78" font-size="12" font-family="system-ui">Token Smuggling 攻击流程</text>
+  <!-- Attacker input -->
+  <rect x="20" y="40" width="150" height="45" rx="8" fill="#1e1e2a" stroke="#fb7185" stroke-width="1.5"/>
+  <text x="95" y="58" text-anchor="middle" fill="#fb7185" font-size="11" font-family="system-ui">攻击者输入</text>
+  <text x="95" y="75" text-anchor="middle" fill="#ededf0" font-size="10" font-family="monospace">ha​rm​ful（含零宽字符）</text>
+  <!-- Safety filter -->
+  <line x1="170" y1="62" x2="210" y2="62" stroke="#6e8eff" stroke-width="1.5" marker-end="url(#arr)"/>
+  <rect x="210" y="40" width="140" height="45" rx="8" fill="#34d39922" stroke="#34d399" stroke-width="1.5"/>
+  <text x="280" y="58" text-anchor="middle" fill="#34d399" font-size="11" font-family="system-ui">安全过滤器</text>
+  <text x="280" y="75" text-anchor="middle" fill="#34d399" font-size="10" font-family="system-ui">✓ 未检测到违规词</text>
+  <!-- Tokenizer -->
+  <line x1="350" y1="62" x2="390" y2="62" stroke="#6e8eff" stroke-width="1.5" marker-end="url(#arr)"/>
+  <rect x="390" y="40" width="120" height="45" rx="8" fill="#1e1e2a" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="450" y="58" text-anchor="middle" fill="#fbbf24" font-size="11" font-family="system-ui">Tokenizer</text>
+  <text x="450" y="75" text-anchor="middle" fill="#ededf0" font-size="10" font-family="monospace">["ha","rm","ful"]</text>
+  <!-- Model -->
+  <line x1="510" y1="62" x2="550" y2="62" stroke="#6e8eff" stroke-width="1.5" marker-end="url(#arr)"/>
+  <rect x="550" y="40" width="130" height="45" rx="8" fill="#fb718522" stroke="#fb7185" stroke-width="1.5"/>
+  <text x="615" y="58" text-anchor="middle" fill="#fb7185" font-size="11" font-family="system-ui">LLM</text>
+  <text x="615" y="75" text-anchor="middle" fill="#fb7185" font-size="10" font-family="system-ui">理解语义 → 执行 ⚠️</text>
+  <!-- Normal path comparison -->
+  <text x="95" y="115" text-anchor="middle" fill="#6b6b78" font-size="11" font-family="system-ui">对比：正常输入</text>
+  <rect x="20" y="125" width="150" height="45" rx="8" fill="#1e1e2a" stroke="#6b6b78" stroke-width="1"/>
+  <text x="95" y="143" text-anchor="middle" fill="#6b6b78" font-size="11" font-family="system-ui">正常输入</text>
+  <text x="95" y="160" text-anchor="middle" fill="#ededf0" font-size="10" font-family="monospace">harmful</text>
+  <line x1="170" y1="147" x2="210" y2="147" stroke="#6e8eff" stroke-width="1.5" marker-end="url(#arr)"/>
+  <rect x="210" y="125" width="140" height="45" rx="8" fill="#fb718522" stroke="#fb7185" stroke-width="1.5"/>
+  <text x="280" y="143" text-anchor="middle" fill="#fb7185" font-size="11" font-family="system-ui">安全过滤器</text>
+  <text x="280" y="160" text-anchor="middle" fill="#fb7185" font-size="10" font-family="system-ui">🚫 拦截！检测到违规词</text>
+  <!-- Key insight -->
+  <rect x="20" y="185" width="660" height="28" rx="6" fill="#6e8eff11" stroke="#6e8eff" stroke-width="1"/>
+  <text x="350" y="203" text-anchor="middle" fill="#6e8eff" font-size="11" font-family="system-ui">核心漏洞：安全过滤器和 LLM 对「同一输入」的理解不一致——过滤器看字符串，模型看语义</text>
+</svg>

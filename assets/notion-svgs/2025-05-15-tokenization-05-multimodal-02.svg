@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 700 180" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:700px;margin:24px auto;display:block;">
+  <rect x="0" y="0" width="700" height="180" rx="12" fill="#13131a" stroke="#23232e" stroke-width="1"/>
+  <text x="350" y="22" text-anchor="middle" fill="#6b6b78" font-size="12" font-family="system-ui">Tokenization 的跨域统一</text>
+  <!-- Domain boxes in a row -->
+  <rect x="25" y="40" width="95" height="55" rx="6" fill="#22d3ee11" stroke="#22d3ee" stroke-width="1.5"/>
+  <text x="72" y="60" text-anchor="middle" fill="#22d3ee" font-size="11" font-family="system-ui">文本</text>
+  <text x="72" y="78" text-anchor="middle" fill="#6b6b78" font-size="9" font-family="system-ui">BPE 子词</text>
+  
+  <rect x="135" y="40" width="95" height="55" rx="6" fill="#34d39911" stroke="#34d399" stroke-width="1.5"/>
+  <text x="182" y="60" text-anchor="middle" fill="#34d399" font-size="11" font-family="system-ui">图像</text>
+  <text x="182" y="78" text-anchor="middle" fill="#6b6b78" font-size="9" font-family="system-ui">VQ 码本索引</text>
+  
+  <rect x="245" y="40" width="95" height="55" rx="6" fill="#fbbf2411" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="292" y="60" text-anchor="middle" fill="#fbbf24" font-size="11" font-family="system-ui">音频</text>
+  <text x="292" y="78" text-anchor="middle" fill="#6b6b78" font-size="9" font-family="system-ui">RVQ codec</text>
+  
+  <rect x="355" y="40" width="95" height="55" rx="6" fill="#a78bfa11" stroke="#a78bfa" stroke-width="1.5"/>
+  <text x="402" y="60" text-anchor="middle" fill="#a78bfa" font-size="11" font-family="system-ui">动作</text>
+  <text x="402" y="78" text-anchor="middle" fill="#6b6b78" font-size="9" font-family="system-ui">256-bin / DCT</text>
+  
+  <rect x="465" y="40" width="95" height="55" rx="6" fill="#fb718511" stroke="#fb7185" stroke-width="1.5"/>
+  <text x="512" y="60" text-anchor="middle" fill="#fb7185" font-size="11" font-family="system-ui">DNA</text>
+  <text x="512" y="78" text-anchor="middle" fill="#6b6b78" font-size="9" font-family="system-ui">BPE / k-mer</text>
+  
+  <rect x="575" y="40" width="100" height="55" rx="6" fill="#fb923c11" stroke="#fb923c" stroke-width="1.5"/>
+  <text x="625" y="60" text-anchor="middle" fill="#fb923c" font-size="11" font-family="system-ui">结构化数据</text>
+  <text x="625" y="78" text-anchor="middle" fill="#6b6b78" font-size="9" font-family="system-ui">语法感知</text>
+  
+  <!-- Arrows converging down -->
+  <line x1="72" y1="95" x2="350" y2="125" stroke="#6e8eff" stroke-width="1" opacity="0.5"/>
+  <line x1="182" y1="95" x2="350" y2="125" stroke="#6e8eff" stroke-width="1" opacity="0.5"/>
+  <line x1="292" y1="95" x2="350" y2="125" stroke="#6e8eff" stroke-width="1" opacity="0.5"/>
+  <line x1="402" y1="95" x2="350" y2="125" stroke="#6e8eff" stroke-width="1" opacity="0.5"/>
+  <line x1="512" y1="95" x2="350" y2="125" stroke="#6e8eff" stroke-width="1" opacity="0.5"/>
+  <line x1="625" y1="95" x2="350" y2="125" stroke="#6e8eff" stroke-width="1" opacity="0.5"/>
+  
+  <!-- Unified -->
+  <rect x="260" y="120" width="180" height="45" rx="8" fill="#6e8eff22" stroke="#6e8eff" stroke-width="2"/>
+  <text x="350" y="140" text-anchor="middle" fill="#6e8eff" font-size="13" font-family="system-ui">统一的 Token 序列</text>
+  <text x="350" y="157" text-anchor="middle" fill="#6b6b78" font-size="10" font-family="system-ui">→ 同一个 Transformer 架构处理</text>
+</svg>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 700 350" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:700px;margin:24px auto;display:block;">
+  <defs>
+    <marker id="arrow2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#6e8eff"/>
+    </marker>
+  </defs>
+  <!-- 标题 -->
+  <text x="350" y="25" text-anchor="middle" fill="#ededf0" font-size="14" font-family="system-ui" font-weight="bold">投机解码完整流程（k=4 示例）</text>
+  <!-- Step 1: Draft Model -->
+  <rect x="30" y="55" width="130" height="50" rx="8" fill="#1e1e2a" stroke="#a78bfa" stroke-width="1.5"/>
+  <text x="95" y="75" text-anchor="middle" fill="#a78bfa" font-size="10" font-family="system-ui">Draft Model (7B)</text>
+  <text x="95" y="92" text-anchor="middle" fill="#ededf0" font-size="11" font-family="system-ui">快速猜 4 个 token</text>
+  <!-- Arrow -->
+  <line x1="160" y1="80" x2="195" y2="80" stroke="#6e8eff" stroke-width="1.5" marker-end="url(#arrow2)"/>
+  <!-- Draft tokens -->
+  <rect x="200" y="55" width="200" height="50" rx="8" fill="#1e1e2a" stroke="#3a3a4a" stroke-width="1.5"/>
+  <text x="220" y="78" fill="#34d399" font-size="12" font-family="monospace">t₁</text>
+  <text x="260" y="78" fill="#34d399" font-size="12" font-family="monospace">t₂</text>
+  <text x="300" y="78" fill="#34d399" font-size="12" font-family="monospace">t₃</text>
+  <text x="340" y="78" fill="#f87171" font-size="12" font-family="monospace">t₄</text>
+  <text x="370" y="78" fill="#94a3b8" font-size="10" font-family="system-ui">草稿</text>
+  <!-- Arrow down -->
+  <line x1="300" y1="105" x2="300" y2="135" stroke="#6e8eff" stroke-width="1.5" marker-end="url(#arrow2)"/>
+  <!-- Step 2: Target Model -->
+  <rect x="200" y="140" width="200" height="50" rx="8" fill="#1e1e2a" stroke="#22d3ee" stroke-width="1.5"/>
+  <text x="300" y="160" text-anchor="middle" fill="#22d3ee" font-size="10" font-family="system-ui">Target Model (70B)</text>
+  <text x="300" y="177" text-anchor="middle" fill="#ededf0" font-size="11" font-family="system-ui">并行验证全部 4 个位置</text>
+  <!-- Arrow down -->
+  <line x1="300" y1="190" x2="300" y2="220" stroke="#6e8eff" stroke-width="1.5" marker-end="url(#arrow2)"/>
+  <!-- Step 3: Accept/Reject -->
+  <rect x="130" y="225" width="340" height="55" rx="8" fill="#1e1e2a" stroke="#6e8eff" stroke-width="1.5"/>
+  <text x="300" y="245" text-anchor="middle" fill="#ededf0" font-size="11" font-family="system-ui">逐个验证 (α = min(1, p/q))</text>
+  <text x="180" y="268" fill="#34d399" font-size="12" font-family="monospace">t₁ ✓</text>
+  <text x="240" y="268" fill="#34d399" font-size="12" font-family="monospace">t₂ ✓</text>
+  <text x="300" y="268" fill="#34d399" font-size="12" font-family="monospace">t₃ ✓</text>
+  <text x="360" y="268" fill="#f87171" font-size="12" font-family="monospace">t₄ ✗</text>
+  <text x="420" y="268" fill="#fbbf24" font-size="12" font-family="monospace">→ t₄'</text>
+  <!-- Result -->
+  <line x1="300" y1="280" x2="300" y2="310" stroke="#6e8eff" stroke-width="1.5" marker-end="url(#arrow2)"/>
+  <rect x="180" y="312" width="240" height="30" rx="8" fill="#1e1e2a" stroke="#34d399" stroke-width="1.5"/>
+  <text x="300" y="332" text-anchor="middle" fill="#34d399" font-size="12" font-family="system-ui">产出 4 个 token（3 接受 + 1 重采样）</text>
+  <!-- 右侧注释 -->
+  <text x="530" y="78" fill="#94a3b8" font-size="10" font-family="system-ui">耗时：≈ 4×T_draft</text>
+  <text x="530" y="168" fill="#94a3b8" font-size="10" font-family="system-ui">耗时：1×T_target</text>
+  <text x="530" y="253" fill="#94a3b8" font-size="10" font-family="system-ui">数学保证 ≡ 原始分布</text>
+</svg>

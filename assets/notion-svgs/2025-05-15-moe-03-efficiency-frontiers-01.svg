@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 620 160" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:620px;margin:24px auto;display:block;">
+  <defs>
+    <marker id="arr-sp" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#6e8eff"/></marker>
+  </defs>
+  <!-- Timeline arrow -->
+  <line x1="30" y1="80" x2="590" y2="80" stroke="#3a3a4a" stroke-width="1.5" marker-end="url(#arr-sp)"/>
+  <text x="310" y="145" text-anchor="middle" fill="#6b6b78" font-size="10" font-family="system-ui">网络深度 →</text>
+  
+  <!-- Early layers -->
+  <rect x="50" y="35" width="140" height="35" rx="6" fill="#1e1e2a" stroke="#f87171" stroke-width="1.5"/>
+  <text x="120" y="57" text-anchor="middle" fill="#f87171" font-size="10" font-family="system-ui">前几层：语言分离</text>
+  <text x="120" y="105" text-anchor="middle" fill="#6b6b78" font-size="9" font-family="system-ui">中文→Expert A</text>
+  <text x="120" y="118" text-anchor="middle" fill="#6b6b78" font-size="9" font-family="system-ui">英文→Expert B</text>
+  
+  <!-- Middle layers -->
+  <rect x="240" y="35" width="140" height="35" rx="6" fill="#1e1e2a" stroke="#34d399" stroke-width="1.5"/>
+  <text x="310" y="57" text-anchor="middle" fill="#34d399" font-size="10" font-family="system-ui">中间层：跨语言共享</text>
+  <text x="310" y="105" text-anchor="middle" fill="#6b6b78" font-size="9" font-family="system-ui">中/英/日 → 相同 Expert</text>
+  <text x="310" y="118" text-anchor="middle" fill="#6b6b78" font-size="9" font-family="system-ui">（语义表示趋同）</text>
+  
+  <!-- Late layers -->
+  <rect x="430" y="35" width="140" height="35" rx="6" fill="#1e1e2a" stroke="#a78bfa" stroke-width="1.5"/>
+  <text x="500" y="57" text-anchor="middle" fill="#a78bfa" font-size="10" font-family="system-ui">后几层：语言重新分离</text>
+  <text x="500" y="105" text-anchor="middle" fill="#6b6b78" font-size="9" font-family="system-ui">生成目标语言时</text>
+  <text x="500" y="118" text-anchor="middle" fill="#6b6b78" font-size="9" font-family="system-ui">需要语言特定处理</text>
+</svg>
