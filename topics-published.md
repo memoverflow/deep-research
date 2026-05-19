@@ -40,3 +40,4 @@
 - 2025-05-17: Mixed Precision Training (FP16/BF16/FP8) — 混合精度训练：用一半的比特做同样的事
 - 2025-05-18: In-Context Learning 理论解释 — In-Context Learning：为什么不更新权重也能学？
 - 2025-05-18: Grokking 过拟合后顿悟 — Grokking：过拟合之后的顿悟时刻
+- 2025-05-19: Chain-of-Thought 计算复杂性 — Chain-of-Thought：为什么「说出思考过程」能让模型变聪明
