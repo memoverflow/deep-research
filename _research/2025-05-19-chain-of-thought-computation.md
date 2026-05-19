@@ -4,7 +4,7 @@ date: 2025-05-19
 level: 3
 series: "LLM 原理深度解析"
 series_order: 8
-series_total: 8
+series_total: 9
 tags: [chain-of-thought, computational-complexity, transformer, reasoning]
 summary: "从计算复杂性理论视角解释 Chain-of-Thought 为什么有效：它本质上突破了 Transformer 固定深度的串行计算瓶颈，把一个「只能算一步」的机器变成了「能算无数步」的机器。"
 ---
