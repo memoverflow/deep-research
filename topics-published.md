@@ -42,3 +42,4 @@
 - 2025-05-18: Grokking 过拟合后顿悟 — Grokking：过拟合之后的顿悟时刻
 - 2025-05-19: Chain-of-Thought 计算复杂性 — Chain-of-Thought：为什么「说出思考过程」能让模型变聪明
 - 2025-05-19: RoPE 旋转位置编码 — RoPE 旋转位置编码：用旋转让模型理解距离
+- 2025-05-20: FFN/MLP 层记忆与计算 — FFN 层的秘密身份：Transformer 里的知识仓库
