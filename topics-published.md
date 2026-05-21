@@ -44,3 +44,4 @@
 - 2025-05-19: RoPE 旋转位置编码 — RoPE 旋转位置编码：用旋转让模型理解距离
 - 2025-05-20: FFN/MLP 层记忆与计算 — FFN 层的秘密身份：Transformer 里的知识仓库
 - 2025-05-20: LayerNorm/RMSNorm/DeepNorm 归一化变体 — 归一化的进化：从 LayerNorm 到 RMSNorm 再到 DeepNorm
+- 2025-05-21: Residual Connection 梯度流分析 — 残差连接：深度网络的梯度高速公路
