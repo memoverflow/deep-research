@@ -46,3 +46,4 @@
 - 2025-05-20: LayerNorm/RMSNorm/DeepNorm 归一化变体 — 归一化的进化：从 LayerNorm 到 RMSNorm 再到 DeepNorm
 - 2025-05-21: Residual Connection 梯度流分析 — 残差连接：深度网络的梯度高速公路
 - 2025-05-21: 量化原理 (GPTQ/AWQ/GGUF) — 量化的数学：如何把 700 亿参数塞进一张显卡
+- 2025-05-26: 学习率调度 (Warmup/Cosine/WSD) — 学习率调度的艺术：Warmup、Cosine Decay 与 WSD 背后的原理
