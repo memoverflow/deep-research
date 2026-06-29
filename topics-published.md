@@ -50,3 +50,4 @@
 - 2025-05-27: 交叉熵与KL散度 — 交叉熵与 KL 散度：训练 LLM 时我们到底在优化什么
 - 2025-05-27: 双重下降 (Double Descent) — 双重下降：为什么过拟合之后模型反而变好了
 - 2025-06-28: 权重初始化 (Xavier/Kaiming/µP) — 权重初始化的数学：从 Xavier 到 Kaiming 再到 µP
+- 2025-06-29: 采样策略 (Temperature/Top-k/Top-p/Min-p) — 采样的艺术：Temperature、Top-k、Top-p 与 Min-p 如何控制 LLM 的创造力
