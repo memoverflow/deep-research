@@ -1,0 +1,61 @@
+<svg viewBox="0 0 800 380" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:800px;margin:24px auto;display:block;font-family:system-ui,-apple-system,sans-serif;">
+  <rect width="800" height="380" fill="#020617" rx="12"/>
+  <text x="400" y="28" text-anchor="middle" fill="#e2e8f0" font-size="14" font-weight="bold">OWASP Mobile Top 10 扫描覆盖矩阵</text>
+
+  <!-- Header row -->
+  <rect x="30" y="45" width="250" height="25" rx="4" fill="rgba(30,41,59,0.5)"/>
+  <text x="155" y="62" text-anchor="middle" fill="#94a3b8" font-size="9" font-weight="bold">OWASP 风险类别</text>
+  <rect x="290" y="45" width="90" height="25" rx="4" fill="rgba(136,19,55,0.3)"/>
+  <text x="335" y="62" text-anchor="middle" fill="#fb7185" font-size="9" font-weight="bold">SAST</text>
+  <rect x="390" y="45" width="90" height="25" rx="4" fill="rgba(120,53,15,0.3)"/>
+  <text x="435" y="62" text-anchor="middle" fill="#fbbf24" font-size="9" font-weight="bold">DAST</text>
+  <rect x="490" y="45" width="90" height="25" rx="4" fill="rgba(6,78,59,0.3)"/>
+  <text x="535" y="62" text-anchor="middle" fill="#34d399" font-size="9" font-weight="bold">LLM 分析</text>
+  <rect x="590" y="45" width="180" height="25" rx="4" fill="rgba(8,51,68,0.3)"/>
+  <text x="680" y="62" text-anchor="middle" fill="#22d3ee" font-size="9" font-weight="bold">检测内容</text>
+
+  <!-- M1-M10 rows -->
+  <text x="40" y="93" fill="#e2e8f0" font-size="9">M1  不当凭证使用</text>
+  <circle cx="335" cy="90" r="7" fill="#34d399"/><circle cx="435" cy="90" r="7" fill="#1e293b" stroke="#64748b" stroke-width="1"/><circle cx="535" cy="90" r="7" fill="#34d399"/>
+  <text x="600" y="93" fill="#94a3b8" font-size="8">硬编码 API Key / 密码 / Token</text>
+
+  <text x="40" y="123" fill="#e2e8f0" font-size="9">M2  供应链安全</text>
+  <circle cx="335" cy="120" r="7" fill="#34d399"/><circle cx="435" cy="120" r="7" fill="#1e293b" stroke="#64748b" stroke-width="1"/><circle cx="535" cy="120" r="7" fill="#34d399"/>
+  <text x="600" y="123" fill="#94a3b8" font-size="8">第三方库 CVE / 过时依赖</text>
+
+  <text x="40" y="153" fill="#e2e8f0" font-size="9">M3  认证/授权缺陷</text>
+  <circle cx="335" cy="150" r="7" fill="#34d399"/><circle cx="435" cy="150" r="7" fill="#34d399"/><circle cx="535" cy="150" r="7" fill="#34d399"/>
+  <text x="600" y="153" fill="#94a3b8" font-size="8">弱密码 / 会话管理 / 越权</text>
+
+  <text x="40" y="183" fill="#e2e8f0" font-size="9">M4  输入验证缺陷</text>
+  <circle cx="335" cy="180" r="7" fill="#34d399"/><circle cx="435" cy="180" r="7" fill="#34d399"/><circle cx="535" cy="180" r="7" fill="#34d399"/>
+  <text x="600" y="183" fill="#94a3b8" font-size="8">SQL注入 / XSS / 路径遍历</text>
+
+  <text x="40" y="213" fill="#e2e8f0" font-size="9">M5  不安全通信</text>
+  <circle cx="335" cy="210" r="7" fill="#34d399"/><circle cx="435" cy="210" r="7" fill="#34d399"/><circle cx="535" cy="210" r="7" fill="#34d399"/>
+  <text x="600" y="213" fill="#94a3b8" font-size="8">HTTP明文 / 证书验证缺失 / SSL Pinning</text>
+
+  <text x="40" y="243" fill="#e2e8f0" font-size="9">M6  隐私控制不足</text>
+  <circle cx="335" cy="240" r="7" fill="#34d399"/><circle cx="435" cy="240" r="7" fill="#1e293b" stroke="#64748b" stroke-width="1"/><circle cx="535" cy="240" r="7" fill="#34d399"/>
+  <text x="600" y="243" fill="#94a3b8" font-size="8">过度权限 / 数据收集声明审查</text>
+
+  <text x="40" y="273" fill="#e2e8f0" font-size="9">M7  二进制保护不足</text>
+  <circle cx="335" cy="270" r="7" fill="#34d399"/><circle cx="435" cy="270" r="7" fill="#1e293b" stroke="#64748b" stroke-width="1"/><circle cx="535" cy="270" r="7" fill="#34d399"/>
+  <text x="600" y="273" fill="#94a3b8" font-size="8">未混淆 / 可调试 / ROOT检测缺失</text>
+
+  <text x="40" y="303" fill="#e2e8f0" font-size="9">M8  安全配置错误</text>
+  <circle cx="335" cy="300" r="7" fill="#34d399"/><circle cx="435" cy="300" r="7" fill="#34d399"/><circle cx="535" cy="300" r="7" fill="#34d399"/>
+  <text x="600" y="303" fill="#94a3b8" font-size="8">调试模式 / 备份允许 / 导出组件</text>
+
+  <text x="40" y="333" fill="#e2e8f0" font-size="9">M9  不安全数据存储</text>
+  <circle cx="335" cy="330" r="7" fill="#34d399"/><circle cx="435" cy="330" r="7" fill="#34d399"/><circle cx="535" cy="330" r="7" fill="#34d399"/>
+  <text x="600" y="333" fill="#94a3b8" font-size="8">明文 SharedPrefs / SQLite / 日志泄露</text>
+
+  <text x="40" y="363" fill="#e2e8f0" font-size="9">M10 加密使用不当</text>
+  <circle cx="335" cy="360" r="7" fill="#34d399"/><circle cx="435" cy="360" r="7" fill="#1e293b" stroke="#64748b" stroke-width="1"/><circle cx="535" cy="360" r="7" fill="#34d399"/>
+  <text x="600" y="363" fill="#94a3b8" font-size="8">弱算法 / 硬编码密钥 / 不安全随机数</text>
+
+  <!-- Legend -->
+  <circle cx="40" y="375" r="5" fill="#34d399"/><text x="50" y="378" fill="#64748b" font-size="7">= 覆盖</text>
+  <circle cx="100" y="375" r="5" fill="#1e293b" stroke="#64748b" stroke-width="1"/><text x="110" y="378" fill="#64748b" font-size="7">= 不适用</text>
+</svg>

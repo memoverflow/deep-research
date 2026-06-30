@@ -1,0 +1,137 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="500" viewBox="0 0 1200 500" font-family="Inter, -apple-system, sans-serif">
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e293b" stroke-width="0.5"/>
+    </pattern>
+    <marker id="arr" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6" fill="#94a3b8"/>
+    </marker>
+    <marker id="arr-o" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6" fill="#fb923c"/>
+    </marker>
+  </defs>
+  <rect width="1200" height="500" fill="#020617"/>
+  <rect width="1200" height="500" fill="url(#grid)"/>
+  
+  <text x="600" y="32" text-anchor="middle" fill="#f8fafc" font-size="15" font-weight="700">DevOps Agent Investigation Flow: From Alert to Resolution</text>
+
+  <!-- Step 1: Trigger -->
+  <rect x="30" y="60" width="160" height="70" rx="8" fill="#0f172a"/><rect x="30" y="60" width="160" height="70" rx="8" fill="rgba(136, 19, 55, 0.3)" stroke="#fb7185" stroke-width="1.5"/>
+  <text x="110" y="85" text-anchor="middle" fill="#fb7185" font-size="10" font-weight="700">1. TRIGGER</text>
+  <text x="110" y="102" text-anchor="middle" fill="#94a3b8" font-size="8">Grafana Webhook</text>
+  <text x="110" y="116" text-anchor="middle" fill="#94a3b8" font-size="8">or Scheduled Cron</text>
+
+  <line x1="190" y1="95" x2="220" y2="95" stroke="#fb923c" stroke-width="1.5" marker-end="url(#arr-o)"/>
+
+  <!-- Step 2: Scope -->
+  <rect x="225" y="60" width="160" height="70" rx="8" fill="#0f172a"/><rect x="225" y="60" width="160" height="70" rx="8" fill="rgba(251, 146, 60, 0.3)" stroke="#fb923c" stroke-width="1.5"/>
+  <text x="305" y="85" text-anchor="middle" fill="#fb923c" font-size="10" font-weight="700">2. SCOPE</text>
+  <text x="305" y="102" text-anchor="middle" fill="#94a3b8" font-size="8">Time range: 30min</text>
+  <text x="305" y="116" text-anchor="middle" fill="#94a3b8" font-size="8">Services + Dependencies</text>
+
+  <line x1="385" y1="95" x2="415" y2="95" stroke="#fb923c" stroke-width="1.5" marker-end="url(#arr-o)"/>
+
+  <!-- Step 3: Gather -->
+  <rect x="420" y="60" width="160" height="70" rx="8" fill="#0f172a"/><rect x="420" y="60" width="160" height="70" rx="8" fill="rgba(76, 29, 149, 0.3)" stroke="#a78bfa" stroke-width="1.5"/>
+  <text x="500" y="85" text-anchor="middle" fill="#a78bfa" font-size="10" font-weight="700">3. GATHER</text>
+  <text x="500" y="102" text-anchor="middle" fill="#94a3b8" font-size="8">Metrics + Logs + Traces</text>
+  <text x="500" y="116" text-anchor="middle" fill="#94a3b8" font-size="8">+ Changes + Events</text>
+
+  <line x1="580" y1="95" x2="610" y2="95" stroke="#fb923c" stroke-width="1.5" marker-end="url(#arr-o)"/>
+
+  <!-- Step 4: Correlate -->
+  <rect x="615" y="60" width="160" height="70" rx="8" fill="#0f172a"/><rect x="615" y="60" width="160" height="70" rx="8" fill="rgba(8, 51, 68, 0.3)" stroke="#22d3ee" stroke-width="1.5"/>
+  <text x="695" y="85" text-anchor="middle" fill="#22d3ee" font-size="10" font-weight="700">4. CORRELATE</text>
+  <text x="695" y="102" text-anchor="middle" fill="#94a3b8" font-size="8">Timeline analysis</text>
+  <text x="695" y="116" text-anchor="middle" fill="#94a3b8" font-size="8">Causality inference</text>
+
+  <line x1="775" y1="95" x2="805" y2="95" stroke="#fb923c" stroke-width="1.5" marker-end="url(#arr-o)"/>
+
+  <!-- Step 5: Diagnose -->
+  <rect x="810" y="60" width="160" height="70" rx="8" fill="#0f172a"/><rect x="810" y="60" width="160" height="70" rx="8" fill="rgba(6, 78, 59, 0.3)" stroke="#34d399" stroke-width="1.5"/>
+  <text x="890" y="85" text-anchor="middle" fill="#34d399" font-size="10" font-weight="700">5. DIAGNOSE</text>
+  <text x="890" y="102" text-anchor="middle" fill="#94a3b8" font-size="8">Root cause + evidence</text>
+  <text x="890" y="116" text-anchor="middle" fill="#94a3b8" font-size="8">Confidence score</text>
+
+  <line x1="970" y1="95" x2="1000" y2="95" stroke="#fb923c" stroke-width="1.5" marker-end="url(#arr-o)"/>
+
+  <!-- Step 6: Act -->
+  <rect x="1005" y="60" width="160" height="70" rx="8" fill="#0f172a"/><rect x="1005" y="60" width="160" height="70" rx="8" fill="rgba(120, 53, 15, 0.3)" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="1085" y="85" text-anchor="middle" fill="#fbbf24" font-size="10" font-weight="700">6. ACT</text>
+  <text x="1085" y="102" text-anchor="middle" fill="#94a3b8" font-size="8">Recommend + Execute</text>
+  <text x="1085" y="116" text-anchor="middle" fill="#94a3b8" font-size="8">(with approval)</text>
+
+  <!-- Data Sources (below step 3) -->
+  <rect x="350" y="165" width="320" height="160" rx="8" fill="rgba(30, 41, 59, 0.3)" stroke="#475569" stroke-width="1"/>
+  <text x="510" y="185" text-anchor="middle" fill="#f8fafc" font-size="10" font-weight="600">Data Sources (Agent reads from)</text>
+  
+  <rect x="370" y="200" width="130" height="35" rx="5" fill="rgba(76, 29, 149, 0.2)" stroke="#a78bfa" stroke-width="1"/>
+  <text x="435" y="222" text-anchor="middle" fill="#a78bfa" font-size="9">AMP (Metrics)</text>
+  <rect x="520" y="200" width="130" height="35" rx="5" fill="rgba(76, 29, 149, 0.2)" stroke="#a78bfa" stroke-width="1"/>
+  <text x="585" y="222" text-anchor="middle" fill="#a78bfa" font-size="9">CloudWatch (Logs)</text>
+  <rect x="370" y="245" width="130" height="35" rx="5" fill="rgba(76, 29, 149, 0.2)" stroke="#a78bfa" stroke-width="1"/>
+  <text x="435" y="267" text-anchor="middle" fill="#a78bfa" font-size="9">X-Ray (Traces)</text>
+  <rect x="520" y="245" width="130" height="35" rx="5" fill="rgba(76, 29, 149, 0.2)" stroke="#a78bfa" stroke-width="1"/>
+  <text x="585" y="267" text-anchor="middle" fill="#a78bfa" font-size="9">GitHub (Changes)</text>
+  <rect x="370" y="290" width="130" height="35" rx="5" fill="rgba(76, 29, 149, 0.2)" stroke="#a78bfa" stroke-width="1"/>
+  <text x="435" y="312" text-anchor="middle" fill="#a78bfa" font-size="9">CloudTrail (Events)</text>
+  <rect x="520" y="290" width="130" height="35" rx="5" fill="rgba(76, 29, 149, 0.2)" stroke="#a78bfa" stroke-width="1"/>
+  <text x="585" y="312" text-anchor="middle" fill="#a78bfa" font-size="9">kubectl (Live State)</text>
+
+  <line x1="500" y1="130" x2="500" y2="163" stroke="#a78bfa" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#arr)"/>
+
+  <!-- Tools (below step 6) -->
+  <rect x="920" y="165" width="240" height="160" rx="8" fill="rgba(30, 41, 59, 0.3)" stroke="#475569" stroke-width="1"/>
+  <text x="1040" y="185" text-anchor="middle" fill="#f8fafc" font-size="10" font-weight="600">Actions (Agent can execute)</text>
+  
+  <rect x="940" y="200" width="200" height="28" rx="4" fill="rgba(6, 78, 59, 0.2)" stroke="#34d399" stroke-width="1"/>
+  <text x="1040" y="219" text-anchor="middle" fill="#34d399" font-size="8">kubectl rollback (approval)</text>
+  <rect x="940" y="235" width="200" height="28" rx="4" fill="rgba(6, 78, 59, 0.2)" stroke="#34d399" stroke-width="1"/>
+  <text x="1040" y="254" text-anchor="middle" fill="#34d399" font-size="8">kubectl scale (approval)</text>
+  <rect x="940" y="270" width="200" height="28" rx="4" fill="rgba(120, 53, 15, 0.2)" stroke="#fbbf24" stroke-width="1"/>
+  <text x="1040" y="289" text-anchor="middle" fill="#fbbf24" font-size="8">Post to Slack (auto)</text>
+  <rect x="940" y="305" width="200" height="28" rx="4" fill="rgba(120, 53, 15, 0.2)" stroke="#fbbf24" stroke-width="1"/>
+  <text x="1040" y="324" text-anchor="middle" fill="#fbbf24" font-size="8">Create Jira ticket (auto)</text>
+
+  <line x1="1085" y1="130" x2="1040" y2="163" stroke="#fbbf24" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#arr)"/>
+
+  <!-- Timeline example -->
+  <rect x="30" y="360" width="1140" height="120" rx="8" fill="rgba(30, 41, 59, 0.2)" stroke="#334155" stroke-width="1"/>
+  <text x="600" y="382" text-anchor="middle" fill="#f8fafc" font-size="10" font-weight="600">Example: Payment Service 5xx Spike Investigation Timeline</text>
+  
+  <!-- Timeline bar -->
+  <line x1="60" y1="420" x2="1140" y2="420" stroke="#475569" stroke-width="2"/>
+  
+  <circle cx="120" cy="420" r="6" fill="#fb7185" stroke="#fb7185"/>
+  <text x="120" y="410" text-anchor="middle" fill="#fb7185" font-size="7">T+0s</text>
+  <text x="120" y="440" text-anchor="middle" fill="#94a3b8" font-size="7">Alert fires</text>
+  
+  <circle cx="280" cy="420" r="6" fill="#fb923c" stroke="#fb923c"/>
+  <text x="280" y="410" text-anchor="middle" fill="#fb923c" font-size="7">T+5s</text>
+  <text x="280" y="440" text-anchor="middle" fill="#94a3b8" font-size="7">Agent starts</text>
+  
+  <circle cx="440" cy="420" r="6" fill="#a78bfa" stroke="#a78bfa"/>
+  <text x="440" y="410" text-anchor="middle" fill="#a78bfa" font-size="7">T+30s</text>
+  <text x="440" y="440" text-anchor="middle" fill="#94a3b8" font-size="7">Queries metrics</text>
+  <text x="440" y="452" text-anchor="middle" fill="#94a3b8" font-size="7">+ logs + traces</text>
+  
+  <circle cx="600" cy="420" r="6" fill="#22d3ee" stroke="#22d3ee"/>
+  <text x="600" y="410" text-anchor="middle" fill="#22d3ee" font-size="7">T+2min</text>
+  <text x="600" y="440" text-anchor="middle" fill="#94a3b8" font-size="7">Correlates with</text>
+  <text x="600" y="452" text-anchor="middle" fill="#94a3b8" font-size="7">deploy v2.3.1</text>
+  
+  <circle cx="760" cy="420" r="6" fill="#34d399" stroke="#34d399"/>
+  <text x="760" y="410" text-anchor="middle" fill="#34d399" font-size="7">T+4min</text>
+  <text x="760" y="440" text-anchor="middle" fill="#94a3b8" font-size="7">Identifies commit</text>
+  <text x="760" y="452" text-anchor="middle" fill="#94a3b8" font-size="7">a3f2c8d as cause</text>
+  
+  <circle cx="920" cy="420" r="6" fill="#fbbf24" stroke="#fbbf24"/>
+  <text x="920" y="410" text-anchor="middle" fill="#fbbf24" font-size="7">T+5min</text>
+  <text x="920" y="440" text-anchor="middle" fill="#94a3b8" font-size="7">Posts report</text>
+  <text x="920" y="452" text-anchor="middle" fill="#94a3b8" font-size="7">to Slack</text>
+  
+  <circle cx="1060" cy="420" r="6" fill="#34d399" stroke="#34d399"/>
+  <text x="1060" y="410" text-anchor="middle" fill="#34d399" font-size="7">T+6min</text>
+  <text x="1060" y="440" text-anchor="middle" fill="#94a3b8" font-size="7">Rollback</text>
+  <text x="1060" y="452" text-anchor="middle" fill="#94a3b8" font-size="7">(approved)</text>
+</svg>

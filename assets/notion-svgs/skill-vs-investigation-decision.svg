@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="480" viewBox="0 0 1100 480" font-family="Inter, -apple-system, sans-serif">
+  <defs>
+    <marker id="a" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#60a5fa"/></marker>
+    <marker id="b" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#34d399"/></marker>
+    <marker id="c" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#fbbf24"/></marker>
+  </defs>
+  <rect width="1100" height="480" fill="#0f172a"/>
+  <text x="550" y="35" text-anchor="middle" fill="#e2e8f0" font-size="16" font-weight="700">何时用 Investigation vs Custom Skill？（决策流程）</text>
+  
+  <!-- Start -->
+  <rect x="420" y="55" width="260" height="45" rx="22" fill="rgba(30,64,175,0.4)" stroke="#60a5fa" stroke-width="1.5"/>
+  <text x="550" y="82" text-anchor="middle" fill="#e2e8f0" font-size="12">安全事件发生</text>
+  
+  <path d="M550,100 L550,130" stroke="#60a5fa" stroke-width="1.5" marker-end="url(#a)"/>
+  
+  <!-- Decision 1 -->
+  <polygon points="550,135 700,175 550,215 400,175" fill="rgba(120,53,15,0.3)" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="550" y="172" text-anchor="middle" fill="#fbbf24" font-size="11">这类事件是否</text>
+  <text x="550" y="188" text-anchor="middle" fill="#fbbf24" font-size="11">反复出现？</text>
+  
+  <!-- No path - Investigation -->
+  <text x="360" y="170" fill="#94a3b8" font-size="10">否（首次/偶发）</text>
+  <path d="M400,175 L280,175" stroke="#60a5fa" stroke-width="1.5" marker-end="url(#a)"/>
+  
+  <rect x="80" y="148" width="200" height="55" rx="8" fill="rgba(30,64,175,0.3)" stroke="#60a5fa" stroke-width="1.5"/>
+  <text x="180" y="172" text-anchor="middle" fill="#60a5fa" font-size="12" font-weight="600">用 Investigation</text>
+  <text x="180" y="190" text-anchor="middle" fill="#94a3b8" font-size="9">写好 Description → 一次性调查</text>
+  
+  <!-- Yes path -->
+  <text x="720" y="170" fill="#94a3b8" font-size="10">是（每周多次）</text>
+  <path d="M700,175 L800,175" stroke="#fbbf24" stroke-width="1.5" marker-end="url(#c)"/>
+  
+  <!-- Decision 2 -->
+  <polygon points="920,140 1060,175 920,210 780,175" fill="rgba(120,53,15,0.3)" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="920" y="172" text-anchor="middle" fill="#fbbf24" font-size="11">调查流程</text>
+  <text x="920" y="188" text-anchor="middle" fill="#fbbf24" font-size="11">已标准化？</text>
+  
+  <!-- Yes - Custom Skill -->
+  <path d="M920,210 L920,250" stroke="#34d399" stroke-width="1.5" marker-end="url(#b)"/>
+  <text x="945" y="235" fill="#94a3b8" font-size="10">是</text>
+  
+  <rect x="800" y="255" width="240" height="55" rx="8" fill="rgba(6,78,59,0.3)" stroke="#34d399" stroke-width="1.5"/>
+  <text x="920" y="278" text-anchor="middle" fill="#34d399" font-size="12" font-weight="600">写 Custom Skill</text>
+  <text x="920" y="296" text-anchor="middle" fill="#94a3b8" font-size="9">固化为可复用 Runbook</text>
+  
+  <!-- No - Investigation first then Skill -->
+  <path d="M780,175 L780,175" stroke="#fbbf24" stroke-width="0"/>
+  <text x="1070" y="210" fill="#94a3b8" font-size="10">否</text>
+  <path d="M1060,175 L1060,255" stroke="#fbbf24" stroke-width="1.5" marker-end="url(#c)"/>
+  
+  <rect x="965" y="255" width="180" height="55" rx="8" fill="rgba(120,53,15,0.2)" stroke="#fbbf24" stroke-width="1"/>
+  <text x="1055" y="278" text-anchor="middle" fill="#fbbf24" font-size="10">先用 Investigation</text>
+  <text x="1055" y="296" text-anchor="middle" fill="#94a3b8" font-size="9">摸索流程，积累经验</text>
+  
+  <!-- Arrow from investigation to "next time" -->
+  <path d="M180,203 L180,350" stroke="#60a5fa" stroke-width="1" stroke-dasharray="4,3"/>
+  <text x="180" y="370" text-anchor="middle" fill="#64748b" font-size="9">调查完成后...</text>
+  
+  <!-- Investigation -> Learned Skill -->
+  <path d="M180,380 L180,410" stroke="#60a5fa" stroke-width="1.5" marker-end="url(#a)"/>
+  <rect x="80" y="415" width="200" height="45" rx="6" fill="rgba(76,29,149,0.2)" stroke="#a78bfa" stroke-width="1"/>
+  <text x="180" y="438" text-anchor="middle" fill="#a78bfa" font-size="10">Agent 自动生成 Learned Skill</text>
+  <text x="180" y="453" text-anchor="middle" fill="#94a3b8" font-size="9">记录调查模式，下次自动应用</text>
+  
+  <!-- Custom Skill benefits -->
+  <path d="M920,310 L920,350" stroke="#34d399" stroke-width="1.5" marker-end="url(#b)"/>
+  <rect x="750" y="355" width="340" height="100" rx="8" fill="rgba(6,78,59,0.15)" stroke="#34d399" stroke-width="1"/>
+  <text x="920" y="378" text-anchor="middle" fill="#34d399" font-size="11" font-weight="600">Custom Skill 优势</text>
+  <text x="770" y="398" fill="#94a3b8" font-size="9">✓ 团队共享：新人也能按标准执行</text>
+  <text x="770" y="414" fill="#94a3b8" font-size="9">✓ 质量一致：不会因人而异、因疲劳遗漏</text>
+  <text x="770" y="430" fill="#94a3b8" font-size="9">✓ 自动加载：匹配场景时 Agent 自动引用</text>
+  <text x="770" y="446" fill="#94a3b8" font-size="9">✓ 持续优化：每次调查后可迭代更新</text>
+  
+  <!-- Investigation benefits -->
+  <rect x="330" y="355" width="340" height="100" rx="8" fill="rgba(30,64,175,0.15)" stroke="#60a5fa" stroke-width="1"/>
+  <text x="500" y="378" text-anchor="middle" fill="#60a5fa" font-size="11" font-weight="600">Investigation 优势</text>
+  <text x="350" y="398" fill="#94a3b8" font-size="9">✓ 灵活：针对特定事件自由定义调查方向</text>
+  <text x="350" y="414" fill="#94a3b8" font-size="9">✓ 探索性：不确定原因时让Agent广泛搜索</text>
+  <text x="350" y="430" fill="#94a3b8" font-size="9">✓ 零门槛：写几句话就能触发深度调查</text>
+  <text x="350" y="446" fill="#94a3b8" font-size="9">✓ 一次性成本：不需要维护 Skill 文档</text>
+</svg>

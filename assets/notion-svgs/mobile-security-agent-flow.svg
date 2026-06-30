@@ -1,0 +1,77 @@
+<svg viewBox="0 0 800 420" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:800px;margin:24px auto;display:block;font-family:system-ui,-apple-system,sans-serif;">
+  <defs>
+    <marker id="arr2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#6e8eff"/></marker>
+  </defs>
+  <rect width="800" height="420" fill="#020617" rx="12"/>
+  <text x="400" y="28" text-anchor="middle" fill="#e2e8f0" font-size="14" font-weight="bold">扫描流程：从上传到报告的完整链路</text>
+
+  <!-- Swimlanes -->
+  <text x="80" y="60" text-anchor="middle" fill="#94a3b8" font-size="10">用户</text>
+  <text x="230" y="60" text-anchor="middle" fill="#fbbf24" font-size="10">AWS 服务</text>
+  <text x="430" y="60" text-anchor="middle" fill="#34d399" font-size="10">Security Agent</text>
+  <text x="620" y="60" text-anchor="middle" fill="#fb7185" font-size="10">MobSF</text>
+  <text x="740" y="60" text-anchor="middle" fill="#22d3ee" font-size="10">LLM</text>
+
+  <!-- Vertical lanes -->
+  <line x1="80" y1="70" x2="80" y2="400" stroke="#1e293b" stroke-width="1"/>
+  <line x1="230" y1="70" x2="230" y2="400" stroke="#1e293b" stroke-width="1"/>
+  <line x1="430" y1="70" x2="430" y2="400" stroke="#1e293b" stroke-width="1"/>
+  <line x1="620" y1="70" x2="620" y2="400" stroke="#1e293b" stroke-width="1"/>
+  <line x1="740" y1="70" x2="740" y2="400" stroke="#1e293b" stroke-width="1"/>
+
+  <!-- Step 1 -->
+  <rect x="40" y="85" width="80" height="25" rx="4" fill="rgba(30,41,59,0.5)" stroke="#94a3b8" stroke-width="1"/>
+  <text x="80" y="102" text-anchor="middle" fill="#e2e8f0" font-size="8">上传 APK</text>
+  <line x1="120" y1="97" x2="195" y2="97" stroke="#6e8eff" stroke-width="1.2" marker-end="url(#arr2)"/>
+  <text x="158" y="92" fill="#64748b" font-size="7">① Presigned URL</text>
+
+  <!-- Step 2 -->
+  <rect x="195" y="120" width="70" height="25" rx="4" fill="rgba(120,53,15,0.3)" stroke="#fbbf24" stroke-width="1"/>
+  <text x="230" y="137" text-anchor="middle" fill="#fde68a" font-size="8">S3 存储</text>
+  <line x1="265" y1="132" x2="395" y2="155" stroke="#6e8eff" stroke-width="1.2" marker-end="url(#arr2)"/>
+  <text x="330" y="140" fill="#64748b" font-size="7">② EventBridge 触发</text>
+
+  <!-- Step 3 -->
+  <rect x="395" y="155" width="70" height="25" rx="4" fill="rgba(6,78,59,0.4)" stroke="#34d399" stroke-width="1"/>
+  <text x="430" y="172" text-anchor="middle" fill="#6ee7b7" font-size="8">接收任务</text>
+  <line x1="430" y1="180" x2="430" y2="200" stroke="#34d399" stroke-width="1"/>
+
+  <!-- Step 4: Agent → MobSF upload -->
+  <rect x="395" y="200" width="70" height="25" rx="4" fill="rgba(6,78,59,0.4)" stroke="#34d399" stroke-width="1"/>
+  <text x="430" y="217" text-anchor="middle" fill="#6ee7b7" font-size="8">下载文件</text>
+  <line x1="465" y1="212" x2="585" y2="235" stroke="#fb7185" stroke-width="1.2" marker-end="url(#arr2)"/>
+  <text x="525" y="220" fill="#64748b" font-size="7">③ 上传到 MobSF</text>
+
+  <!-- Step 5: MobSF scan -->
+  <rect x="585" y="235" width="70" height="25" rx="4" fill="rgba(136,19,55,0.3)" stroke="#fb7185" stroke-width="1"/>
+  <text x="620" y="252" text-anchor="middle" fill="#fda4af" font-size="8">静态扫描</text>
+  <line x1="620" y1="260" x2="620" y2="275" stroke="#fb7185" stroke-width="1"/>
+  <rect x="585" y="275" width="70" height="25" rx="4" fill="rgba(136,19,55,0.3)" stroke="#fb7185" stroke-width="1"/>
+  <text x="620" y="292" text-anchor="middle" fill="#fda4af" font-size="8">动态扫描</text>
+
+  <!-- Step 6: Results back -->
+  <line x1="585" y1="287" x2="465" y2="310" stroke="#fb7185" stroke-width="1.2" marker-end="url(#arr2)"/>
+  <text x="525" y="295" fill="#64748b" font-size="7">④ JSON 结果</text>
+
+  <rect x="395" y="310" width="70" height="25" rx="4" fill="rgba(6,78,59,0.4)" stroke="#34d399" stroke-width="1"/>
+  <text x="430" y="327" text-anchor="middle" fill="#6ee7b7" font-size="8">收到结果</text>
+
+  <!-- Step 7: Agent → LLM -->
+  <line x1="465" y1="322" x2="705" y2="345" stroke="#22d3ee" stroke-width="1.2" marker-end="url(#arr2)"/>
+  <text x="585" y="330" fill="#64748b" font-size="7">⑤ 请求 LLM 分析</text>
+
+  <rect x="705" y="345" width="70" height="25" rx="4" fill="rgba(8,51,68,0.4)" stroke="#22d3ee" stroke-width="1"/>
+  <text x="740" y="362" text-anchor="middle" fill="#67e8f9" font-size="8">解读+分类</text>
+
+  <!-- Step 8: LLM → Agent → User -->
+  <line x1="705" y1="357" x2="465" y2="375" stroke="#22d3ee" stroke-width="1.2" marker-end="url(#arr2)"/>
+  <text x="585" y="363" fill="#64748b" font-size="7">⑥ 结构化报告</text>
+
+  <rect x="395" y="375" width="70" height="25" rx="4" fill="rgba(6,78,59,0.4)" stroke="#34d399" stroke-width="1"/>
+  <text x="430" y="392" text-anchor="middle" fill="#6ee7b7" font-size="8">返回报告</text>
+  <line x1="395" y1="387" x2="120" y2="387" stroke="#6e8eff" stroke-width="1.2" marker-end="url(#arr2)"/>
+  <text x="250" y="382" fill="#64748b" font-size="7">⑦ 安全报告 + 修复建议</text>
+
+  <rect x="40" y="375" width="80" height="25" rx="4" fill="rgba(30,41,59,0.5)" stroke="#94a3b8" stroke-width="1"/>
+  <text x="80" y="392" text-anchor="middle" fill="#e2e8f0" font-size="8">查看报告</text>
+</svg>

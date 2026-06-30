@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="500" viewBox="0 0 1100 500" font-family="Inter, -apple-system, sans-serif">
+  <rect width="1100" height="500" fill="#0f172a"/>
+  <text x="550" y="35" text-anchor="middle" fill="#e2e8f0" font-size="16" font-weight="600">DevOps Agent 安全事件调查流程</text>
+  
+  <!-- Step 1: Trigger -->
+  <rect x="40" y="70" width="180" height="120" rx="10" fill="rgba(120,53,15,0.4)" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="130" y="100" text-anchor="middle" fill="#fbbf24" font-size="12" font-weight="600">① 触发</text>
+  <text x="130" y="125" text-anchor="middle" fill="#e2e8f0" font-size="10">CloudWatch Alarm</text>
+  <text x="130" y="145" text-anchor="middle" fill="#e2e8f0" font-size="10">→ SNS → Webhook</text>
+  <text x="130" y="165" text-anchor="middle" fill="#94a3b8" font-size="9">SSH failures > 5/min</text>
+  
+  <!-- Arrow -->
+  <path d="M220,130 L260,130" stroke="#fbbf24" stroke-width="2" marker-end="url(#a1)"/>
+  <defs><marker id="a1" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#fbbf24"/></marker></defs>
+  
+  <!-- Step 2: Investigation -->
+  <rect x="270" y="60" width="200" height="140" rx="10" fill="rgba(30,64,175,0.4)" stroke="#60a5fa" stroke-width="1.5"/>
+  <text x="370" y="90" text-anchor="middle" fill="#60a5fa" font-size="12" font-weight="600">② 自动调查</text>
+  <text x="370" y="115" text-anchor="middle" fill="#e2e8f0" font-size="10">DevOps Agent 启动</text>
+  <text x="370" y="135" text-anchor="middle" fill="#94a3b8" font-size="9">• 查询 Logs Insights</text>
+  <text x="370" y="152" text-anchor="middle" fill="#94a3b8" font-size="9">• 关联 GuardDuty findings</text>
+  <text x="370" y="169" text-anchor="middle" fill="#94a3b8" font-size="9">• 检查 VPC Flow Logs</text>
+  <text x="370" y="186" text-anchor="middle" fill="#94a3b8" font-size="9">• 分析 CloudTrail 事件</text>
+  
+  <!-- Arrow -->
+  <path d="M470,130 L510,130" stroke="#60a5fa" stroke-width="2" marker-end="url(#a2)"/>
+  <defs><marker id="a2" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#60a5fa"/></marker></defs>
+  
+  <!-- Step 3: Diagnosis -->
+  <rect x="520" y="60" width="200" height="140" rx="10" fill="rgba(76,29,149,0.4)" stroke="#a78bfa" stroke-width="1.5"/>
+  <text x="620" y="90" text-anchor="middle" fill="#a78bfa" font-size="12" font-weight="600">③ 诊断结论</text>
+  <text x="620" y="115" text-anchor="middle" fill="#e2e8f0" font-size="10">Root Cause Analysis</text>
+  <text x="620" y="140" text-anchor="middle" fill="#94a3b8" font-size="9">• 攻击源 IP: 45.33.x.x</text>
+  <text x="620" y="157" text-anchor="middle" fill="#94a3b8" font-size="9">• 目标用户: root, admin</text>
+  <text x="620" y="174" text-anchor="middle" fill="#94a3b8" font-size="9">• 攻击时间窗口: 03:00-04:30</text>
+  <text x="620" y="191" text-anchor="middle" fill="#94a3b8" font-size="9">• 是否成功: 未成功</text>
+  
+  <!-- Arrow -->
+  <path d="M720,130 L760,130" stroke="#a78bfa" stroke-width="2" marker-end="url(#a3)"/>
+  <defs><marker id="a3" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#a78bfa"/></marker></defs>
+  
+  <!-- Step 4: Response -->
+  <rect x="770" y="60" width="200" height="140" rx="10" fill="rgba(136,19,55,0.4)" stroke="#fb7185" stroke-width="1.5"/>
+  <text x="870" y="90" text-anchor="middle" fill="#fb7185" font-size="12" font-weight="600">④ 自动响应</text>
+  <text x="870" y="115" text-anchor="middle" fill="#e2e8f0" font-size="10">EventBridge → Lambda</text>
+  <text x="870" y="140" text-anchor="middle" fill="#94a3b8" font-size="9">• NACL 封禁攻击 IP</text>
+  <text x="870" y="157" text-anchor="middle" fill="#94a3b8" font-size="9">• 隔离安全组</text>
+  <text x="870" y="174" text-anchor="middle" fill="#94a3b8" font-size="9">• EBS 取证快照</text>
+  <text x="870" y="191" text-anchor="middle" fill="#94a3b8" font-size="9">• Slack 通知团队</text>
+  
+  <!-- Step 5: Prevention (below) -->
+  <rect x="270" y="260" width="700" height="100" rx="10" fill="rgba(6,78,59,0.3)" stroke="#34d399" stroke-width="1.5"/>
+  <text x="620" y="290" text-anchor="middle" fill="#34d399" font-size="12" font-weight="600">⑤ 预防加固 (DevOps Agent Prevention + Custom Skills)</text>
+  <text x="370" y="320" text-anchor="middle" fill="#94a3b8" font-size="10">• 建议启用 fail2ban</text>
+  <text x="620" y="320" text-anchor="middle" fill="#94a3b8" font-size="10">• 建议禁用密码登录</text>
+  <text x="870" y="320" text-anchor="middle" fill="#94a3b8" font-size="10">• 建议收紧 SG 入站规则</text>
+  <text x="370" y="345" text-anchor="middle" fill="#94a3b8" font-size="10">• 自动创建加固 Skill</text>
+  <text x="620" y="345" text-anchor="middle" fill="#94a3b8" font-size="10">• 周期巡检 Custom Skill</text>
+  <text x="870" y="345" text-anchor="middle" fill="#94a3b8" font-size="10">• Learned Skill 记录模式</text>
+  
+  <!-- Arrows down to prevention -->
+  <path d="M370,200 L370,255" stroke="#60a5fa" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#a4)"/>
+  <path d="M620,200 L620,255" stroke="#a78bfa" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#a4)"/>
+  <path d="M870,200 L870,255" stroke="#fb7185" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#a4)"/>
+  <defs><marker id="a4" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#34d399"/></marker></defs>
+  
+  <!-- Bottom: Custom Skill example -->
+  <rect x="40" y="390" width="1020" height="90" rx="8" fill="rgba(30,41,59,0.5)" stroke="#475569" stroke-width="1"/>
+  <text x="550" y="415" text-anchor="middle" fill="#e2e8f0" font-size="11" font-weight="600">Custom Skill 示例：SSH 暴力破解调查 Runbook</text>
+  <text x="550" y="440" text-anchor="middle" fill="#94a3b8" font-size="10">When: SSH failed login alarm fires → Do: Query last 1h auth logs → Correlate with GuardDuty UnauthorizedAccess:EC2/SSHBruteForce</text>
+  <text x="550" y="460" text-anchor="middle" fill="#94a3b8" font-size="10">→ Check if any login succeeded after failures → If yes: escalate to P1 + isolate instance → If no: block source IP in NACL + notify</text>
+</svg>

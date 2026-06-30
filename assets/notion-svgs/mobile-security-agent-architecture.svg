@@ -1,0 +1,89 @@
+<svg viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:900px;margin:24px auto;display:block;font-family:system-ui,-apple-system,sans-serif;">
+  <defs>
+    <marker id="arr1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#6e8eff"/></marker>
+    <linearGradient id="bg1" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:#0f172a"/><stop offset="100%" style="stop-color:#020617"/></linearGradient>
+  </defs>
+  <rect width="900" height="500" fill="url(#bg1)" rx="12"/>
+  <text x="450" y="28" text-anchor="middle" fill="#e2e8f0" font-size="14" font-weight="bold">Mobile Security Agent — 整体系统架构</text>
+
+  <!-- User Layer -->
+  <rect x="30" y="50" width="120" height="70" rx="8" fill="rgba(30,41,59,0.5)" stroke="#94a3b8" stroke-width="1.5"/>
+  <text x="90" y="78" text-anchor="middle" fill="#e2e8f0" font-size="11" font-weight="bold">用户</text>
+  <text x="90" y="96" text-anchor="middle" fill="#94a3b8" font-size="9">Web / CLI / CI/CD</text>
+  <text x="90" y="110" text-anchor="middle" fill="#94a3b8" font-size="9">上传 APK/IPA</text>
+
+  <!-- API Gateway -->
+  <rect x="200" y="55" width="120" height="55" rx="8" fill="rgba(120,53,15,0.3)" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="260" y="78" text-anchor="middle" fill="#e2e8f0" font-size="11" font-weight="bold">API Gateway</text>
+  <text x="260" y="96" text-anchor="middle" fill="#fbbf24" font-size="9">IAM / Cognito 认证</text>
+
+  <!-- S3 -->
+  <rect x="380" y="55" width="120" height="55" rx="8" fill="rgba(76,29,149,0.4)" stroke="#a78bfa" stroke-width="1.5"/>
+  <text x="440" y="78" text-anchor="middle" fill="#e2e8f0" font-size="11" font-weight="bold">S3 Bucket</text>
+  <text x="440" y="96" text-anchor="middle" fill="#a78bfa" font-size="9">APK/IPA 存储 + KMS加密</text>
+
+  <!-- EventBridge -->
+  <rect x="560" y="55" width="120" height="55" rx="8" fill="rgba(120,53,15,0.3)" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="620" y="78" text-anchor="middle" fill="#e2e8f0" font-size="11" font-weight="bold">EventBridge</text>
+  <text x="620" y="96" text-anchor="middle" fill="#fbbf24" font-size="9">S3 上传事件触发</text>
+
+  <!-- Arrows top row -->
+  <line x1="150" y1="82" x2="198" y2="82" stroke="#6e8eff" stroke-width="1.5" marker-end="url(#arr1)"/>
+  <line x1="320" y1="82" x2="378" y2="82" stroke="#6e8eff" stroke-width="1.5" marker-end="url(#arr1)"/>
+  <line x1="500" y1="82" x2="558" y2="82" stroke="#6e8eff" stroke-width="1.5" marker-end="url(#arr1)"/>
+
+  <!-- AgentCore (center, large) -->
+  <rect x="250" y="170" width="400" height="120" rx="12" fill="rgba(6,78,59,0.2)" stroke="#34d399" stroke-width="2"/>
+  <text x="450" y="195" text-anchor="middle" fill="#34d399" font-size="13" font-weight="bold">Amazon Bedrock AgentCore Runtime</text>
+  <rect x="280" y="210" width="130" height="50" rx="6" fill="rgba(6,78,59,0.4)" stroke="#34d399" stroke-width="1"/>
+  <text x="345" y="232" text-anchor="middle" fill="#e2e8f0" font-size="10">Security Agent</text>
+  <text x="345" y="248" text-anchor="middle" fill="#6ee7b7" font-size="8">Strands SDK + LLM</text>
+  <rect x="440" y="210" width="100" height="50" rx="6" fill="rgba(6,78,59,0.4)" stroke="#34d399" stroke-width="1"/>
+  <text x="490" y="232" text-anchor="middle" fill="#e2e8f0" font-size="10">MCP Tools</text>
+  <text x="490" y="248" text-anchor="middle" fill="#6ee7b7" font-size="8">扫描/分析/报告</text>
+  <rect x="560" y="210" width="70" height="50" rx="6" fill="rgba(6,78,59,0.4)" stroke="#34d399" stroke-width="1"/>
+  <text x="595" y="232" text-anchor="middle" fill="#e2e8f0" font-size="10">Session</text>
+  <text x="595" y="248" text-anchor="middle" fill="#6ee7b7" font-size="8">有状态会话</text>
+
+  <!-- Arrow EventBridge → AgentCore -->
+  <line x1="620" y1="110" x2="620" y2="148" stroke="#34d399" stroke-width="1.5"/>
+  <line x1="620" y1="148" x2="550" y2="168" stroke="#34d399" stroke-width="1.5" marker-end="url(#arr1)"/>
+
+  <!-- MobSF Engine -->
+  <rect x="100" y="340" width="200" height="100" rx="8" fill="rgba(136,19,55,0.3)" stroke="#fb7185" stroke-width="1.5"/>
+  <text x="200" y="365" text-anchor="middle" fill="#fb7185" font-size="12" font-weight="bold">MobSF 扫描引擎</text>
+  <text x="200" y="385" text-anchor="middle" fill="#fda4af" font-size="9">ECS Fargate (Private Subnet)</text>
+  <text x="200" y="403" text-anchor="middle" fill="#94a3b8" font-size="8">静态分析 SAST</text>
+  <text x="200" y="418" text-anchor="middle" fill="#94a3b8" font-size="8">动态分析 DAST</text>
+  <text x="200" y="433" text-anchor="middle" fill="#94a3b8" font-size="8">REST API :8000</text>
+
+  <!-- Bedrock LLM -->
+  <rect x="380" y="340" width="180" height="80" rx="8" fill="rgba(120,53,15,0.3)" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="470" y="365" text-anchor="middle" fill="#fbbf24" font-size="12" font-weight="bold">Amazon Bedrock</text>
+  <text x="470" y="385" text-anchor="middle" fill="#fde68a" font-size="9">Claude Sonnet / Nova</text>
+  <text x="470" y="403" text-anchor="middle" fill="#94a3b8" font-size="8">解读扫描结果 → 生成报告</text>
+  <text x="470" y="418" text-anchor="middle" fill="#94a3b8" font-size="8">漏洞分类 + 修复建议</text>
+
+  <!-- Report output -->
+  <rect x="640" y="340" width="180" height="80" rx="8" fill="rgba(8,51,68,0.4)" stroke="#22d3ee" stroke-width="1.5"/>
+  <text x="730" y="365" text-anchor="middle" fill="#22d3ee" font-size="12" font-weight="bold">安全报告输出</text>
+  <text x="730" y="385" text-anchor="middle" fill="#67e8f9" font-size="9">OWASP Top 10 分类</text>
+  <text x="730" y="403" text-anchor="middle" fill="#94a3b8" font-size="8">漏洞详情 + CVSS 评分</text>
+  <text x="730" y="418" text-anchor="middle" fill="#94a3b8" font-size="8">修复建议 + 优先级</text>
+
+  <!-- Arrows AgentCore → tools -->
+  <line x1="345" y1="290" x2="200" y2="338" stroke="#fb7185" stroke-width="1.5" marker-end="url(#arr1)"/>
+  <line x1="450" y1="290" x2="470" y2="338" stroke="#fbbf24" stroke-width="1.5" marker-end="url(#arr1)"/>
+  <line x1="550" y1="290" x2="700" y2="338" stroke="#22d3ee" stroke-width="1.5" marker-end="url(#arr1)"/>
+  
+  <text x="250" y="318" fill="#94a3b8" font-size="8">调用扫描 API</text>
+  <text x="450" y="318" fill="#94a3b8" font-size="8">LLM 推理</text>
+  <text x="620" y="318" fill="#94a3b8" font-size="8">输出报告</text>
+
+  <!-- CloudWatch -->
+  <rect x="640" y="460" width="180" height="30" rx="6" fill="rgba(120,53,15,0.2)" stroke="#fbbf24" stroke-width="1"/>
+  <text x="730" y="480" text-anchor="middle" fill="#fbbf24" font-size="9">CloudWatch Logs + X-Ray 追踪</text>
+
+  <!-- Bottom note -->
+  <text x="450" y="490" text-anchor="middle" fill="#64748b" font-size="9">全链路在 Private VPC 内运行 | MobSF 无公网出口 | S3 KMS 加密 | IAM 最小权限</text>
+</svg>

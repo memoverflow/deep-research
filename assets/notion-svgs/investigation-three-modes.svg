@@ -1,0 +1,130 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="650" viewBox="0 0 1200 650" font-family="Inter, -apple-system, sans-serif">
+  <defs>
+    <marker id="arr" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#60a5fa"/></marker>
+    <marker id="arr2" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#fbbf24"/></marker>
+    <marker id="arr3" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#34d399"/></marker>
+  </defs>
+  <rect width="1200" height="650" fill="#0f172a"/>
+  <text x="600" y="38" text-anchor="middle" fill="#e2e8f0" font-size="18" font-weight="700">DevOps Agent Investigation 三种触发模式</text>
+
+  <!-- Mode 1: Alarm Auto-Trigger -->
+  <rect x="30" y="65" width="370" height="560" rx="12" fill="rgba(30,64,175,0.15)" stroke="#60a5fa" stroke-width="1.5"/>
+  <text x="215" y="92" text-anchor="middle" fill="#60a5fa" font-size="14" font-weight="700">模式 1：Alarm 自动触发</text>
+  <text x="215" y="112" text-anchor="middle" fill="#94a3b8" font-size="11">7×24 无人值守，秒级响应</text>
+  
+  <rect x="55" y="130" width="130" height="50" rx="6" fill="rgba(120,53,15,0.4)" stroke="#fbbf24" stroke-width="1"/>
+  <text x="120" y="155" text-anchor="middle" fill="#fbbf24" font-size="10">CloudWatch</text>
+  <text x="120" y="170" text-anchor="middle" fill="#94a3b8" font-size="9">Metric Filter</text>
+  
+  <rect x="210" y="130" width="130" height="50" rx="6" fill="rgba(136,19,55,0.4)" stroke="#fb7185" stroke-width="1"/>
+  <text x="275" y="155" text-anchor="middle" fill="#fb7185" font-size="10">GuardDuty</text>
+  <text x="275" y="170" text-anchor="middle" fill="#94a3b8" font-size="9">Runtime Finding</text>
+  
+  <path d="M120,180 L120,210" stroke="#fbbf24" stroke-width="1.5" marker-end="url(#arr2)"/>
+  <path d="M275,180 L275,210" stroke="#fbbf24" stroke-width="1.5" marker-end="url(#arr2)"/>
+  
+  <rect x="55" y="215" width="285" height="45" rx="6" fill="rgba(120,53,15,0.3)" stroke="#fbbf24" stroke-width="1"/>
+  <text x="197" y="237" text-anchor="middle" fill="#fbbf24" font-size="11">CloudWatch Alarm → SNS</text>
+  <text x="197" y="252" text-anchor="middle" fill="#94a3b8" font-size="9">阈值触发（>10次/5min 等）</text>
+  
+  <path d="M197,260 L197,290" stroke="#fbbf24" stroke-width="1.5" marker-end="url(#arr2)"/>
+  
+  <rect x="55" y="295" width="285" height="45" rx="6" fill="rgba(120,53,15,0.3)" stroke="#fbbf24" stroke-width="1"/>
+  <text x="197" y="317" text-anchor="middle" fill="#fbbf24" font-size="11">Event Channel（Console 配置）</text>
+  <text x="197" y="332" text-anchor="middle" fill="#94a3b8" font-size="9">Alarm → DevOps Agent 自动路由</text>
+  
+  <path d="M197,340 L197,370" stroke="#60a5fa" stroke-width="2" marker-end="url(#arr)"/>
+  
+  <rect x="55" y="375" width="285" height="70" rx="8" fill="rgba(30,64,175,0.3)" stroke="#60a5fa" stroke-width="1.5"/>
+  <text x="197" y="400" text-anchor="middle" fill="#60a5fa" font-size="12" font-weight="600">Investigation 自动创建</text>
+  <text x="197" y="418" text-anchor="middle" fill="#e2e8f0" font-size="10">taskType: INVESTIGATION</text>
+  <text x="197" y="435" text-anchor="middle" fill="#94a3b8" font-size="9">Agent 自动写 description + 执行调查</text>
+
+  <rect x="55" y="470" width="285" height="55" rx="6" fill="rgba(6,78,59,0.3)" stroke="#34d399" stroke-width="1"/>
+  <text x="197" y="493" text-anchor="middle" fill="#34d399" font-size="11">调查报告 + Recommendations</text>
+  <text x="197" y="510" text-anchor="middle" fill="#94a3b8" font-size="9">investigation_summary_md + findings</text>
+  
+  <rect x="55" y="545" width="285" height="45" rx="6" fill="rgba(76,29,149,0.3)" stroke="#a78bfa" stroke-width="1"/>
+  <text x="197" y="567" text-anchor="middle" fill="#a78bfa" font-size="11">自动响应（可选）</text>
+  <text x="197" y="582" text-anchor="middle" fill="#94a3b8" font-size="9">EventBridge → Lambda 隔离/封禁</text>
+
+  <!-- Mode 2: Manual Investigation via API -->
+  <rect x="420" y="65" width="370" height="560" rx="12" fill="rgba(120,53,15,0.15)" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="605" y="92" text-anchor="middle" fill="#fbbf24" font-size="14" font-weight="700">模式 2：手动触发 Investigation</text>
+  <text x="605" y="112" text-anchor="middle" fill="#94a3b8" font-size="11">按需深度调查，Description = Prompt</text>
+  
+  <rect x="445" y="135" width="130" height="50" rx="6" fill="rgba(30,41,59,0.5)" stroke="#64748b" stroke-width="1"/>
+  <text x="510" y="158" text-anchor="middle" fill="#e2e8f0" font-size="10">Console UI</text>
+  <text x="510" y="173" text-anchor="middle" fill="#94a3b8" font-size="9">Operator App</text>
+  
+  <rect x="600" y="135" width="160" height="50" rx="6" fill="rgba(30,41,59,0.5)" stroke="#64748b" stroke-width="1"/>
+  <text x="680" y="158" text-anchor="middle" fill="#e2e8f0" font-size="10">CLI / API</text>
+  <text x="680" y="173" text-anchor="middle" fill="#94a3b8" font-size="9">create-backlog-task</text>
+  
+  <path d="M510,185 L510,220 L605,220 L605,250" stroke="#fbbf24" stroke-width="1.5" marker-end="url(#arr2)"/>
+  <path d="M680,185 L680,220 L605,220" stroke="#fbbf24" stroke-width="1.5"/>
+  
+  <rect x="445" y="255" width="320" height="120" rx="8" fill="rgba(120,53,15,0.25)" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="605" y="278" text-anchor="middle" fill="#fbbf24" font-size="12" font-weight="600">Description（= Investigation Prompt）</text>
+  <text x="460" y="300" fill="#e2e8f0" font-size="9">• 什么告警/什么现象</text>
+  <text x="460" y="316" fill="#e2e8f0" font-size="9">• 哪个实例/哪个时间</text>
+  <text x="460" y="332" fill="#e2e8f0" font-size="9">• 要调查什么（具体问题）</text>
+  <text x="460" y="348" fill="#e2e8f0" font-size="9">• 相关数据源（Log Group、Detector ID）</text>
+  <text x="460" y="364" fill="#e2e8f0" font-size="9">• 期望的响应动作</text>
+  
+  <path d="M605,375 L605,410" stroke="#60a5fa" stroke-width="2" marker-end="url(#arr)"/>
+  
+  <rect x="445" y="415" width="320" height="60" rx="8" fill="rgba(30,64,175,0.3)" stroke="#60a5fa" stroke-width="1.5"/>
+  <text x="605" y="440" text-anchor="middle" fill="#60a5fa" font-size="12" font-weight="600">Agent 多 SubAgent 并行调查</text>
+  <text x="605" y="460" text-anchor="middle" fill="#94a3b8" font-size="9">check-ec2 | search-logs | check-cloudtrail | check-guardduty</text>
+  
+  <path d="M605,475 L605,505" stroke="#60a5fa" stroke-width="1.5" marker-end="url(#arr)"/>
+  
+  <rect x="445" y="510" width="320" height="55" rx="6" fill="rgba(6,78,59,0.3)" stroke="#34d399" stroke-width="1"/>
+  <text x="605" y="535" text-anchor="middle" fill="#34d399" font-size="11">Journal Records（46+ 条调查轨迹）</text>
+  <text x="605" y="552" text-anchor="middle" fill="#94a3b8" font-size="9">observations → findings → summary_md → recommendations</text>
+  
+  <rect x="445" y="580" width="320" height="35" rx="6" fill="rgba(76,29,149,0.2)" stroke="#a78bfa" stroke-width="1"/>
+  <text x="605" y="602" text-anchor="middle" fill="#a78bfa" font-size="10">metadata.related_recommendations → 预防建议</text>
+
+  <!-- Mode 3: Custom Skill Periodic -->
+  <rect x="810" y="65" width="370" height="560" rx="12" fill="rgba(6,78,59,0.15)" stroke="#34d399" stroke-width="1.5"/>
+  <text x="995" y="92" text-anchor="middle" fill="#34d399" font-size="14" font-weight="700">模式 3：Custom Skill 周期巡检</text>
+  <text x="995" y="112" text-anchor="middle" fill="#94a3b8" font-size="11">标准化 Runbook，可复用可学习</text>
+  
+  <rect x="835" y="135" width="320" height="80" rx="8" fill="rgba(6,78,59,0.25)" stroke="#34d399" stroke-width="1.5"/>
+  <text x="995" y="158" text-anchor="middle" fill="#34d399" font-size="12" font-weight="600">Custom Skill 定义</text>
+  <text x="850" y="178" fill="#e2e8f0" font-size="9">• 触发条件（When）</text>
+  <text x="850" y="194" fill="#e2e8f0" font-size="9">• 调查步骤（Investigation Steps）</text>
+  <text x="850" y="210" fill="#e2e8f0" font-size="9">• 响应决策树（Response Protocol）</text>
+  
+  <path d="M995,215 L995,245" stroke="#34d399" stroke-width="1.5" marker-end="url(#arr3)"/>
+  
+  <rect x="835" y="250" width="145" height="50" rx="6" fill="rgba(6,78,59,0.3)" stroke="#34d399" stroke-width="1"/>
+  <text x="907" y="273" text-anchor="middle" fill="#34d399" font-size="10">Goal 定时触发</text>
+  <text x="907" y="288" text-anchor="middle" fill="#94a3b8" font-size="9">rate(6 hours)</text>
+  
+  <rect x="1000" y="250" width="145" height="50" rx="6" fill="rgba(6,78,59,0.3)" stroke="#34d399" stroke-width="1"/>
+  <text x="1072" y="273" text-anchor="middle" fill="#34d399" font-size="10">Investigation 时加载</text>
+  <text x="1072" y="288" text-anchor="middle" fill="#94a3b8" font-size="9">场景匹配时</text>
+  
+  <path d="M995,300 L995,330" stroke="#34d399" stroke-width="1.5" marker-end="url(#arr3)"/>
+  
+  <rect x="835" y="335" width="320" height="80" rx="6" fill="rgba(30,64,175,0.2)" stroke="#60a5fa" stroke-width="1"/>
+  <text x="995" y="360" text-anchor="middle" fill="#60a5fa" font-size="11" font-weight="600">Agent 按 Skill 步骤执行</text>
+  <text x="850" y="380" fill="#94a3b8" font-size="9">Step 1: 查询 Logs Insights → Step 2: 关联 GuardDuty</text>
+  <text x="850" y="396" fill="#94a3b8" font-size="9">Step 3: 检查 CloudTrail → Step 4: 决策 + 响应</text>
+  <text x="850" y="412" fill="#94a3b8" font-size="9">Step 5: 生成报告 → Step 6: 预防建议</text>
+  
+  <path d="M995,415 L995,445" stroke="#34d399" stroke-width="1.5" marker-end="url(#arr3)"/>
+  
+  <rect x="835" y="450" width="320" height="55" rx="6" fill="rgba(6,78,59,0.3)" stroke="#34d399" stroke-width="1"/>
+  <text x="995" y="473" text-anchor="middle" fill="#34d399" font-size="11">Learned Skills 自动生成</text>
+  <text x="995" y="493" text-anchor="middle" fill="#94a3b8" font-size="9">Agent 从历史调查中学习模式，自动优化 Skill</text>
+  
+  <rect x="835" y="520" width="320" height="90" rx="6" fill="rgba(30,41,59,0.4)" stroke="#64748b" stroke-width="1"/>
+  <text x="995" y="545" text-anchor="middle" fill="#e2e8f0" font-size="11" font-weight="600">适用场景</text>
+  <text x="850" y="565" fill="#94a3b8" font-size="9">✓ 同类事件反复出现（SSH暴力破解每天都有）</text>
+  <text x="850" y="581" fill="#94a3b8" font-size="9">✓ 调查流程已标准化（有固定的 Runbook）</text>
+  <text x="850" y="597" fill="#94a3b8" font-size="9">✓ 需要团队共享知识（新人也能用）</text>
+</svg>

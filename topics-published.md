@@ -52,3 +52,4 @@
 - 2025-06-28: 权重初始化 (Xavier/Kaiming/µP) — 权重初始化的数学：从 Xavier 到 Kaiming 再到 µP
 - 2025-06-29: 采样策略 (Temperature/Top-k/Top-p/Min-p) — 采样的艺术：Temperature、Top-k、Top-p 与 Min-p 如何控制 LLM 的创造力
 - 2025-06-29: Linear Attention 核方法视角 — Linear Attention 的核方法视角：如何用一个数学技巧把 O(N²) 变成 O(N)
+- 2025-06-30: Embedding 层几何结构 — Embedding 层的几何结构：为什么一张查找表能装下整个世界的意义

@@ -1,0 +1,161 @@
+<svg viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:900px;margin:24px auto;display:block;font-family:system-ui,-apple-system,sans-serif;">
+  <defs>
+    <marker id="a1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#6e8eff"/></marker>
+    <marker id="a2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#34d399"/></marker>
+    <marker id="a3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#fbbf24"/></marker>
+  </defs>
+  <rect width="900" height="600" fill="#020617" rx="12"/>
+  <text x="450" y="28" text-anchor="middle" fill="#e2e8f0" font-size="14" font-weight="bold">EKS 巡检与监控 — 整体架构设计</text>
+
+  <!-- EKS Cluster (left large box) -->
+  <rect x="30" y="50" width="320" height="500" rx="10" fill="rgba(6,78,59,0.08)" stroke="#34d399" stroke-width="1.5" stroke-dasharray="6,3"/>
+  <text x="45" y="70" fill="#34d399" font-size="11" font-weight="bold">EKS Cluster (Production)</text>
+
+  <!-- Services inside EKS -->
+  <rect x="50" y="85" width="130" height="40" rx="6" fill="rgba(8,51,68,0.4)" stroke="#22d3ee" stroke-width="1.2"/>
+  <text x="115" y="105" text-anchor="middle" fill="#e2e8f0" font-size="9">Kong Gateway</text>
+  <text x="115" y="118" text-anchor="middle" fill="#22d3ee" font-size="7">OTel + Prometheus plugin</text>
+
+  <rect x="200" y="85" width="130" height="40" rx="6" fill="rgba(8,51,68,0.4)" stroke="#22d3ee" stroke-width="1.2"/>
+  <text x="265" y="105" text-anchor="middle" fill="#e2e8f0" font-size="9">微服务 A/B/C...</text>
+  <text x="265" y="118" text-anchor="middle" fill="#22d3ee" font-size="7">OTel auto-instrument</text>
+
+  <rect x="50" y="135" width="130" height="40" rx="6" fill="rgba(76,29,149,0.4)" stroke="#a78bfa" stroke-width="1.2"/>
+  <text x="115" y="155" text-anchor="middle" fill="#e2e8f0" font-size="9">Redis / DB</text>
+  <text x="115" y="168" text-anchor="middle" fill="#a78bfa" font-size="7">Exporter sidecar</text>
+
+  <rect x="200" y="135" width="130" height="40" rx="6" fill="rgba(76,29,149,0.4)" stroke="#a78bfa" stroke-width="1.2"/>
+  <text x="265" y="155" text-anchor="middle" fill="#e2e8f0" font-size="9">Kafka / SQS</text>
+  <text x="265" y="168" text-anchor="middle" fill="#a78bfa" font-size="7">Consumer lag metrics</text>
+
+  <!-- Collection layer inside EKS -->
+  <rect x="50" y="195" width="280" height="65" rx="8" fill="rgba(120,53,15,0.15)" stroke="#fbbf24" stroke-width="1"/>
+  <text x="60" y="212" fill="#fbbf24" font-size="9" font-weight="bold">数据采集层（DaemonSet）</text>
+  <rect x="60" y="220" width="80" height="30" rx="4" fill="rgba(120,53,15,0.3)" stroke="#fbbf24" stroke-width="0.8"/>
+  <text x="100" y="239" text-anchor="middle" fill="#fde68a" font-size="8">ADOT Collector</text>
+  <rect x="150" y="220" width="80" height="30" rx="4" fill="rgba(120,53,15,0.3)" stroke="#fbbf24" stroke-width="0.8"/>
+  <text x="190" y="239" text-anchor="middle" fill="#fde68a" font-size="8">Fluent Bit</text>
+  <rect x="240" y="220" width="80" height="30" rx="4" fill="rgba(120,53,15,0.3)" stroke="#fbbf24" stroke-width="0.8"/>
+  <text x="280" y="239" text-anchor="middle" fill="#fde68a" font-size="8">CW Agent</text>
+
+  <!-- Patrol tools inside EKS -->
+  <rect x="50" y="280" width="280" height="55" rx="8" fill="rgba(136,19,55,0.1)" stroke="#fb7185" stroke-width="1"/>
+  <text x="60" y="297" fill="#fb7185" font-size="9" font-weight="bold">K8s 巡检工具（CronJob）</text>
+  <rect x="60" y="305" width="75" height="24" rx="4" fill="rgba(136,19,55,0.3)" stroke="#fb7185" stroke-width="0.8"/>
+  <text x="97" y="321" text-anchor="middle" fill="#fda4af" font-size="8">Popeye</text>
+  <rect x="145" y="305" width="75" height="24" rx="4" fill="rgba(136,19,55,0.3)" stroke="#fb7185" stroke-width="0.8"/>
+  <text x="182" y="321" text-anchor="middle" fill="#fda4af" font-size="8">kube-score</text>
+  <rect x="230" y="305" width="75" height="24" rx="4" fill="rgba(136,19,55,0.3)" stroke="#fb7185" stroke-width="0.8"/>
+  <text x="267" y="321" text-anchor="middle" fill="#fda4af" font-size="8">Polaris</text>
+
+  <!-- GuardDuty runtime inside EKS -->
+  <rect x="50" y="350" width="280" height="40" rx="6" fill="rgba(136,19,55,0.2)" stroke="#fb7185" stroke-width="1"/>
+  <text x="190" y="375" text-anchor="middle" fill="#fda4af" font-size="9">GuardDuty Runtime Agent（EKS Add-on）</text>
+
+  <!-- K8s API -->
+  <rect x="50" y="410" width="130" height="35" rx="6" fill="rgba(30,41,59,0.5)" stroke="#94a3b8" stroke-width="1"/>
+  <text x="115" y="432" text-anchor="middle" fill="#e2e8f0" font-size="9">K8s API Server</text>
+
+  <!-- Custom MCP Server -->
+  <rect x="200" y="410" width="130" height="35" rx="6" fill="rgba(6,78,59,0.4)" stroke="#34d399" stroke-width="1"/>
+  <text x="265" y="427" text-anchor="middle" fill="#e2e8f0" font-size="9">K8s MCP Server</text>
+  <text x="265" y="440" text-anchor="middle" fill="#34d399" font-size="7">kubectl API wrapper</text>
+
+  <!-- Observability Backend (middle column) -->
+  <rect x="380" y="50" width="200" height="330" rx="10" fill="rgba(120,53,15,0.06)" stroke="#fbbf24" stroke-width="1" stroke-dasharray="6,3"/>
+  <text x="395" y="70" fill="#fbbf24" font-size="11" font-weight="bold">可观测性后端</text>
+
+  <rect x="400" y="85" width="160" height="35" rx="6" fill="rgba(120,53,15,0.3)" stroke="#fbbf24" stroke-width="1"/>
+  <text x="480" y="107" text-anchor="middle" fill="#fde68a" font-size="9">CloudWatch Container Insights</text>
+
+  <rect x="400" y="130" width="160" height="35" rx="6" fill="rgba(120,53,15,0.3)" stroke="#fbbf24" stroke-width="1"/>
+  <text x="480" y="152" text-anchor="middle" fill="#fde68a" font-size="9">CloudWatch Logs</text>
+
+  <rect x="400" y="175" width="160" height="35" rx="6" fill="rgba(120,53,15,0.3)" stroke="#fbbf24" stroke-width="1"/>
+  <text x="480" y="197" text-anchor="middle" fill="#fde68a" font-size="9">X-Ray / Application Signals</text>
+
+  <rect x="400" y="220" width="160" height="35" rx="6" fill="rgba(120,53,15,0.3)" stroke="#fbbf24" stroke-width="1"/>
+  <text x="480" y="242" text-anchor="middle" fill="#fde68a" font-size="9">Amazon Managed Prometheus</text>
+
+  <rect x="400" y="265" width="160" height="35" rx="6" fill="rgba(120,53,15,0.3)" stroke="#fbbf24" stroke-width="1"/>
+  <text x="480" y="287" text-anchor="middle" fill="#fde68a" font-size="9">Amazon Managed Grafana</text>
+
+  <rect x="400" y="310" width="160" height="35" rx="6" fill="rgba(136,19,55,0.3)" stroke="#fb7185" stroke-width="1"/>
+  <text x="480" y="332" text-anchor="middle" fill="#fda4af" font-size="9">GuardDuty + Security Hub</text>
+
+  <!-- Arrows: EKS → Backend -->
+  <line x1="330" y1="235" x2="398" y2="150" stroke="#fbbf24" stroke-width="1.2" marker-end="url(#a3)"/>
+  <line x1="330" y1="235" x2="398" y2="195" stroke="#fbbf24" stroke-width="1.2" marker-end="url(#a3)"/>
+  <line x1="330" y1="235" x2="398" y2="240" stroke="#fbbf24" stroke-width="1.2" marker-end="url(#a3)"/>
+  <line x1="330" y1="370" x2="398" y2="325" stroke="#fb7185" stroke-width="1.2" marker-end="url(#a1)"/>
+
+  <!-- DevOps Agent (right column, large) -->
+  <rect x="610" y="50" width="260" height="300" rx="10" fill="rgba(6,78,59,0.08)" stroke="#34d399" stroke-width="2"/>
+  <text x="740" y="72" text-anchor="middle" fill="#34d399" font-size="12" font-weight="bold">AWS DevOps Agent</text>
+
+  <rect x="630" y="85" width="220" height="40" rx="6" fill="rgba(6,78,59,0.3)" stroke="#34d399" stroke-width="1"/>
+  <text x="740" y="103" text-anchor="middle" fill="#e2e8f0" font-size="9">Topology / Knowledge Graph</text>
+  <text x="740" y="118" text-anchor="middle" fill="#6ee7b7" font-size="7">自动发现 EKS 所有资源和关系</text>
+
+  <rect x="630" y="135" width="220" height="40" rx="6" fill="rgba(6,78,59,0.3)" stroke="#34d399" stroke-width="1"/>
+  <text x="740" y="153" text-anchor="middle" fill="#e2e8f0" font-size="9">Custom Skill: EKS 巡检清单</text>
+  <text x="740" y="168" text-anchor="middle" fill="#6ee7b7" font-size="7">基础设施 + 应用 + 安全 + 网关</text>
+
+  <rect x="630" y="185" width="220" height="40" rx="6" fill="rgba(6,78,59,0.3)" stroke="#34d399" stroke-width="1"/>
+  <text x="740" y="203" text-anchor="middle" fill="#e2e8f0" font-size="9">Grafana MCP（内置）</text>
+  <text x="740" y="218" text-anchor="middle" fill="#6ee7b7" font-size="7">PromQL 查询任何 Pod 指标</text>
+
+  <rect x="630" y="235" width="105" height="40" rx="6" fill="rgba(6,78,59,0.3)" stroke="#34d399" stroke-width="1"/>
+  <text x="682" y="253" text-anchor="middle" fill="#e2e8f0" font-size="9">K8s MCP</text>
+  <text x="682" y="268" text-anchor="middle" fill="#6ee7b7" font-size="7">Pod/Deploy/CM</text>
+
+  <rect x="745" y="235" width="105" height="40" rx="6" fill="rgba(6,78,59,0.3)" stroke="#34d399" stroke-width="1"/>
+  <text x="797" y="253" text-anchor="middle" fill="#e2e8f0" font-size="9">Learned Skills</text>
+  <text x="797" y="268" text-anchor="middle" fill="#6ee7b7" font-size="7">历史模式学习</text>
+
+  <rect x="630" y="290" width="220" height="40" rx="6" fill="rgba(120,53,15,0.3)" stroke="#fbbf24" stroke-width="1"/>
+  <text x="740" y="308" text-anchor="middle" fill="#e2e8f0" font-size="9">Prevention Engine</text>
+  <text x="740" y="323" text-anchor="middle" fill="#fbbf24" font-size="7">分析历史事件 → 推送预防建议</text>
+
+  <!-- Arrows: Backend → Agent -->
+  <line x1="560" y1="105" x2="628" y2="105" stroke="#34d399" stroke-width="1.5" marker-end="url(#a2)"/>
+  <line x1="560" y1="195" x2="628" y2="195" stroke="#34d399" stroke-width="1.5" marker-end="url(#a2)"/>
+  <line x1="560" y1="285" x2="628" y2="285" stroke="#34d399" stroke-width="1.5" marker-end="url(#a2)"/>
+
+  <!-- K8s MCP → Agent -->
+  <line x1="330" y1="427" x2="628" y2="255" stroke="#34d399" stroke-width="1.2" stroke-dasharray="4,2" marker-end="url(#a2)"/>
+
+  <!-- Trigger layer (bottom) -->
+  <rect x="380" y="420" width="490" height="80" rx="8" fill="rgba(8,51,68,0.1)" stroke="#22d3ee" stroke-width="1"/>
+  <text x="395" y="440" fill="#22d3ee" font-size="10" font-weight="bold">触发层</text>
+
+  <rect x="400" y="450" width="105" height="35" rx="5" fill="rgba(8,51,68,0.4)" stroke="#22d3ee" stroke-width="1"/>
+  <text x="452" y="467" text-anchor="middle" fill="#e2e8f0" font-size="8">EventBridge</text>
+  <text x="452" y="480" text-anchor="middle" fill="#22d3ee" font-size="7">每日 9:00 定时</text>
+
+  <rect x="520" y="450" width="105" height="35" rx="5" fill="rgba(8,51,68,0.4)" stroke="#22d3ee" stroke-width="1"/>
+  <text x="572" y="467" text-anchor="middle" fill="#e2e8f0" font-size="8">CloudWatch Alarm</text>
+  <text x="572" y="480" text-anchor="middle" fill="#22d3ee" font-size="7">阈值触发</text>
+
+  <rect x="640" y="450" width="105" height="35" rx="5" fill="rgba(8,51,68,0.4)" stroke="#22d3ee" stroke-width="1"/>
+  <text x="692" y="467" text-anchor="middle" fill="#e2e8f0" font-size="8">Grafana Alert</text>
+  <text x="692" y="480" text-anchor="middle" fill="#22d3ee" font-size="7">Prometheus 规则</text>
+
+  <rect x="760" y="450" width="95" height="35" rx="5" fill="rgba(8,51,68,0.4)" stroke="#22d3ee" stroke-width="1"/>
+  <text x="807" y="467" text-anchor="middle" fill="#e2e8f0" font-size="8">On-demand</text>
+  <text x="807" y="480" text-anchor="middle" fill="#22d3ee" font-size="7">人工随时问</text>
+
+  <!-- Arrows: Trigger → Agent -->
+  <line x1="625" y1="450" x2="700" y2="345" stroke="#22d3ee" stroke-width="1.2" marker-end="url(#a1)"/>
+
+  <!-- Output (bottom right) -->
+  <rect x="610" y="520" width="260" height="60" rx="8" fill="rgba(76,29,149,0.2)" stroke="#a78bfa" stroke-width="1.5"/>
+  <text x="740" y="542" text-anchor="middle" fill="#a78bfa" font-size="11" font-weight="bold">巡检报告输出</text>
+  <text x="740" y="560" text-anchor="middle" fill="#c4b5fd" font-size="8">健康评分 | Critical/Warning/Info 分级</text>
+  <text x="740" y="574" text-anchor="middle" fill="#94a3b8" font-size="8">→ Slack / Notion / PagerDuty / S3</text>
+
+  <line x1="740" y1="350" x2="740" y2="518" stroke="#a78bfa" stroke-width="1.5" marker-end="url(#a1)"/>
+
+  <!-- Bottom label -->
+  <text x="200" y="585" fill="#64748b" font-size="8">OTel 标准化采集 | Grafana MCP 泛化查询 | K8s MCP 深度探查 | Skill 驱动巡检逻辑 | 定时 + 事件 双触发</text>
+</svg>
