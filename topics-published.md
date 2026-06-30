@@ -67,3 +67,4 @@
 - 2025-06-30: Latent Diffusion/Stable Diffusion — Latent Diffusion 与 Stable Diffusion：在压缩空间里做魔法
 - 2025-06-30: 条件控制 (CLIP/CFG/ControlNet) — 条件控制：从文字到图像的桥梁
 - 2025-06-30: 主流模型对比 (SD/DALL-E/MJ/Flux/DiT) — 主流模型全景：SD、DALL-E、Midjourney、Flux 与架构未来
+- 2025-06-30: 涌现能力 (Emergent Abilities) 度量标准之争 — 涌现能力是真的吗？一场关于度量标准的科学论战
