@@ -53,3 +53,10 @@
 - 2025-06-29: 采样策略 (Temperature/Top-k/Top-p/Min-p) — 采样的艺术：Temperature、Top-k、Top-p 与 Min-p 如何控制 LLM 的创造力
 - 2025-06-29: Linear Attention 核方法视角 — Linear Attention 的核方法视角：如何用一个数学技巧把 O(N²) 变成 O(N)
 - 2025-06-30: Embedding 层几何结构 — Embedding 层的几何结构：为什么一张查找表能装下整个世界的意义
+
+## RLHF 与对齐训练系列
+- 2025-06-30: RLHF 对齐全景 — 从预训练到对齐：为什么 ChatGPT 不只是一个更大的 GPT-3
+- 2025-06-30: SFT 监督微调 — SFT：用示范教会模型「怎么说话」
+- 2025-06-30: 奖励模型 Bradley-Terry — 奖励模型：如何把「哪个回答更好」变成数字
+- 2025-06-30: PPO 强化学习 — PPO：用强化学习微调语言模型的艺术与苦难
+- 2025-06-30: DPO/GRPO 新范式 — DPO 与 GRPO：跳过奖励模型的新范式
