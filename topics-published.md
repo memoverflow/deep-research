@@ -60,3 +60,10 @@
 - 2025-06-30: 奖励模型 Bradley-Terry — 奖励模型：如何把「哪个回答更好」变成数字
 - 2025-06-30: PPO 强化学习 — PPO：用强化学习微调语言模型的艺术与苦难
 - 2025-06-30: DPO/GRPO 新范式 — DPO 与 GRPO：跳过奖励模型的新范式
+
+## AI 图像生成系列
+- 2025-06-30: AI生图进化史 (GAN/VAE/Diffusion/Flow) — 从 GAN 到 Diffusion：AI 生图技术的十年进化史
+- 2025-06-30: Diffusion Model 数学原理 — Diffusion Model 原理：为什么「加噪再去噪」能生成图片
+- 2025-06-30: Latent Diffusion/Stable Diffusion — Latent Diffusion 与 Stable Diffusion：在压缩空间里做魔法
+- 2025-06-30: 条件控制 (CLIP/CFG/ControlNet) — 条件控制：从文字到图像的桥梁
+- 2025-06-30: 主流模型对比 (SD/DALL-E/MJ/Flux/DiT) — 主流模型全景：SD、DALL-E、Midjourney、Flux 与架构未来
