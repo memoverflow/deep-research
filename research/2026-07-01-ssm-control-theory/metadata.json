@@ -1,0 +1,38 @@
+{
+  "topic": "State Space Models 的控制论基础 (S4/Mamba)",
+  "refined_question": "SSM/S4/Mamba 背后的控制论数学基础：状态空间方程、离散化、HiPPO理论、选择性扫描机制",
+  "level": 4,
+  "date": "2026-07-01",
+  "duration_minutes": 35,
+  "searches_total": 18,
+  "sources_extracted": 6,
+  "arxiv_papers": 6,
+  "images_saved": 0,
+  "sub_questions": [
+    "状态空间方程的控制论起源与数学形式",
+    "连续到离散的离散化方法(ZOH/双线性变换)",
+    "HiPPO理论:如何设计最优记忆矩阵A",
+    "S4的DPLR分解与卷积/递推双重视角",
+    "Mamba的选择机制与硬件感知并行扫描"
+  ],
+  "tools_used": ["web_search", "web_extract", "terminal curl"],
+  "search_queries": [
+    "State Space Model control theory continuous discrete linear system HiPPO Mamba mathematical foundations",
+    "structured state space sequence model S4 HiPPO zero-order hold discretization",
+    "site:arxiv.org Mamba selective state spaces linear time sequence modeling",
+    "state space model control theory transfer function convolution kernel SSM linear system",
+    "HiPPO matrices theory recurrent memory continuous-time approximation Legendre",
+    "Mamba selective state space model paper Albert Gu Tri Dao selection mechanism",
+    "state space model discretization zero-order hold bilinear transform Euler method deep learning",
+    "SSM linear attention RNN convolution three views equivalence transformer",
+    "S4 diagonal plus low rank DPLR Cauchy kernel HiPPO matrix normal plus low rank",
+    "Mamba selection mechanism input dependent B C delta gating forget gate intuition",
+    "parallel associative scan algorithm state space model GPU hardware aware Mamba selective scan",
+    "state space model controllability observability transformer comparison criticism limitations 2024",
+    "SSM 状态空间模型 控制论 Mamba 数学原理 离散化",
+    "S4 vs S5 vs Mamba diagonal state space DSS simplified diagonal parameterization",
+    "Mamba hardware aware parallel scan kernel fusion recomputation GPU SRAM efficient",
+    "Mamba limitations criticism in-context learning retrieval weakness transformer comparison",
+    "controllability observability state space model intuition explain simple"
+  ]
+}
