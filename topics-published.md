@@ -69,3 +69,4 @@
 - 2025-06-30: 主流模型对比 (SD/DALL-E/MJ/Flux/DiT) — 主流模型全景：SD、DALL-E、Midjourney、Flux 与架构未来
 - 2025-06-30: 涌现能力 (Emergent Abilities) 度量标准之争 — 涌现能力是真的吗？一场关于度量标准的科学论战
 - 2026-07-01: State Space Models 控制论基础 (SSM/S4/Mamba 数学) — State Space Models 的控制论基础：Mamba 为什么懂「工程」而不只是懂「深度学习」
+- 2026-07-01: GQA/MQA/MLA 注意力头设计与KV Cache压缩 — GQA、MQA、MLA：当「多头」变成推理账单上最贵的一项
