@@ -1,0 +1,38 @@
+{
+  "topic": "ALiBi 与 YaRN：长度外推原理",
+  "refined_question": "Transformer 位置编码为何无法外推到训练时未见过的序列长度，ALiBi 与 NTK-aware/YaRN 分别如何解决",
+  "level": 3,
+  "date": "2026-07-02",
+  "duration_minutes": 35,
+  "searches_total": 18,
+  "sources_extracted": 6,
+  "arxiv_papers": 4,
+  "images_saved": 0,
+  "sub_questions": [
+    "长度外推问题本质",
+    "ALiBi 设计原理与实验",
+    "Position Interpolation 原理与局限",
+    "NTK-aware scaling 直觉",
+    "NTK-by-parts 与 YaRN",
+    "Dynamic Scaling",
+    "ALiBi vs RoPE 系方案对比"
+  ],
+  "tools_used": ["web_search", "web_extract", "terminal curl+pdf"],
+  "search_queries": [
+    "ALiBi Attention with Linear Biases length extrapolation transformer",
+    "ALiBi position embedding paper arxiv Press train short test long",
+    "site:arxiv.org ALiBi linear biases attention extrapolation",
+    "why transformer cannot extrapolate to longer sequences position encoding",
+    "ALiBi head-specific slope geometric sequence m 2^-8/n",
+    "NTK-aware scaling RoPE context extension arxiv",
+    "YaRN Yet another RoPE extensioN method paper arxiv",
+    "NTK-aware RoPE scaling reddit LocalLLaMA original blog post kaiokendev",
+    "ALiBi vs RoPE which one extrapolates better length generalization comparison",
+    "position interpolation kaiokendev extending context window without fine-tuning",
+    "NTK-aware scaling RoPE base frequency high freq extrapolate low freq interpolate",
+    "ALiBi criticism limitations does not work as well as RoPE modern LLMs",
+    "YaRN attention temperature scaling perplexity results GPT-NeoX LLaMA 2",
+    "Dynamic NTK scaling rope inference time increasing sequence length reddit",
+    "长度外推 ALiBi 中文 详解 递归 位置编码 训练短测试长"
+  ]
+}
