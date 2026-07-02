@@ -1,0 +1,33 @@
+{
+  "topic": "FlashAttention IO-Awareness",
+  "refined_question": "为什么 FlashAttention 不改数学结果、不减少FLOPs，却能让Transformer训练提速2-4倍？IO复杂度分析、tiling、online softmax、recomputation、FA1到FA3演进",
+  "level": 3,
+  "date": "2026-07-02",
+  "searches_total": 15,
+  "sources_extracted": 6,
+  "arxiv_papers": 1,
+  "images_saved": 0,
+  "sub_questions": [
+    "标准attention的内存瓶颈是什么",
+    "GPU内存层次结构 SRAM vs HBM",
+    "Tiling和online softmax如何工作",
+    "IO复杂度分析 O(N^2 d^2/M)",
+    "反向传播的recomputation技巧",
+    "FlashAttention-2/3 的改进"
+  ],
+  "tools_used": ["web_search", "terminal_curl"],
+  "search_queries": [
+    "FlashAttention IO complexity SRAM HBM analysis",
+    "FlashAttention arxiv paper Tri Dao 2022",
+    "GPU memory hierarchy SRAM HBM bandwidth roofline attention",
+    "online softmax tiling flash attention algorithm explained",
+    "FlashAttention-2 improvements parallelism work partitioning",
+    "recomputation backward pass flash attention avoid storing attention matrix",
+    "standard attention O(N^2) memory materialize matrix problem transformer",
+    "FlashAttention roofline model arithmetic intensity compute bound memory bound",
+    "FlashAttention-3 Hopper asynchrony FP8 2024",
+    "FlashAttention block sparse causal masking extension",
+    "FlashAttention 反向传播 重计算 原理 IO 复杂度 中文",
+    "FlashAttention criticism limitations sparse attention comparison"
+  ]
+}

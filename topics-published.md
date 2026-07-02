@@ -71,3 +71,4 @@
 - 2026-07-01: State Space Models 控制论基础 (SSM/S4/Mamba 数学) — State Space Models 的控制论基础：Mamba 为什么懂「工程」而不只是懂「深度学习」
 - 2026-07-01: GQA/MQA/MLA 注意力头设计与KV Cache压缩 — GQA、MQA、MLA：当「多头」变成推理账单上最贵的一项
 - 2026-07-02: ALiBi/NTK-aware/YaRN 长度外推原理 — 训练时只见过 4K，推理时却要处理 100K：ALiBi 和 YaRN 如何让模型「越活越长」
+- 2026-07-02: FlashAttention IO-Awareness (SRAM/HBM/Tiling/Online Softmax/Recomputation) — FlashAttention 的秘密：真正的瓶颈不是算力，是搬数据
