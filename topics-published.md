@@ -73,3 +73,4 @@
 - 2026-07-02: ALiBi/NTK-aware/YaRN 长度外推原理 — 训练时只见过 4K，推理时却要处理 100K：ALiBi 和 YaRN 如何让模型「越活越长」
 - 2026-07-02: FlashAttention IO-Awareness (SRAM/HBM/Tiling/Online Softmax/Recomputation) — FlashAttention 的秘密：真正的瓶颈不是算力，是搬数据
 - 2026-07-03: 压缩即智能 (Hutter Prize/AIXI/Solomonoff/语言建模即压缩) — 压缩即智能：为什么预测下一个字，可能就是智能的全部秘密
+- 2026-07-04: Beam Search vs Sampling 理论对比 (MAP解码失效/label bias/UID假说/exact search空字符串悖论) — 为什么最可能的句子反而是空的？Beam Search 与采样的理论对决
