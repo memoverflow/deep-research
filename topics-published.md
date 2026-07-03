@@ -72,3 +72,4 @@
 - 2026-07-01: GQA/MQA/MLA 注意力头设计与KV Cache压缩 — GQA、MQA、MLA：当「多头」变成推理账单上最贵的一项
 - 2026-07-02: ALiBi/NTK-aware/YaRN 长度外推原理 — 训练时只见过 4K，推理时却要处理 100K：ALiBi 和 YaRN 如何让模型「越活越长」
 - 2026-07-02: FlashAttention IO-Awareness (SRAM/HBM/Tiling/Online Softmax/Recomputation) — FlashAttention 的秘密：真正的瓶颈不是算力，是搬数据
+- 2026-07-03: 压缩即智能 (Hutter Prize/AIXI/Solomonoff/语言建模即压缩) — 压缩即智能：为什么预测下一个字，可能就是智能的全部秘密

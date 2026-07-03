@@ -1,0 +1,39 @@
+{
+  "topic": "压缩即智能假说：Hutter Prize、Solomonoff归纳、语言建模即压缩",
+  "refined_question": "压缩效率与语言模型的智能水平之间是否存在可量化的关系，其理论基础和实证证据是什么",
+  "level": 4,
+  "date": "2026-07-03",
+  "duration_minutes": 40,
+  "searches_total": 18,
+  "sources_extracted": 7,
+  "arxiv_papers": 2,
+  "images_saved": 0,
+  "sub_questions": [
+    "预测与压缩的数学等价关系（算术编码原理）",
+    "Hutter Prize 与 AIXI/Solomonoff归纳/Kolmogorov复杂度理论基础",
+    "DeepMind 语言建模即压缩的实证结果",
+    "压缩效率与下游智能benchmark的线性相关性研究",
+    "OpenAI Jack Rae 的压缩即AGI论述"
+  ],
+  "tools_used": ["web_search", "terminal curl extraction"],
+  "search_queries": [
+    "compression is intelligence hypothesis Hutter Prize LLM",
+    "\"Language Modeling Is Compression\" arxiv DeepMind",
+    "Kolmogorov complexity Solomonoff induction AGI compression",
+    "Marcus Hutter AIXI compression intelligence theory",
+    "Hutter Prize enwik9 arithmetic coding compress human knowledge",
+    "arithmetic coding language model equivalence perplexity bits per character",
+    "Chinchilla 70B compress ImageNet patches audio DeepMind results",
+    "no free lunch theorem compression intelligence criticism",
+    "Ilya Sutskever compression unsupervised learning theory MDL",
+    "Solomonoff induction explained simple example prediction sequences",
+    "MDL minimum description length machine learning Rissanen",
+    "\"prediction is compression\" arithmetic coding neural network lossless equivalence",
+    "压缩即智能 大语言模型 假说 中文",
+    "Compression Represents Intelligence Linearly benchmark correlation results",
+    "gzip classification text compression k-nearest neighbor paper low-resource 2023",
+    "Jack Rae Stanford compression for AGI lecture transcript",
+    "nncp cmix neural network compression enwik9 best compressor",
+    "GPT next token prediction world model philosophy stochastic parrot debate compression"
+  ]
+}
