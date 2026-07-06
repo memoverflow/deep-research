@@ -74,3 +74,4 @@
 - 2026-07-02: FlashAttention IO-Awareness (SRAM/HBM/Tiling/Online Softmax/Recomputation) — FlashAttention 的秘密：真正的瓶颈不是算力，是搬数据
 - 2026-07-03: 压缩即智能 (Hutter Prize/AIXI/Solomonoff/语言建模即压缩) — 压缩即智能：为什么预测下一个字，可能就是智能的全部秘密
 - 2026-07-04: Beam Search vs Sampling 理论对比 (MAP解码失效/label bias/UID假说/exact search空字符串悖论) — 为什么最可能的句子反而是空的？Beam Search 与采样的理论对决
+- 2026-07-06: Self-Attention QKV 几何直觉 (点积/softmax饱和/低秩瓶颈/多头容量权衡) — Self-Attention 的几何直觉：Q、K、V 到底在向量空间里做什么
