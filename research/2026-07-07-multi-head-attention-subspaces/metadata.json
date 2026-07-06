@@ -1,0 +1,32 @@
+{
+  "topic": "多头注意力为什么有效：子空间分解、低秩瓶颈与冗余",
+  "refined_question": "多头注意力（Multi-Head Attention）在数学上为什么比单头更有效？拆分头数带来什么代价和权衡？训练出来的头是否真的各司其职？",
+  "level": 3,
+  "date": "2026-07-07",
+  "duration_minutes": 30,
+  "searches_total": 15,
+  "sources_extracted": 6,
+  "arxiv_papers": 5,
+  "images_saved": 0,
+  "sub_questions": [
+    "单头注意力有什么局限，为什么需要多头",
+    "头数与每头维度的权衡：低秩瓶颈问题",
+    "训练出来的头是否真的各司其职，还是存在冗余",
+    "最新的信息论/容量视角如何解释多头的必要性"
+  ],
+  "tools_used": ["web_search", "terminal_curl"],
+  "search_queries": [
+    "multi-head attention why multiple heads subspace representation",
+    "multi-head attention geometric interpretation subspaces paper",
+    "\"multi-head attention\" redundancy pruning heads analysis",
+    "site:arxiv.org multi-head attention analysis what do attention heads learn",
+    "why transformer multi-head attention better than single head theoretical",
+    "\"are sixteen heads really better than one\" pruning attention heads",
+    "multi-head attention low rank bottleneck head dimension theory",
+    "site:arxiv.org \"number of heads\" attention capacity tradeoff theoretical analysis",
+    "多头注意力 为什么有效 子空间 几何直觉",
+    "attention head redundancy BERT probing syntax semantics different heads",
+    "\"what does bert look at\" attention analysis Clark Kelvin Guu",
+    "头维度 dk 多头注意力 计算量不变 参数分配"
+  ]
+}
