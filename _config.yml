@@ -2,6 +2,7 @@ title: Lucas's Blog
 description: "AI、技术与思考"
 baseurl: ""
 url: "https://blog.oscine.io"
+future: true
 markdown: kramdown
 kramdown:
   input: GFM
