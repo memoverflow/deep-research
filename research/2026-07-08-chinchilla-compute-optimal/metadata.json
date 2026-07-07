@@ -1,0 +1,33 @@
+{
+  "topic": "Chinchilla 定律：训练算力的最优分配（模型大小 vs 训练数据量）",
+  "refined_question": "给定固定训练算力预算，模型参数量 N 与训练 token 数 D 应如何分配才能使 loss 最小？Chinchilla 定律的推导过程、与 Kaplan 2020 的分歧、后续对该定律的复现质疑，以及考虑推理成本后（LLaMA 等）为何刻意偏离该比例。",
+  "level": 3,
+  "date": "2026-07-08",
+  "duration_minutes": 35,
+  "searches_total": 13,
+  "sources_extracted": 6,
+  "arxiv_papers": 4,
+  "images_saved": 0,
+  "svg_diagrams": 3,
+  "sub_questions": [
+    "Chinchilla 三种估计方法（训练曲线最低点/IsoFLOP profiles/参数化损失拟合）的具体做法与公式",
+    "Chinchilla vs Kaplan 2020 分歧的根源（学习率调度差异）",
+    "Chinchilla 复现质疑（2024 replication attempt 论文）",
+    "推理成本纳入后的最优分配变化（Beyond Chinchilla-Optimal, LLaMA overtraining）",
+    "数据受限场景下 Chinchilla 假设的局限（Scaling Data-Constrained Language Models）"
+  ],
+  "tools_used": ["web_search", "web_extract", "terminal_curl_ar5iv", "write_file"],
+  "search_queries": [
+    "Chinchilla scaling laws optimal compute allocation model size training tokens",
+    "site:arxiv.org Training Compute-Optimal Large Language Models Chinchilla",
+    "Chinchilla paper IsoFLOP curves N tokens D parameters formula",
+    "Kaplan scaling laws vs Chinchilla scaling laws differences why wrong",
+    "Chinchilla optimal N D ratio 20 tokens per parameter LLaMA overtrain inference cost",
+    "\"inference cost\" overtraining beyond Chinchilla optimal LLaMA criticism",
+    "Chinchilla three approaches parametric loss function L(N,D) A B alpha beta E",
+    "Chinchilla scaling law data constrained repeated tokens Muennighoff",
+    "Chinchilla 复现 结果 争议 数据点 缺失 re-derive 2023",
+    "Chinchilla 20 tokens per parameter why LLaMA GPT-4 overtrained inference-heavy models rule of thumb",
+    "\"compute-optimal\" isoflop parabola fitting method explained intuition why quadratic"
+  ]
+}

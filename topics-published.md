@@ -76,3 +76,4 @@
 - 2026-07-04: Beam Search vs Sampling 理论对比 (MAP解码失效/label bias/UID假说/exact search空字符串悖论) — 为什么最可能的句子反而是空的？Beam Search 与采样的理论对决
 - 2026-07-06: Self-Attention QKV 几何直觉 (点积/softmax饱和/低秩瓶颈/多头容量权衡) — Self-Attention 的几何直觉：Q、K、V 到底在向量空间里做什么
 - 2026-07-07: Multi-Head Attention 子空间分解/低秩瓶颈/头冗余 (Low-Rank Bottleneck/Sixteen Heads/Capacity-Based Rationale) — 多头注意力为什么有效：一个大脑同时开会，还是八个小组分头调查？
+- 2026-07-08: Chinchilla 定律计算最优分配 (三种估计方法/复现争议/推理成本 overtraining) — Chinchilla 最优：一块钱的算力，该买大脑子还是买书？
