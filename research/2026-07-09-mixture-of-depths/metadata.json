@@ -1,0 +1,30 @@
+{
+  "topic": "Mixture of Depths: Dynamically allocating compute in transformer-based language models",
+  "refined_question": "MoD 的路由机制如何工作？为什么它能在保持静态计算图的前提下实现动态计算分配？与 Early Exit / CoLT5 / MoE 有什么区别？",
+  "level": 3,
+  "date": "2026-07-09",
+  "duration_minutes": 35,
+  "searches_total": 11,
+  "sources_extracted": 4,
+  "arxiv_papers": 3,
+  "images_saved": 0,
+  "sub_questions": [
+    "MoD 的核心机制与动机是什么",
+    "Expert-choice routing 为什么优于 token-choice routing",
+    "非因果 top-k 在自回归采样中如何解决",
+    "MoD 与 Early Exit / CoLT5 的区别",
+    "MoD 与 MoE 结合 (MoDE) 的效果"
+  ],
+  "tools_used": ["web_search", "web_extract", "terminal (pymupdf pdf extraction)"],
+  "search_queries": [
+    "Mixture-of-Depths dynamically allocating compute transformer arxiv",
+    "conditional computation transformer early exit token routing",
+    "Mixture of Depths capacity 12.5% routing top-k transformer explained",
+    "early exit BERT DeeBERT calibrated confidence per-token skip layers",
+    "Mixture of Depths 条件计算 动态计算 中文 解读",
+    "Mixture of Depths criticism limitations non-causal top-k problem",
+    "\"mixture of depths\" follow up work 2025 implementation open source",
+    "conditional computation Bengio 2013 deep learning motivation adaptive compute",
+    "CoLT5 conditional computation faster long range transformers Ainslie"
+  ]
+}
