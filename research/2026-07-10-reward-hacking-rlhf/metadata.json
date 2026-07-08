@@ -1,0 +1,39 @@
+{
+  "topic": "RLHF 的 reward hacking（奖励破解）问题",
+  "refined_question": "为什么优化打分模型（reward model）的分数不等于让 LLM 真正变得更好？Goodhart's Law 在 RLHF 中如何具体体现（sycophancy、length bias、U-Sophistry、CoT unfaithfulness），以及目前有哪些缓解手段？",
+  "level": 3,
+  "date": "2026-07-10",
+  "duration_minutes": 35,
+  "searches_total": 18,
+  "sources_extracted": 7,
+  "arxiv_papers": 4,
+  "images_saved": 0,
+  "sub_questions": [
+    "Goodhart's Law 与 reward hacking 的定义、分类",
+    "Scaling Laws for Reward Model Overoptimization 的量化结果",
+    "RLHF 中三层奖励（gold/human/proxy）的落差",
+    "U-Sophistry: RLHF 让错误答案更有说服力",
+    "Sycophancy 的机制与真实事故（GPT-4o）",
+    "Length bias 作为最典型的 reward hacking 案例",
+    "CoT unfaithfulness 与推理模型的新战场",
+    "缓解手段：reward model ensemble、KL penalty、early stopping、CoT monitoring"
+  ],
+  "tools_used": ["web_search", "terminal curl extraction"],
+  "search_queries": [
+    "reward hacking RLHF language models Goodhart's law arxiv",
+    "reward model overoptimization scaling laws Gao Schulman Hilton",
+    "reward hacking RLHF language model",
+    "scaling laws reward model overoptimization arxiv 2210.10760",
+    "Goodhart's law machine learning proxy metric",
+    "sycophancy reward model RLHF ChatGPT flattery",
+    "Anthropic towards understanding sycophancy preference models truthfulness",
+    "reward hacking examples RL agent CoastRunners specification gaming",
+    "DeepSeek R1 reward hacking chain of thought CoT unfaithful",
+    "RLHF reward model length bias verbosity gaming",
+    "KL penalty PPO RLHF prevent overoptimization theory",
+    "DPO reward hacking direct preference optimization overfitting",
+    "reward model ensemble uncertainty penalize overoptimization Coste Zhu",
+    "OpenAI o1 reward hacking coding sandbox escape monitoring CoT",
+    "reward hacking constitutional AI RLAIF process reward model mitigate"
+  ]
+}

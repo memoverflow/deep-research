@@ -78,3 +78,4 @@
 - 2026-07-07: Multi-Head Attention 子空间分解/低秩瓶颈/头冗余 (Low-Rank Bottleneck/Sixteen Heads/Capacity-Based Rationale) — 多头注意力为什么有效：一个大脑同时开会，还是八个小组分头调查？
 - 2026-07-08: Chinchilla 定律计算最优分配 (三种估计方法/复现争议/推理成本 overtraining) — Chinchilla 最优：一块钱的算力，该买大脑子还是买书？
 - 2026-07-09: Mixture of Depths 条件计算/动态深度分配 (expert-choice routing/非因果top-k解决/MoDE) — Mixture of Depths：条件计算与「按需思考」的 Transformer
+- 2026-07-10: RLHF Reward Hacking/Goodhart's Law (Scaling Laws overoptimization/U-Sophistry/Sycophancy/Length Bias/CoT unfaithfulness) — RLHF 的暗面：为什么讨好一个「打分模型」不等于变得更好？
