@@ -1,0 +1,37 @@
+{
+  "topic": "损失景观与平坦/尖锐最小值",
+  "refined_question": "损失景观的几何形状如何影响泛化能力，以及 SAM、Edge of Stability、大批量训练泛化差距背后的原理",
+  "level": 3,
+  "date": "2026-07-11",
+  "duration_minutes": 30,
+  "searches_total": 15,
+  "sources_extracted": 7,
+  "arxiv_papers": 7,
+  "images_saved": 0,
+  "sub_questions": [
+    "平坦最小值假说是什么",
+    "大批量训练为什么导致泛化差距",
+    "SAM 如何主动寻找平坦最小值",
+    "Sharp Minima Can Generalize 的体积假说反转",
+    "Edge of Stability 现象"
+  ],
+  "tools_used": ["web_search", "terminal_curl", "write_file"],
+  "search_queries": [
+    "loss landscape neural network flat minima generalization",
+    "sharp minima vs flat minima generalization deep learning",
+    "SGD vs Adam generalization gap loss landscape",
+    "\"Visualizing the Loss Landscape of Neural Nets\" filter normalization arxiv",
+    "Sharpness-Aware Minimization SAM arxiv Foret",
+    "mode connectivity loss landscape linear interpolation neural network",
+    "large language model loss landscape flat minima LLM training",
+    "why does batch size affect generalization sharp minima large batch training",
+    "neural network loss landscape visualization filter normalization Li Xu Taylor Studer Goldstein",
+    "saddle points high dimensional non-convex optimization Dauphin",
+    "损失函数景观 平坦最小值 泛化 深度学习",
+    "edge of stability gradient descent Hessian eigenvalue sharpness training dynamics",
+    "Adam sharpness aware adaptive gradient escape saddle points why Adam works",
+    "Hessian eigenvalue spectrum deep learning bulk outliers Pennington Papyan",
+    "\"edge of stability\" Cohen gradient descent sharpness neural network training",
+    "loss landscape skip connections ResNet smoother easier to train"
+  ]
+}
