@@ -1,0 +1,50 @@
+{
+  "topic": "数据配比与课程学习 (Data Mixing & Curriculum Learning in LLM Pretraining)",
+  "refined_question": "预训练数据的组成比例（domain weights）与呈现顺序（curriculum）如何影响大语言模型的训练效率与最终能力？",
+  "level": 3,
+  "date": "2026-07-09",
+  "duration_minutes": 35,
+  "searches_total": 18,
+  "sources_extracted": 6,
+  "arxiv_papers": 6,
+  "images_saved": 0,
+  "svg_diagrams": 3,
+  "sub_questions": [
+    "为什么域权重(domain weights)影响模型性能？DoReMi 如何用 minimax 优化找到最优配比？",
+    "Data Mixing Laws 如何用小规模实验预测大规模训练的最优配比？",
+    "训练数据的顺序是否重要？easy-to-hard 课程学习策略效果如何？",
+    "WSD 学习率调度器与训练末期高质量数据切换（退火）的工程实践",
+    "数据质量 vs 数据顺序 vs 数据配比三者的关系"
+  ],
+  "tools_used": ["web_search", "terminal curl", "PyMuPDF PDF extraction", "write_file"],
+  "search_queries": [
+    "LLM pretraining data mixing ratio curriculum learning",
+    "data mixture optimization language model DoReMi",
+    "curriculum learning large language model training order",
+    "site:arxiv.org data mixing scaling laws language models",
+    "\"data curriculum\" pretraining LLM easy to hard",
+    "DoReMi domain reweighting minimax language model pretraining",
+    "curriculum learning transformer bengio 2009 easy hard",
+    "GPT-4 technical report data mixture curriculum",
+    "\"data mixing laws\" predicting performance mixture proportions",
+    "curriculum learning language model easy to hard examples improves training",
+    "Llama 3 data curriculum training recipe annealing",
+    "MiniCPM warmup-stable-decay high quality data late training",
+    "课程学习 大语言模型 数据配比 预训练",
+    "annealing high quality data end of pretraining LLM",
+    "GPT-3 dataset composition weighted sampling quality",
+    "code data improves reasoning language model pretraining mixture",
+    "\"warmup-stable-decay\" LR scheduler data annealing continual pretraining benefits",
+    "Doremi vs uniform sampling perplexity domain weights results table",
+    "Phi-1.5 textbook quality data small model outperforms",
+    "order matters sequence of training data affects LLM performance study"
+  ],
+  "key_papers": [
+    {"title": "DoReMi: Optimizing Data Mixtures Speeds Up Language Model Pretraining", "arxiv": "2305.10429"},
+    {"title": "Data Mixing Laws: Optimizing Data Mixtures by Predicting Language Modeling Performance", "arxiv": "2403.16952"},
+    {"title": "Beyond Random Sampling: Efficient Language Model Pretraining via Curriculum Learning", "arxiv": "2506.11300"},
+    {"title": "MiniCPM: Unveiling the Potential of Small Language Models with Scalable Training Strategies", "arxiv": "2404.06395"},
+    {"title": "Understanding Warmup-Stable-Decay Learning Rates: A River Valley Loss Landscape Perspective", "arxiv": "2410.05192"},
+    {"title": "Textbooks Are All You Need II: phi-1.5 technical report", "arxiv": "2309.05463"}
+  ]
+}
