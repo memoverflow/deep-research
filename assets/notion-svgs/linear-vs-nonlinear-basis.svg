@@ -1,0 +1,25 @@
+<svg viewBox="0 0 700 220" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:700px;margin:24px auto;display:block;background:transparent;">
+  <defs>
+    <marker id="arrow3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#22d3ee"/>
+    </marker>
+  </defs>
+  <text x="350" y="24" text-anchor="middle" fill="#ededf0" font-size="14" font-family="system-ui" font-weight="600">Neel Nanda 的关键修正：换个坐标系，非线性变线性</text>
+
+  <text x="130" y="55" text-anchor="middle" fill="#a0a0b0" font-size="12" font-family="system-ui">绝对颜色编码（黑/白）</text>
+  <rect x="20" y="65" width="220" height="90" rx="8" fill="#1e1e2a" stroke="#3a3a4a" stroke-width="1.5"/>
+  <text x="130" y="95" text-anchor="middle" fill="#ededf0" font-size="12" font-family="system-ui">每走一步，"黑"变"白"</text>
+  <text x="130" y="115" text-anchor="middle" fill="#ededf0" font-size="12" font-family="system-ui">"白"变"黑"（棋子翻转）</text>
+  <text x="130" y="140" text-anchor="middle" fill="#f87171" font-size="12" font-family="system-ui" font-weight="600">→ 只能用非线性探针解码</text>
+
+  <text x="480" y="55" text-anchor="middle" fill="#a0a0b0" font-size="12" font-family="system-ui">相对颜色编码（我/你）</text>
+  <rect x="370" y="65" width="290" height="90" rx="8" fill="#1e1e2a" stroke="#22d3ee" stroke-width="1.5"/>
+  <text x="515" y="95" text-anchor="middle" fill="#ededf0" font-size="12" font-family="system-ui">以"当前该谁走"为基准</text>
+  <text x="515" y="115" text-anchor="middle" fill="#ededf0" font-size="12" font-family="system-ui">"我的棋子/你的棋子/空"</text>
+  <text x="515" y="140" text-anchor="middle" fill="#34d399" font-size="12" font-family="system-ui" font-weight="600">→ 简单线性探针即可解码！</text>
+
+  <line x1="240" y1="110" x2="365" y2="110" stroke="#6e8eff" stroke-width="2" stroke-dasharray="5,3" marker-end="url(#arrow3)"/>
+  <text x="302" y="100" text-anchor="middle" fill="#6e8eff" font-size="11" font-family="system-ui">换基</text>
+
+  <text x="350" y="195" text-anchor="middle" fill="#a0a0b0" font-size="12" font-family="system-ui" font-style="italic">"线性 vs 非线性"取决于你用什么坐标系去看，不是模型的客观属性</text>
+</svg>

@@ -1,0 +1,34 @@
+<svg viewBox="0 0 700 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:700px;margin:24px auto;display:block;background:transparent;">
+  <defs>
+    <marker id="arrow2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#34d399"/>
+    </marker>
+  </defs>
+  <text x="350" y="24" text-anchor="middle" fill="#ededf0" font-size="14" font-family="system-ui" font-weight="600">两大阵营：预测下一个词 = 建立世界模型？</text>
+
+  <!-- Left camp -->
+  <rect x="20" y="50" width="300" height="200" rx="10" fill="#1e1e2a" stroke="#34d399" stroke-width="1.5"/>
+  <text x="170" y="75" text-anchor="middle" fill="#34d399" font-size="13" font-family="system-ui" font-weight="600">「世界模型派」</text>
+  <text x="170" y="100" text-anchor="middle" fill="#a0a0b0" font-size="11" font-family="system-ui">Sutskever / Li / Gurnee</text>
+  <line x1="40" y1="112" x2="300" y2="112" stroke="#3a3a4a" stroke-width="1"/>
+  <text x="40" y="135" fill="#ededf0" font-size="11" font-family="system-ui">要把下个 token 猜准，</text>
+  <text x="40" y="153" fill="#ededf0" font-size="11" font-family="system-ui">必须理解产生它的</text>
+  <text x="40" y="171" fill="#ededf0" font-size="11" font-family="system-ui">底层现实/过程</text>
+  <text x="40" y="200" fill="#a0a0b0" font-size="10" font-family="system-ui">证据: Othello-GPT 棋盘</text>
+  <text x="40" y="217" fill="#a0a0b0" font-size="10" font-family="system-ui">时空坐标线性编码</text>
+  <text x="40" y="234" fill="#a0a0b0" font-size="10" font-family="system-ui">Golden Gate Bridge 特征</text>
+
+  <!-- Right camp -->
+  <rect x="380" y="50" width="300" height="200" rx="10" fill="#1e1e2a" stroke="#a78bfa" stroke-width="1.5"/>
+  <text x="530" y="75" text-anchor="middle" fill="#a78bfa" font-size="13" font-family="system-ui" font-weight="600">「随机鹦鹉派」</text>
+  <text x="530" y="100" text-anchor="middle" fill="#a0a0b0" font-size="11" font-family="system-ui">Bender / Koller / LeCun</text>
+  <line x1="400" y1="112" x2="660" y2="112" stroke="#3a3a4a" stroke-width="1"/>
+  <text x="400" y="135" fill="#ededf0" font-size="11" font-family="system-ui">只学过"形式"(词的排列)，</text>
+  <text x="400" y="153" fill="#ededf0" font-size="11" font-family="system-ui">没接触过真实世界的</text>
+  <text x="400" y="171" fill="#ededf0" font-size="11" font-family="system-ui">"意义"(指称对象)</text>
+  <text x="400" y="200" fill="#a0a0b0" font-size="10" font-family="system-ui">论据: 章鱼窃听电缆思想实验</text>
+  <text x="400" y="217" fill="#a0a0b0" font-size="10" font-family="system-ui">缺少感知/行动的接地</text>
+  <text x="400" y="234" fill="#a0a0b0" font-size="10" font-family="system-ui">缺少持续可规划的状态</text>
+
+  <text x="350" y="278" text-anchor="middle" fill="#6e8eff" font-size="12" font-family="system-ui" font-style="italic">分歧的根源：双方对"世界模型"的定义完全不同</text>
+</svg>

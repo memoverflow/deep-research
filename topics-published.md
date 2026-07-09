@@ -81,3 +81,4 @@
 - 2026-07-10: RLHF Reward Hacking/Goodhart's Law (Scaling Laws overoptimization/U-Sophistry/Sycophancy/Length Bias/CoT unfaithfulness) — RLHF 的暗面：为什么讨好一个「打分模型」不等于变得更好？
 - 2026-07-11: 损失景观/平坦最小值假说 (Filter Normalization/大批量泛化差距/SAM/体积假说反转/Edge of Stability) — 损失景观漫游指南：为什么「平坦的山谷」比「尖锐的谷底」更值得信任
 - 2026-07-09: 数据配比与课程学习 (DoReMi/Data Mixing Laws/Curriculum Learning/WSD退火) — 一块钱的数据，该先吃菜还是先吃肉？数据配比与课程学习的秘密
+- 2026-07-11: Token 预测与世界模型的哲学关系 (Othello-GPT/Chess-GPT/线性表征假说/章鱼测试/LeCun grounded world model) — Token 预测与世界模型：机器在「猜下一个字」的时候，到底在脑子里发生了什么？
