@@ -1,0 +1,34 @@
+{
+  "topic": "DPO 为什么等价于 RLHF：完整数学推导",
+  "refined_question": "Direct Preference Optimization 如何通过代数变换消除奖励模型和配分函数，从而证明与 KL 约束 RLHF 目标的等价性；其梯度结构、实践局限性 (likelihood displacement, OOD drift) 是什么",
+  "level": 3,
+  "date": "2026-07-12",
+  "duration_minutes": 35,
+  "searches_total": 11,
+  "sources_extracted": 9,
+  "arxiv_papers": 2,
+  "images_saved": 0,
+  "diagrams_inline_svg": 2,
+  "sub_questions": [
+    "RLHF KL约束目标的闭式最优策略推导",
+    "如何反解奖励函数并代入Bradley-Terry消掉配分函数",
+    "DPO损失函数的最大似然构造",
+    "DPO梯度的自适应权重解释",
+    "DPO的实践局限性：offline-only, likelihood displacement, OOD drift",
+    "DPO变体landscape (IPO/SimPO/KTO/ORPO)"
+  ],
+  "tools_used": ["web_search", "terminal_curl_extract", "write_file"],
+  "search_queries": [
+    "Direct Preference Optimization DPO derivation RLHF equivalent mathematical proof",
+    "site:arxiv.org Direct Preference Optimization Your Language Model is Secretly a Reward Model",
+    "DPO closed form solution KL-constrained reward maximization Bradley-Terry",
+    "DPO implicit reward model derivation partition function cancel",
+    "DPO gradient interpretation implicit reward mismatch weighting term",
+    "DPO 数学推导 隐式奖励模型 KL约束 闭式解",
+    "DPO limitations criticism overfitting likelihood displacement 2024",
+    "DPO gradient formula sigmoid implicit reward estimate wrong ordering weight",
+    "Nathan Lambert RLHF book Direct Alignment DPO chapter derivation",
+    "DPO paper reproduction reject Rafailov et al citations follow-up 2024 2025",
+    "SimPO ORPO KTO comparison DPO variants 2024"
+  ]
+}
