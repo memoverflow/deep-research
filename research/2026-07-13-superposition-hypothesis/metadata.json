@@ -1,0 +1,33 @@
+{
+  "topic": "叠加态假说 (Superposition Hypothesis) 与机制可解释性",
+  "refined_question": "为什么神经网络的单个神经元会同时对多个不相关概念激活(多义性)？叠加假说如何解释这一现象，遵循什么数学规律，以及稀疏自编码器如何反向拆解这种叠加编码并用于模型行为操控？",
+  "level": 3,
+  "date": "2026-07-13",
+  "duration_minutes": 35,
+  "searches_total": 16,
+  "sources_extracted": 5,
+  "arxiv_papers": 2,
+  "images_saved": 0,
+  "sub_questions": [
+    "多义性(polysemanticity)现象是什么，为什么是可解释性研究的核心障碍",
+    "叠加假说(superposition hypothesis)的数学基础是什么(几乎正交向量、Johnson-Lindenstrauss型论证)",
+    "Toy Models of Superposition论文中的相变现象和几何结构发现",
+    "稀疏自编码器(SAE)如何从叠加表示中恢复可解释特征",
+    "Scaling Monosemanticity论文在Claude 3 Sonnet上的实践结果与Golden Gate Claude案例",
+    "SAE当前的局限性(死特征、特征分裂等)"
+  ],
+  "tools_used": ["web_search", "terminal curl extraction", "write_file"],
+  "search_queries": [
+    "Toy Models of Superposition Anthropic Elhage 2022",
+    "superposition hypothesis neural network polysemanticity features",
+    "sparse autoencoders interpretability features superposition LLM",
+    "Johnson-Lindenstrauss lemma neural network dimensionality features",
+    "sparse autoencoder monosemantic features Anthropic Claude interpretability",
+    "\"toy models of superposition\" arxiv privileged basis",
+    "polysemantic neurons feature interference sparse features",
+    "golden gate claude feature steering sparse autoencoder",
+    "almost orthogonal vectors high dimensional space exponentially many random",
+    "superposition mixture of experts grokking adversarial examples Anthropic",
+    "interpretability arxiv 2024 2025 feature circuits sparse autoencoder limitations dead features"
+  ]
+}
