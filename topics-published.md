@@ -84,3 +84,4 @@
 - 2026-07-11: Token 预测与世界模型的哲学关系 (Othello-GPT/Chess-GPT/线性表征假说/章鱼测试/LeCun grounded world model) — Token 预测与世界模型：机器在「猜下一个字」的时候，到底在脑子里发生了什么？
 - 2026-07-12: DPO 与 RLHF 数学等价性 (KL约束闭式解/Bradley-Terry配分函数消除/梯度自适应权重/likelihood displacement) — DPO 为什么等价于 RLHF：一场代数消除术的完整推导
 - 2026-07-13: 叠加态假说/多义性/稀疏自编码器 (Superposition Hypothesis/Polysemanticity/SAE/Golden Gate Claude/机制可解释性) — 叠加态假说：为什么一个神经元会同时"认识"法律文书、DNA 序列和希伯来文
+- 2026-07-14: Attention Sink 现象 (StreamingLLM/over-mixing理论/massive activations/softpick/register tokens) — Attention Sink：为什么每个大模型都有一个「情绪垂直区」，把注意力都倒在第一个词上？

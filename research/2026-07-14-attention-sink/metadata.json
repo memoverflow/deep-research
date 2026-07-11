@@ -1,0 +1,40 @@
+{
+  "topic": "Attention Sink 现象",
+  "refined_question": "为什么 Transformer 语言模型会把大量注意力分配给序列的第一个 token，这一机制如何被发现、如何被解释、有哪些下游影响",
+  "level": 3,
+  "date": "2026-07-14",
+  "duration_minutes": 35,
+  "searches_total": 18,
+  "sources_extracted": 7,
+  "arxiv_papers": 7,
+  "images_saved": 0,
+  "svg_diagrams": 4,
+  "sub_questions": [
+    "Attention sink 现象的发现 (StreamingLLM)",
+    "理论解释：over-mixing / rank collapse (Barbero et al. 2025)",
+    "机制层面：massive activations, quantizable transformers",
+    "反向验证：softpick 消融实验",
+    "训练动态：sink 何时出现",
+    "下游影响：KV cache, 量化, 安全, 架构设计"
+  ],
+  "tools_used": ["web_search", "terminal curl extraction", "write_file"],
+  "search_queries": [
+    "Language Modeling Is Compression arxiv DeepMind",
+    "perplexity cross entropy bits per character equivalence",
+    "attention sink StreamingLLM why first token",
+    "StreamingLLM Efficient Streaming Language Models with Attention Sinks arxiv",
+    "attention sink softmax normalization mechanism explanation",
+    "massive activations in large language models arxiv",
+    "Bondarenko quantizable transformers outlier attention sink",
+    "attention sink survey utilization interpretation mitigation arxiv",
+    "softpick attention without attention sink",
+    "attention sink emergence why BOS token special mechanistic explanation",
+    "attention sink interpretability circuit no-op register token",
+    "Barbero 2025 why do llms attend to first token over-mixing",
+    "attention sink jailbreak safety quantization implications",
+    "attention sink emerges early training steps gradually forms",
+    "attention sink vision transformer register tokens DINOv2",
+    "Yona 2025 attention sink security vulnerability jailbreak first token",
+    "attention sink KV cache eviction StreamingLLM why cannot just drop first tokens"
+  ]
+}
