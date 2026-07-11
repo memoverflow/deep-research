@@ -4,7 +4,7 @@ date: 2026-07-02
 level: 3
 series: "LLM 原理深度解析"
 series_order: 24
-series_total: 24
+series_total: 37
 tags: [flashattention, gpu, io-complexity, attention, kernel优化]
 summary: "FlashAttention 没有发明新的注意力算法，也没有减少一次浮点运算，却让 Transformer 训练提速 2-4 倍——秘密藏在 GPU 内部两块内存之间的搬运账单里。"
 ---

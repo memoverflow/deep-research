@@ -4,7 +4,7 @@ date: 2025-05-19
 level: 3
 series: "LLM 原理深度解析"
 series_order: 9
-series_total: 9
+series_total: 37
 tags: [rope, positional-encoding, rotation, transformer, geometric-algebra]
 summary: "RoPE 的核心直觉：把位置信息编码为向量的旋转角度，让两个 token 之间的注意力分数只取决于它们的相对距离——就像时钟上两根指针的夹角只取决于时间差。"
 ---

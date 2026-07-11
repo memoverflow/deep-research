@@ -4,7 +4,7 @@ date: 2026-07-14
 level: 3
 series: "LLM 原理深度解析"
 series_order: 36
-series_total: 36
+series_total: 37
 tags: [attention, transformer, interpretability, kv-cache, quantization]
 summary: "几乎所有 Transformer 语言模型都会把大量注意力砸在序列的第一个 token 上——不管这个 token 是什么、句子在讲什么。这不是 bug，而是模型自己发明出来的一种「安全阀」机制。"
 ---

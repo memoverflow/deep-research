@@ -4,7 +4,7 @@ date: 2025-05-18
 level: 3
 series: "LLM 原理深度解析"
 series_order: 6
-series_total: 6
+series_total: 37
 tags: [in-context-learning, meta-learning, transformer, 理论]
 summary: "大语言模型不用训练就能从几个例子中'学会'新任务——四种理论解释这种看似不可能的能力从何而来。"
 ---

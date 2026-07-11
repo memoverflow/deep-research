@@ -4,7 +4,7 @@ date: 2026-07-01
 level: 3
 series: "LLM 原理深度解析"
 series_order: 23
-series_total: 23
+series_total: 37
 tags: [attention, GQA, MQA, MLA, KV Cache, DeepSeek, Transformer架构]
 summary: "为什么现代大模型都在悄悄改造多头注意力？从 MQA 的暴力共享，到 GQA 的折中方案，再到 DeepSeek 用 MLA 打破「省内存必然掉质量」的魔咒——这是一场关于注意力头设计的工程博弈。"
 ---

@@ -4,7 +4,7 @@ date: 2025-05-20
 level: 3
 series: "LLM 原理深度解析"
 series_order: 11
-series_total: 11
+series_total: 37
 tags: [normalization, LayerNorm, RMSNorm, DeepNorm, training-stability]
 summary: "为什么深度网络需要归一化？LayerNorm 做了什么几何操作？RMSNorm 为什么删掉均值还能用？DeepNorm 怎么让 1000 层 Transformer 稳定训练？"
 ---

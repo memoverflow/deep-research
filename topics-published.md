@@ -85,3 +85,4 @@
 - 2026-07-12: DPO 与 RLHF 数学等价性 (KL约束闭式解/Bradley-Terry配分函数消除/梯度自适应权重/likelihood displacement) — DPO 为什么等价于 RLHF：一场代数消除术的完整推导
 - 2026-07-13: 叠加态假说/多义性/稀疏自编码器 (Superposition Hypothesis/Polysemanticity/SAE/Golden Gate Claude/机制可解释性) — 叠加态假说：为什么一个神经元会同时"认识"法律文书、DNA 序列和希伯来文
 - 2026-07-14: Attention Sink 现象 (StreamingLLM/over-mixing理论/massive activations/softpick/register tokens) — Attention Sink：为什么每个大模型都有一个「情绪垂直区」，把注意力都倒在第一个词上？
+- 2026-07-14: Muon 优化器 (Newton-Schulz正交化/谱范数最速下降/Kimi K2 MuonClip/QK-Clip/simplicity bias 争议) — Muon 优化器：当我们把梯度矩阵「拉直」成一个旋转

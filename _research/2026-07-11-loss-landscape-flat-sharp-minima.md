@@ -4,7 +4,7 @@ date: 2026-07-11
 level: 3
 series: "LLM 原理深度解析"
 series_order: 31
-series_total: 31
+series_total: 37
 tags: [loss-landscape, generalization, sharp-minima, flat-minima, optimization, SAM, edge-of-stability]
 summary: "训练损失降到 0 不代表模型真的学懂了——决定模型能不能在新数据上表现好的，往往是损失曲面在最优点附近的『形状』：平坦还是尖锐。这篇文章带你理解损失景观的几何直觉、大批量训练为什么容易翻车、以及 SAM、Edge of Stability 这些前沿发现背后的道理。"
 ---

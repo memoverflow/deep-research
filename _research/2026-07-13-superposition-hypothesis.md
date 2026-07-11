@@ -4,7 +4,7 @@ date: 2026-07-13
 level: 3
 series: "LLM 原理深度解析"
 series_order: 35
-series_total: 35
+series_total: 37
 tags: [机制可解释性, 叠加假说, 稀疏自编码器, 多义性, mechanistic-interpretability, superposition]
 summary: "神经网络里的单个神经元经常同时对好几个毫不相关的概念产生反应——这不是训练出了 bug，而是一种叫「叠加」的压缩策略。理解它，你就理解了为什么大模型至今仍是一个黑箱，以及科学家们正在怎么打开它。"
 ---

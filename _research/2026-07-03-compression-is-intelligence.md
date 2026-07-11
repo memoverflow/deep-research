@@ -4,7 +4,7 @@ date: 2026-07-03
 level: 4
 series: "LLM 原理深度解析"
 series_order: 25
-series_total: 26
+series_total: 37
 tags: [信息论, 压缩, Kolmogorov复杂度, Solomonoff归纳, 语言模型, 世界模型]
 summary: "从 Hutter Prize 到 DeepMind 的『语言建模即压缩』论文，一场关于智能本质的四十年争论：压缩率能不能当作智能的度量尺？"
 ---
