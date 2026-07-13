@@ -1,0 +1,36 @@
+{
+  "topic": "测试时计算扩展 (Test-Time Compute Scaling)",
+  "refined_question": "为什么让模型在推理阶段多花计算（思考更久、多次采样、搜索验证）能提升性能？这条路径的理论依据、工程实现（o1/DeepSeek-R1）和边界是什么？",
+  "level": 3,
+  "date": "2026-07-15",
+  "duration_minutes": 35,
+  "searches_total": 18,
+  "sources_extracted": 10,
+  "arxiv_papers": 8,
+  "images_saved": 0,
+  "sub_questions": [
+    "为什么思维链/多步计算在理论上能突破固定深度Transformer的表达能力上限？",
+    "计算最优（compute-optimal）测试时计算分配策略是什么？Best-of-N vs 搜索+PRM vs revision",
+    "o1/DeepSeek-R1如何把这套理论产品化？RL如何让模型自己学会长推理？",
+    "测试时计算扩展的边界：收益递减、overthinking/underthinking、复合误差、经济学代价"
+  ],
+  "tools_used": ["web_search", "terminal_curl_arxiv_abstract"],
+  "search_queries": [
+    "test-time compute scaling laws LLM reasoning arxiv",
+    "\"Scaling LLM Test-Time Compute Optimally\" arxiv",
+    "OpenAI o1 inference time scaling reasoning tokens",
+    "let's verify step by step process reward model arxiv",
+    "compute optimal test-time scaling best-of-N vs beam search verifier",
+    "DeepSeek-R1 reinforcement learning reasoning long chain of thought arxiv",
+    "\"inference scaling laws\" LLM search revision model arxiv 2024",
+    "self-consistency chain of thought majority voting Wang arxiv",
+    "DeepSeek-R1 arxiv paper number 2501",
+    "why chain of thought longer reasoning helps compute complexity theory transformer depth",
+    "test-time compute vs pretraining compute tradeoff FLOPs equivalent o1",
+    "process reward model vs outcome reward model math reasoning tree search MCTS",
+    "o1 reasoning tokens hidden chain of thought inference cost per token OpenAI",
+    "test-time compute overthinking underthinking small model beats large model reasoning",
+    "测试时计算 推理时扩展 大模型 思维链 算力分配",
+    "test-time compute scaling criticism limitations diminishing returns"
+  ]
+}

@@ -86,3 +86,4 @@
 - 2026-07-13: 叠加态假说/多义性/稀疏自编码器 (Superposition Hypothesis/Polysemanticity/SAE/Golden Gate Claude/机制可解释性) — 叠加态假说：为什么一个神经元会同时"认识"法律文书、DNA 序列和希伯来文
 - 2026-07-14: Attention Sink 现象 (StreamingLLM/over-mixing理论/massive activations/softpick/register tokens) — Attention Sink：为什么每个大模型都有一个「情绪垂直区」，把注意力都倒在第一个词上？
 - 2026-07-14: Muon 优化器 (Newton-Schulz正交化/谱范数最速下降/Kimi K2 MuonClip/QK-Clip/simplicity bias 争议) — Muon 优化器：当我们把梯度矩阵「拉直」成一个旋转
+- 2026-07-15: 测试时计算扩展 (Test-Time Compute Scaling/o1/DeepSeek-R1/PRM搜索/compute-optimal分配/CoT表达能力理论/overthinking) — 测试时计算扩展：当模型学会「多想一会儿」而不是「变得更大」
