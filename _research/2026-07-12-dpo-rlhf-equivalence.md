@@ -4,7 +4,7 @@ date: 2026-07-12
 level: 3
 series: "LLM 原理深度解析"
 series_order: 34
-series_total: 37
+series_total: 39
 tags: [DPO, RLHF, Bradley-Terry, KL散度, 对齐训练, 数学推导]
 summary: "DPO 不是"简化版 RLHF"，而是同一个优化问题的另一种解法——本文完整推导为什么训练一个分类损失，等价于跑一整套 PPO。"
 ---

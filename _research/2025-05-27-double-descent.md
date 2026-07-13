@@ -4,7 +4,7 @@ date: 2025-05-27
 level: 3
 series: "LLM 原理深度解析"
 series_order: 16
-series_total: 37
+series_total: 39
 tags: [double-descent, overfitting, generalization, bias-variance, interpolation]
 summary: "经典统计学告诉我们模型太复杂会过拟合，但现代深度学习的实践却说模型越大越好——双重下降现象揭示了这两种观点之间隐藏的桥梁。"
 ---

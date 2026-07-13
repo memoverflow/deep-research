@@ -4,7 +4,7 @@ date: 2025-06-28
 level: 3
 series: "LLM 原理深度解析"
 series_order: 17
-series_total: 37
+series_total: 39
 tags: [initialization, xavier, kaiming, muP, gradient, training]
 summary: "为什么深度网络训练之前要精心设置初始权重？从方差守恒的直觉出发，推导 Xavier 和 Kaiming 初始化，再到 µP 如何让超参数跨尺度迁移。"
 ---

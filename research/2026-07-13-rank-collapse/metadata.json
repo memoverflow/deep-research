@@ -1,0 +1,35 @@
+{
+  "topic": "Transformer 秩坍缩 (Rank Collapse / Token Uniformity)",
+  "refined_question": "为什么纯自注意力网络的输出会随深度双指数收敛到秩1矩阵？残差连接、MLP、LayerNorm 各自在其中扮演什么角色？这与注意力汇聚等现象有何联系？",
+  "level": 3,
+  "date": "2026-07-13",
+  "duration_minutes": 35,
+  "searches_total": 16,
+  "sources_extracted": 6,
+  "arxiv_papers": 5,
+  "images_saved": 0,
+  "sub_questions": [
+    "秩坍缩现象本身的数学定义与证明结构（path decomposition）",
+    "残差连接为何能彻底阻止坍缩（vs MLP 只能减速，LayerNorm 无效）",
+    "因果掩码（decoder-only）场景下的坍缩行为差异",
+    "秩坍缩与相关现象（各向异性、注意力汇聚）的联系",
+    "工程实践中的应对（DeepNorm 等）"
+  ],
+  "tools_used": ["web_search", "web_extract", "terminal_curl_fallback"],
+  "search_queries": [
+    "attention rank collapse transformer over-smoothing pure attention loses rank",
+    "\"attention is not all you need\" pure attention loses rank doubly exponentially",
+    "Dong Cordonnier Loukas attention rank collapse path decomposition proof residual connection",
+    "token uniformity oversmoothing transformer why residual connections prevent",
+    "graph neural network oversmoothing analogy transformer attention rank collapse",
+    "rank collapse transformer path decomposition residual 1-Lipschitz convergence",
+    "attention entropy collapse Zhai stabilizing transformer training",
+    "anisotropy word embedding degeneration cone narrow representation degeneration problem",
+    "attention sink register tokens massive activations relation rank collapse deep transformer",
+    "rank collapse transformer LayerNorm role doubly stochastic softmax Perron Frobenius",
+    "causal mask attention rank collapse decoder-only autoregressive slower convergence",
+    "DeepNet DeepNorm 1000 layer transformer training stability deep transformer scaling",
+    "why deep transformers hard to train depth scaling GPT LLaMA rank collapse mitigation",
+    "秩坍缩 transformer 深度 残差连接 (知乎/中文搜索)"
+  ]
+}

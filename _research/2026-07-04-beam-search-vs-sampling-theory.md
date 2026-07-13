@@ -4,7 +4,7 @@ date: 2026-07-04
 level: 3
 series: "LLM 原理深度解析"
 series_order: 26
-series_total: 37
+series_total: 39
 tags: [beam-search, sampling, decoding, MAP, exposure-bias, information-theory]
 summary: "从一个反直觉的实验现象出发，讲清楚为什么"选最大概率的句子"这个听起来无比正确的想法，在语言生成里其实是个陷阱。"
 ---

@@ -4,7 +4,7 @@ date: 2025-05-27
 level: 3
 series: "LLM 原理深度解析"
 series_order: 15
-series_total: 37
+series_total: 39
 tags: [information-theory, cross-entropy, KL-divergence, loss-function, training]
 summary: "从信息论的「惊讶度」出发，解释交叉熵损失为什么是训练语言模型的唯一合理选择，以及 KL 散度如何连接压缩、对齐与蒸馏"
 ---

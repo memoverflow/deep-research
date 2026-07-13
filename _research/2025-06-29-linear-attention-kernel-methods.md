@@ -4,7 +4,7 @@ date: 2025-06-29
 level: 3
 series: "LLM 原理深度解析"
 series_order: 19
-series_total: 37
+series_total: 39
 tags: [linear-attention, kernel-methods, efficient-transformer, attention]
 summary: "从核方法的视角理解 Linear Attention：softmax 其实是一个核函数，而打破二次复杂度的秘密藏在矩阵乘法结合律里。"
 ---

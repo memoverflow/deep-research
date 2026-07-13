@@ -4,7 +4,7 @@ date: 2026-07-06
 level: 3
 series: "LLM 原理深度解析"
 series_order: 27
-series_total: 37
+series_total: 39
 tags: [self-attention, QKV, 几何直觉, transformer, 线性代数]
 summary: "Query、Key、Value 三个矩阵不是三个随意的名字——它们把一次"信息检索"拆成了三个独立的几何操作。这篇文章带你看清这三步到底在向量空间里做了什么。"
 ---
