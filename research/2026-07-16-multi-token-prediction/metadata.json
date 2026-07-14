@@ -1,0 +1,31 @@
+{
+  "topic": "Multi-Token Prediction (MTP) 训练目标原理",
+  "refined_question": "为什么让语言模型训练时同时预测未来多个 token（而非仅下一个）能提升样本效率、推理能力与推理速度？DeepSeek-V3 如何将这一想法工程化？",
+  "level": 3,
+  "date": "2026-07-16",
+  "duration_minutes": 30,
+  "searches_total": 17,
+  "sources_extracted": 3,
+  "arxiv_papers": 2,
+  "images_saved": 0,
+  "sub_questions": [
+    "Meta MTP 论文核心机制与实验结果",
+    "为什么 MTP 有效：lookahead choice points / information-theoretic argument",
+    "MTP 与归纳头 (induction heads) 的关系",
+    "DeepSeek-V3 如何工程化 MTP（顺序模块 vs 并行头）"
+  ],
+  "tools_used": ["web_search", "web_extract", "terminal curl+pdfplumber", "search_files", "read_file"],
+  "search_queries": [
+    "Multi-Token Prediction language model training arxiv Gloeckle 2024",
+    "DeepSeek-V3 Multi-Token Prediction MTP module design",
+    "\"multi-token prediction\" better sample efficiency LLM why works",
+    "site:arxiv.org multi-token prediction future tokens transformer",
+    "\"multi-token prediction\" teacher forcing myopia induction head explanation why helps",
+    "DeepSeek-V3 technical report multi-token prediction MTP details",
+    "\"multi-token prediction\" information theory gradient variance lookahead argument",
+    "multi-token prediction \"choice points\" \"hard\" tokens local pattern argument theory",
+    "DeepSeek-V3 \"MTP\" module \"D=1\" sequential prediction shared embedding output head arxiv",
+    "DeepSeek-V3 MTP sequential causal chain vs Meta parallel heads difference",
+    "DeepSeek-V3 MTP module \"maintain the complete causal chain\" prediction depth"
+  ]
+}
