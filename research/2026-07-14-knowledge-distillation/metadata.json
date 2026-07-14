@@ -1,0 +1,38 @@
+{
+  "topic": "知识蒸馏 (Knowledge Distillation) 的原理与在 LLM 时代的演化",
+  "refined_question": "从 Hinton 2015 的软标签蒸馏到 DeepSeek-R1 的蒸馏实践，知识蒸馏的核心数学原理（温度、KL 散度选择、曝光偏差、容量差距）是什么？",
+  "level": 3,
+  "date": "2026-07-14",
+  "duration_minutes": 35,
+  "searches_total": 20,
+  "sources_extracted": 9,
+  "arxiv_papers": 6,
+  "images_saved": 0,
+  "sub_questions": [
+    "Hinton 原始蒸馏方法：温度、软标签、暗知识",
+    "LLM 生成任务的蒸馏特殊性：曝光偏差",
+    "正向 KL vs 反向 KL 的选择与争议",
+    "On-policy 蒸馏 (GKD)",
+    "容量差距与蒸馏 scaling laws",
+    "白盒 vs 黑盒蒸馏，序列级蒸馏，DeepSeek-R1 实例",
+    "label smoothing 作为蒸馏的正则化视角"
+  ],
+  "tools_used": ["web_search", "web_extract", "terminal(curl)"],
+  "search_queries": [
+    "knowledge distillation language models soft labels temperature KL divergence",
+    "Hinton knowledge distillation neural network 2015 paper",
+    "site:arxiv.org knowledge distillation large language models survey",
+    "DistilBERT knowledge distillation LLM compression math",
+    "MiniLLM knowledge distillation reverse KL divergence LLM",
+    "forward KL vs reverse KL divergence knowledge distillation mode seeking mode covering",
+    "GKD generalized knowledge distillation on-policy language models Google DeepMind",
+    "dark knowledge distillation why soft targets work better than hard labels",
+    "distillation scaling laws student teacher capacity gap distillation 2024",
+    "白盒蒸馏 黑盒蒸馏 大语言模型 知识蒸馏 原理",
+    "sequence level knowledge distillation Kim Rush 2016 NMT",
+    "DeepSeek R1 distillation Qwen Llama reasoning distill 2025",
+    "knowledge distillation capacity gap teacher too strong student worse",
+    "distillation dark knowledge similarity structure logits information theory",
+    "self-distillation born again networks label smoothing regularization view"
+  ]
+}
