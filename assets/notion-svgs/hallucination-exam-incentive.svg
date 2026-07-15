@@ -1,0 +1,24 @@
+<svg viewBox="0 0 700 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:700px;margin:24px auto;display:block;">
+  <defs>
+    <marker id="arrow2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#6e8eff"/>
+    </marker>
+  </defs>
+  <text x="350" y="28" text-anchor="middle" fill="#ededf0" font-size="15" font-family="system-ui" font-weight="bold">为什么"打分方式"决定了模型敢不敢说"不知道"</text>
+
+  <rect x="40" y="60" width="280" height="150" rx="8" fill="#1e1e2a" stroke="#34d399" stroke-width="1.5"/>
+  <text x="180" y="85" text-anchor="middle" fill="#ededf0" font-size="13" font-family="system-ui" font-weight="bold">模型 A：诚实</text>
+  <text x="180" y="110" text-anchor="middle" fill="#a0a0b0" font-size="11" font-family="system-ui">不确定时说"不知道"</text>
+  <text x="180" y="135" text-anchor="middle" fill="#a0a0b0" font-size="11" font-family="system-ui">从不编造答案</text>
+  <text x="180" y="165" text-anchor="middle" fill="#f87171" font-size="12" font-family="monospace" font-weight="bold">二元评分下：得分低</text>
+  <text x="180" y="190" text-anchor="middle" fill="#a0a0b0" font-size="10" font-family="system-ui">IDK = 0 分，等于错</text>
+
+  <rect x="380" y="60" width="280" height="150" rx="8" fill="#1e1e2a" stroke="#f87171" stroke-width="1.5"/>
+  <text x="520" y="85" text-anchor="middle" fill="#ededf0" font-size="13" font-family="system-ui" font-weight="bold">模型 B：自信瞎猜</text>
+  <text x="520" y="110" text-anchor="middle" fill="#a0a0b0" font-size="11" font-family="system-ui">不确定也给出具体答案</text>
+  <text x="520" y="135" text-anchor="middle" fill="#a0a0b0" font-size="11" font-family="system-ui">"9月30日"而不是"秋天"</text>
+  <text x="520" y="165" text-anchor="middle" fill="#34d399" font-size="12" font-family="monospace" font-weight="bold">二元评分下：得分更高</text>
+  <text x="520" y="190" text-anchor="middle" fill="#a0a0b0" font-size="10" font-family="system-ui">猜对了就是 1 分</text>
+
+  <text x="350" y="245" text-anchor="middle" fill="#ededf0" font-size="12" font-family="system-ui">→ 排行榜倾向于奖励"敢瞎猜"的模型，而非"懂装懂"的谦逊模型</text>
+</svg>

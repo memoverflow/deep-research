@@ -4,7 +4,7 @@ date: 2025-05-18
 level: 3
 series: "LLM 原理深度解析"
 series_order: 7
-series_total: 39
+series_total: 43
 tags: [grokking, generalization, overfitting, mechanistic-interpretability, weight-decay]
 summary: "神经网络可以在完全过拟合之后，经过漫长的沉默期突然学会泛化——这个叫 Grokking 的现象颠覆了我们对训练的认知"
 ---

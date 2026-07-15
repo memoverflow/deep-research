@@ -4,7 +4,7 @@ date: 2026-07-09
 level: 3
 series: "LLM 原理深度解析"
 series_order: 32
-series_total: 39
+series_total: 43
 tags: [数据配比, 课程学习, DoReMi, WSD, 预训练]
 summary: "同样的一堆训练数据，喂的比例不同、喂的顺序不同，最终模型的能力可能天差地别——这篇文章讲清楚数据配比和课程学习背后的道理。"
 ---

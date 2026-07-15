@@ -4,7 +4,7 @@ date: 2025-06-30
 level: 3
 series: "LLM 原理深度解析"
 series_order: 25
-series_total: 39
+series_total: 43
 tags: [涌现, emergence, scaling, 度量标准, BIG-Bench, 相变]
 summary: "LLM 的涌现能力究竟是模型规模增长带来的真实突变，还是度量标准选择制造的幻觉？这场论战揭示了 AI 研究中最深刻的测量哲学问题。"
 ---

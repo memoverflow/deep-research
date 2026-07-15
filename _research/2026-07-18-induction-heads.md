@@ -4,7 +4,7 @@ date: 2026-07-18
 level: 3
 series: "LLM 原理深度解析"
 series_order: 42
-series_total: 42
+series_total: 43
 tags: [mechanistic-interpretability, induction-heads, in-context-learning, transformer-circuits, attention]
 summary: "训练一个 Transformer 的过程中,会有一个几分钟内突然发生的"顿悟"——模型学会了"复制刚才见过的模式"这一件事,而这一件事很可能就是 In-Context Learning 能力的真正来源。这篇文章带你看清这个顿悟时刻,以及背后那个由两个 attention head 组成的小电路。"
 ---

@@ -4,7 +4,7 @@ date: 2026-07-01
 level: 4
 series: "LLM 原理深度解析"
 series_order: 21
-series_total: 39
+series_total: 43
 tags: [state-space-models, mamba, s4, control-theory, hippo, sequence-modeling]
 summary: "从控制工程师设计巡航系统的思路出发，拆解 S4/Mamba 背后那套几十年前就有的数学——状态空间方程、离散化、HiPPO 记忆理论和选择性扫描——看懂为什么这套「老古董」理论能在 2023 年重新定义序列建模。"
 ---

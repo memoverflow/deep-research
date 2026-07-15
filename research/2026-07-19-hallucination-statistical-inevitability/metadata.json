@@ -1,0 +1,31 @@
+{
+  "topic": "为什么大模型会产生幻觉:统计学必然性",
+  "refined_question": "OpenAI 2025 论文《Why Language Models Hallucinate》如何用二元分类归约和评测激励分析解释幻觉的产生与持续存在",
+  "level": 3,
+  "date": "2026-07-19",
+  "duration_minutes": 35,
+  "searches_total": 18,
+  "sources_extracted": 3,
+  "arxiv_papers": 2,
+  "images_saved": 0,
+  "svgs_created": 2,
+  "sub_questions": [
+    "IIV reduction 数学关系",
+    "校准与错误率的张力",
+    "Singleton rate / Good-Turing missing mass",
+    "后训练为何未消除幻觉:二元评分激励分析",
+    "真实世界证据: GPT-5系统卡, sycophancy",
+    "与前作及相关理论的关系"
+  ],
+  "tools_used": ["web_search", "web_extract", "terminal_curl_pdf_extract", "write_file"],
+  "search_queries": [
+    "why language models hallucinate statistical inevitability paper 2024 2025",
+    "OpenAI Why Language Models Hallucinate paper Kalai",
+    "hallucination is statistically inevitable calibration lower bound classification error",
+    "Kalai Nachum hallucination binary classification Is-It-Valid IIV reduction proof",
+    "Kalai Vempala 2024 Calibrated Language Models Must Hallucinate Good-Turing",
+    "RLHF sycophancy overconfidence penalize uncertainty benchmark critique 2025",
+    "GPT-5 hallucination rate reduced OpenAI system card IDK abstain",
+    "singleton rate hallucination birthday example missing mass estimator explained"
+  ]
+}

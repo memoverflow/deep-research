@@ -4,7 +4,7 @@ date: 2025-05-26
 level: 3
 series: "LLM 原理深度解析"
 series_order: 14
-series_total: 39
+series_total: 43
 tags: [learning-rate, optimization, warmup, cosine-decay, WSD, training]
 summary: "为什么训练开始时要小心翼翼地加速？为什么学习率要像日落一样缓慢下降？从损失景观的几何直觉到现代 WSD 调度的工程智慧。"
 ---

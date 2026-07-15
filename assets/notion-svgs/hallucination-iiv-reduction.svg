@@ -1,0 +1,29 @@
+<svg viewBox="0 0 700 320" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:700px;margin:24px auto;display:block;">
+  <defs>
+    <marker id="arrow1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#6e8eff"/>
+    </marker>
+  </defs>
+  <text x="350" y="30" text-anchor="middle" fill="#ededf0" font-size="15" font-family="system-ui" font-weight="bold">从"生成"到"二元判断"的降维</text>
+
+  <rect x="30" y="60" width="280" height="90" rx="8" fill="#1e1e2a" stroke="#6e8eff" stroke-width="1.5"/>
+  <text x="170" y="90" text-anchor="middle" fill="#ededf0" font-size="13" font-family="system-ui">生成任务</text>
+  <text x="170" y="112" text-anchor="middle" fill="#a0a0b0" font-size="11" font-family="system-ui">"回答这个问题"</text>
+  <text x="170" y="132" text-anchor="middle" fill="#a0a0b0" font-size="11" font-family="system-ui">要在无穷候选中选对一个</text>
+
+  <rect x="390" y="60" width="280" height="90" rx="8" fill="#1e1e2a" stroke="#34d399" stroke-width="1.5"/>
+  <text x="530" y="90" text-anchor="middle" fill="#ededf0" font-size="13" font-family="system-ui">IIV 二分类</text>
+  <text x="530" y="112" text-anchor="middle" fill="#a0a0b0" font-size="11" font-family="system-ui">"这个候选答案，对不对？"</text>
+  <text x="530" y="132" text-anchor="middle" fill="#a0a0b0" font-size="11" font-family="system-ui">只需判断 Yes / No</text>
+
+  <line x1="310" y1="105" x2="385" y2="105" stroke="#6e8eff" stroke-width="1.5" marker-end="url(#arrow1)"/>
+  <text x="347" y="95" text-anchor="middle" fill="#6e8eff" font-size="11" font-family="system-ui">生成 ⊇ 判断</text>
+
+  <rect x="130" y="190" width="440" height="100" rx="8" fill="#1e1e2a" stroke="#a78bfa" stroke-width="1.5"/>
+  <text x="350" y="218" text-anchor="middle" fill="#ededf0" font-size="13" font-family="system-ui" font-weight="bold">核心不等式</text>
+  <text x="350" y="245" text-anchor="middle" fill="#ededf0" font-size="13" font-family="monospace">生成错误率 ≳ 2 × 二分类错误率</text>
+  <text x="350" y="270" text-anchor="middle" fill="#a0a0b0" font-size="11" font-family="system-ui">如果连"这句话对不对"都判断不好，生成时更没救</text>
+
+  <line x1="170" y1="150" x2="250" y2="185" stroke="#6e8eff" stroke-width="1.2" marker-end="url(#arrow1)"/>
+  <line x1="530" y1="150" x2="450" y2="185" stroke="#34d399" stroke-width="1.2" marker-end="url(#arrow1)"/>
+</svg>

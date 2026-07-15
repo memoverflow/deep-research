@@ -4,7 +4,7 @@ date: 2025-06-30
 level: 3
 series: "LLM 原理深度解析"
 series_order: 20
-series_total: 39
+series_total: 43
 tags: [embedding, geometry, high-dimensional, word2vec, transformer, anisotropy, superposition]
 summary: "从查找表到高维几何——理解 LLM 最底层的数学结构：为什么 4096 个数字就能编码语言的全部含义"
 ---

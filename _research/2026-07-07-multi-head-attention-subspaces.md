@@ -4,7 +4,7 @@ date: 2026-07-07
 level: 3
 series: "LLM 原理深度解析"
 series_order: 28
-series_total: 39
+series_total: 43
 tags: [multi-head-attention, transformer, 子空间分解, 低秩瓶颈, attention]
 summary: "把注意力拆成 8 个头,不是为了并行加速这么简单——这背后有一套关于'干扰'、'容量'和'秩'的数学道理,也有一堆关于'其实很多头都是冗余的'的尴尬真相。"
 ---

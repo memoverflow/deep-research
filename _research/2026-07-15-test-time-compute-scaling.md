@@ -4,7 +4,7 @@ date: 2026-07-15
 level: 3
 series: "LLM 原理深度解析"
 series_order: 38
-series_total: 39
+series_total: 43
 tags: [test-time-compute, reasoning, o1, deepseek-r1, chain-of-thought, scaling-laws, process-reward-model]
 summary: "为什么让模型多想一会儿，有时比造一个更大的模型更划算？测试时计算扩展的原理、边界与代价。"
 ---
