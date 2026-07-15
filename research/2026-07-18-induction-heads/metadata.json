@@ -1,0 +1,37 @@
+{
+  "topic": "归纳头 (Induction Heads) 与上下文学习机制",
+  "refined_question": "归纳头这个由两层 attention head 组成的电路，是如何被发现并被论证为 in-context learning 的主要机制来源的？后续研究对这个假说做了哪些细化和质疑？",
+  "level": 3,
+  "date": "2026-07-15",
+  "duration_minutes": 35,
+  "searches_total": 18,
+  "sources_extracted": 3,
+  "arxiv_papers": 2,
+  "images_saved": 0,
+  "sub_questions": [
+    "归纳头的定义和机制是什么（两层电路、K-composition）",
+    "Anthropic 团队用什么证据论证归纳头是 ICL 的主要来源（六条证据）",
+    "ICL 如何被量化（per-token loss 差异）",
+    "训练中的相变/损失鼓包现象是什么",
+    "后续研究（Singh et al. 2024）如何细化归纳头形成动态",
+    "归纳头假说面临的批评和局限性"
+  ],
+  "tools_used": ["web_search", "terminal_curl_extraction", "pdfplumber"],
+  "search_queries": [
+    "induction heads in-context learning transformer circuits",
+    "Olsson et al 2022 In-context Learning and Induction Heads anthropic",
+    "site:arxiv.org induction heads transformer",
+    "induction head mechanism K-composition query key attention",
+    "phase change induction heads training loss bump",
+    "\"previous token head\" \"induction head\" attention pattern copy mechanism explained",
+    "induction heads formal definition transformer circuits framework Elhage 2021",
+    "\"in-context learning\" score \"loss at token 500\" \"loss at token 50\" definition",
+    "induction heads six lines of evidence causal ablation",
+    "induction heads two-layer attention-only toy model synthetic sequences",
+    "induction heads what needs to go right arxiv 2404.07129 phase change",
+    "induction bump loss curve visualize training GPT small model",
+    "induction heads criticism limitations not sufficient in-context learning",
+    "归纳头 induction head 上下文学习 机制解释"
+  ],
+  "notes": "web_search backend 为 DuckDuckGo，部分查询返回 'No results found'（DDG 限流），改用 terminal curl 直接抓取 arxiv abstract 页和 transformer-circuits.pub 页面正文，以及用 pdfplumber 解析 arXiv PDF 全文，绕过 web_extract 的 SSRF/backend 限制。"
+}

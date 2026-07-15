@@ -90,3 +90,4 @@
 - 2026-07-13: 秩坍缩/Token Uniformity (Rank Collapse/Path Decomposition/残差连接必要性/LayerNorm无效/因果掩码聚类/DeepNorm) — 秩坍缩：如果没有残差连接，Transformer 会把所有词变成同一个词
 - 2026-07-16: Multi-Token Prediction 训练目标 (Meta MTP论文/lookahead choice points/信息论论证/归纳头加速/DeepSeek-V3顺序MTP模块) — 多token预测：如果训练时就逼模型「看得更远」会怎样？
 - 2026-07-17: 知识蒸馏原理 (Knowledge Distillation/软标签温度/正向反向KL/曝光偏差/容量差距/DeepSeek-R1蒸馏) — 知识蒸馏：为什么一个模型的错误答案，能教会另一个模型变聪明？
+- 2026-07-18: 归纳头 (Induction Heads/Olsson et al. 2022/previous-token head/K-composition/phase change/loss bump/六条证据/子电路分解) — 归纳头：当 Transformer 学会「见过一次就能用」的那个瞬间
