@@ -92,3 +92,4 @@
 - 2026-07-17: 知识蒸馏原理 (Knowledge Distillation/软标签温度/正向反向KL/曝光偏差/容量差距/DeepSeek-R1蒸馏) — 知识蒸馏：为什么一个模型的错误答案，能教会另一个模型变聪明？
 - 2026-07-18: 归纳头 (Induction Heads/Olsson et al. 2022/previous-token head/K-composition/phase change/loss bump/六条证据/子电路分解) — 归纳头：当 Transformer 学会「见过一次就能用」的那个瞬间
 - 2026-07-19: 幻觉的统计学必然性 (IIV归约/Is-It-Valid/校准与错误率张力/singleton rate/Good-Turing missing mass/二元评分激励分析/Kalai-Vempala) — 为什么大模型总是「一本正经地胡说八道」：幻觉的统计学必然性
+- 2026-07-20: 模型合并 (Model Merging/Task Arithmetic/TIES-Merging/DARE/SLERP/Git Re-Basin permutation symmetry/linear mode connectivity) — 模型合并：为什么把两个模型的权重直接加起来，居然能得到一个更好的模型？

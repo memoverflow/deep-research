@@ -1,0 +1,36 @@
+{
+  "topic": "模型合并 (Model Merging): Task Arithmetic, TIES-Merging, DARE, SLERP, Git Re-Basin",
+  "refined_question": "为什么可以把多个微调模型的权重直接相加/平均得到一个更强的模型？背后的几何原理（linear mode connectivity, permutation symmetry）与主流合并算法（task vectors, TIES, DARE, SLERP）",
+  "level": 3,
+  "date": "2026-07-16",
+  "duration_minutes": 35,
+  "searches_total": 19,
+  "sources_extracted": 6,
+  "arxiv_papers": 5,
+  "images_saved": 0,
+  "sub_questions": [
+    "为什么独立训练的模型不能直接平均，但同源微调的模型可以（linear mode connectivity, permutation symmetry, Git Re-Basin）",
+    "Model Soups: 贪心汤 vs 均匀汤",
+    "Task Arithmetic: 任务向量的加减法与类比",
+    "TIES-Merging: 冗余参数干扰与符号冲突",
+    "DARE: 随机丢弃大部分delta参数",
+    "SLERP: 球面插值 vs 线性插值"
+  ],
+  "tools_used": ["web_search", "terminal curl", "pypdf extraction", "write_file"],
+  "search_queries": [
+    "Model Soups Wortsman averaging weights fine-tuned models",
+    "TIES-Merging task arithmetic model merging arxiv",
+    "DARE drop and rescale model merging arxiv language model",
+    "SLERP spherical linear interpolation model merging weights",
+    "Editing Models with Task Arithmetic Ilharco arxiv",
+    "linear mode connectivity permutation invariance Git Re-Basin",
+    "TIES-Merging Yadav resolving interference trim elect sign disjoint merge arxiv",
+    "linear mode connectivity loss barrier neural network permutation Entezari",
+    "mergekit arcee-ai model merging methods overview",
+    "Model Stock weight averaging center of mass merging",
+    "weight disentanglement Ortiz-Jimenez task arithmetic theoretical NTK tangent space",
+    "mergekit open source models leaderboard model merging Mistral community frankenmerge",
+    "模型合并 model merging 大语言模型 参数平均 综述",
+    "DARE drop and rescale delta parameters arxiv 2311.03099 abstract"
+  ]
+}
