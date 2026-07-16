@@ -1,0 +1,35 @@
+{
+  "topic": "Reversal Curse in LLMs — A is B fails to learn B is A",
+  "refined_question": "为什么大语言模型训练学会 A is B 之后无法泛化出 B is A？现象、机制解释（训练目标不对称、权重不对称）、缓解方案与实践启示",
+  "level": 3,
+  "date": "2026-07-21",
+  "duration_minutes": 30,
+  "searches_total": 16,
+  "sources_extracted": 4,
+  "arxiv_papers": 3,
+  "images_saved": 0,
+  "sub_questions": [
+    "反转诅咒的原始定义与实证证据是什么",
+    "反转诅咒的机制解释：训练目标视角（causal mask / next-token prediction）",
+    "反转诅咒的机制解释：训练动力学视角（权重不对称的理论证明）",
+    "缓解方案：数据增强、双向训练、知识编辑",
+    "对 CoT 必要性的理论延伸",
+    "工程与实践启示（RAG、数据构造）"
+  ],
+  "tools_used": ["web_search", "web_extract", "terminal(curl)", "pdfplumber"],
+  "search_queries": [
+    "reversal curse LLM A is B B is A Berglund 2023",
+    "site:arxiv.org reversal curse language models",
+    "reversal curse explanation chain rule autoregressive asymmetry embeddings",
+    "reversal curse GPT-4 celebrity parent experiment",
+    "reversal curse fix solution bidirectional training reverse data augmentation",
+    "reversal curse mechanistic interpretability logit lens",
+    "reversal curse theoretical explanation training dynamics NeurIPS 2024",
+    "reversal curse chain rule probability autoregressive factorization asymmetric",
+    "reversal curse logical deduction syllogism fine-tuning experiment reverse order",
+    "reverse training Lin et al 2024 reversal curse mitigate",
+    "reversal curse embeddings asymmetric weight update gradient bilinear",
+    "reversal curse human memory analogy psychology",
+    "reversal curse implications knowledge editing hallucination 2025"
+  ]
+}
