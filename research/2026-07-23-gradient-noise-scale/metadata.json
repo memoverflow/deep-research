@@ -1,0 +1,31 @@
+{
+  "topic": "梯度噪声尺度与临界批量大小 (Gradient Noise Scale & Critical Batch Size)",
+  "refined_question": "为什么增大 batch size 不能无限加速训练？梯度噪声尺度如何预测最大有效批量大小，以及2018年理论在Adam优化器时代面临什么挑战？",
+  "level": 3,
+  "date": "2026-07-23",
+  "duration_minutes": 35,
+  "searches_total": 16,
+  "sources_extracted": 3,
+  "arxiv_papers": 3,
+  "images_saved": 0,
+  "sub_questions": [
+    "梯度噪声尺度的数学定义和推导是什么",
+    "临界批量大小与训练效率权衡的关系",
+    "噪声尺度在不同任务/训练阶段如何变化",
+    "GPT-3等真实系统如何应用这一理论",
+    "2025年新研究对该理论提出了什么修正"
+  ],
+  "tools_used": ["web_search", "web_extract_via_curl", "terminal"],
+  "search_queries": [
+    "gradient noise scale large batch training McCandlish OpenAI 2018",
+    "critical batch size linear scaling rule deep learning theory",
+    "site:arxiv.org empirical model of large-batch training",
+    "why can't we just increase batch size infinitely training speed diminishing returns",
+    "gradient noise scale GPT-3 batch size increase during pretraining schedule",
+    "critical batch size revisited language model pretraining 2025 arxiv",
+    "linear scaling rule learning rate Goyal ImageNet 1 hour large minibatch SGD",
+    "梯度噪声尺度 大批量训练 临界批量大小",
+    "GPT-3 language models few-shot learners gradient noise scale batch size paper",
+    "square root scaling rule Adam optimizer batch size learning rate Malladi SDE"
+  ]
+}

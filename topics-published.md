@@ -95,3 +95,4 @@
 - 2026-07-20: 模型合并 (Model Merging/Task Arithmetic/TIES-Merging/DARE/SLERP/Git Re-Basin permutation symmetry/linear mode connectivity) — 模型合并：为什么把两个模型的权重直接加起来，居然能得到一个更好的模型？
 - 2026-07-21: 反转诅咒 (Reversal Curse/A is B vs B is A/训练目标不对称/权重不对称训练动力学/Chain-of-Thought必要性延伸) — 反转的诅咒：为什么模型知道「A的B是谁」，却不知道「B的A是谁」
 - 2026-07-22: Lost in the Middle 长上下文位置偏见 (因果掩码primacy tail/残差连接recency anchor/阶乘死区/Chowdhury 2026 exact theory/Wu et al MIT graph-theoretic/Herasimchyk residual-aware rollout/found-in-the-middle calibration) — 为什么大模型读长文档时总「记不住中间」：Lost in the Middle 的几何真相
+- 2026-07-23: 梯度噪声尺度与临界批量大小 (Gradient Noise Scale/Critical Batch Size/McCandlish 2018/OLMo Batch Size Warmup/GPT-3应用/Adam平方根缩放) — 为什么不能无限加大 Batch Size？梯度噪声尺度里藏着训练提速的天花板
