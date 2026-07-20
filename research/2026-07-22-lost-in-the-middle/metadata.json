@@ -1,0 +1,33 @@
+{
+  "topic": "Lost in the Middle: 长上下文中的位置偏见",
+  "refined_question": "为什么大模型在处理长上下文时,对开头和结尾的信息利用率远高于中间位置(U形曲线),这个现象的架构根源是什么,能否修复?",
+  "level": 3,
+  "date": "2026-07-22",
+  "duration_minutes": 35,
+  "searches_total": 16,
+  "sources_extracted": 8,
+  "arxiv_papers": 6,
+  "images_saved": 0,
+  "sub_questions": [
+    "Lost-in-the-middle 现象本身如何被发现和验证(Liu et al. 2023)",
+    "attention sink 与 U 形曲线的关系(Xiao et al. 2023)",
+    "U 形曲线的几何/架构根源:因果掩码 + 残差连接(Chowdhury 2026, Wu et al. 2025)",
+    "训练之后这个偏见是否被保留(Herasimchyk et al. 2026, Rutgers cognitive science paper)",
+    "实践中的缓解方法(Hsieh et al. 2024 found-in-the-middle, reranking, reordering)"
+  ],
+  "tools_used": ["web_search", "web_extract", "terminal curl+read_file for PDF/HTML"],
+  "search_queries": [
+    "lost in the middle long context language models positional bias",
+    "\"lost in the middle\" Liu et al 2023 arxiv",
+    "lost in the middle causal attention explanation why U-shaped",
+    "\"lost in the middle\" causal mask attention sink information theoretic explanation arxiv",
+    "llm-stats.com \"Position of Your Context Matters\" lost in the middle theory",
+    "\"residual streams\" position bias final token attention Wu MIT ICML 2025 arxiv 2502.01951",
+    "Wu 2025 \"position bias\" transformer residual stream ICML arxiv 2502.01951",
+    "Herasimchyk residual-aware rollout position bias attention Spearman correlation arxiv 2026",
+    "lost in the middle mitigation reordering RAG rerank prompt engineering solutions",
+    "\"Found in the Middle\" calibrating positional attention bias abstract Hsieh 2024",
+    "lost in the middle key-value retrieval task performance benchmark GPT-3.5 Claude figure",
+    "attention sink Xiao 2023 first token sink StreamingLLM causal masking explanation"
+  ]
+}
