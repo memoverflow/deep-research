@@ -1,0 +1,36 @@
+{
+  "topic": "LoRA 低秩适应的理论基础：为什么 rank 16 就够了",
+  "refined_question": "LoRA 为什么能用极少的参数微调大模型？其低秩假设的理论依据（Intrinsic Dimension）、几何直觉（ΔW 对 W 的选择性放大）、以及后续变体（LoRA+, DoRA, QLoRA）和批判性分析（Illusion of Equivalence）",
+  "level": 3,
+  "date": "2026-07-24",
+  "searches_total": 16,
+  "sources_extracted": 6,
+  "arxiv_papers": 6,
+  "images_saved": 0,
+  "svg_diagrams": 2,
+  "sub_questions": [
+    "LoRA 的核心机制与原始论文实验结果",
+    "Intrinsic Dimensionality 理论基础",
+    "LoRA+ 学习率不对称问题",
+    "LoRA vs 全量微调的几何差异（intruder dimensions）",
+    "DoRA 权重分解变体",
+    "QLoRA 量化+低秩组合"
+  ],
+  "tools_used": ["web_search", "terminal curl", "write_file"],
+  "search_queries": [
+    "LoRA low-rank adaptation of large language models paper",
+    "intrinsic dimensionality of objective landscapes fine-tuning language models",
+    "LoRA rank choice why rank 8 16 sufficient fine-tuning",
+    "site:arxiv.org LoRA low-rank adaptation theory",
+    "LoRA rank deficiency downstream task adaptation why low rank works theory",
+    "LoRA+ different learning rate matrices A B theoretical analysis",
+    "LoRA vs full finetuning generalization forgetting comparison",
+    "intrinsic rank fine-tuning updates low rank Aghajanyan intrinsic dimensionality",
+    "LoRA merge inference latency zero overhead frozen weights",
+    "QLoRA quantized low rank adaptation memory efficient finetuning",
+    "DoRA weight-decomposed low rank adaptation direction magnitude",
+    "LoRA rank 1 rank 4 rank 8 GPT-3 175B experiment results table WikiSQL MNLI",
+    "LoRA subspace similarity SVD analysis rank 1 rank 4 sufficient GPT-3",
+    "why does low rank update suffice weight update near pretrained minimum lottery ticket subspace"
+  ]
+}
