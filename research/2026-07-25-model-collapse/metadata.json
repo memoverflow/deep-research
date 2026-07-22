@@ -1,0 +1,37 @@
+{
+  "topic": "模型坍缩 (Model Collapse) — 递归训练合成数据的数学原理与现实争议",
+  "refined_question": "为什么在自身生成数据上递归训练的生成模型会发生性能坍缩？这个现象的数学根源是什么？现实世界的风险有多大？",
+  "level": 3,
+  "date": "2026-07-25",
+  "sub_questions": [
+    "Model collapse 的定义与两阶段（early/late collapse）",
+    "统计近似误差与函数近似误差的数学机制",
+    "累积 vs 替换训练策略的理论差异 (Gerstgrasser et al. 2024)",
+    "核回归设定下的 scaling law 修正 (Dohmatob et al. 2024)",
+    "对 model collapse 叙事的学术反驳 (Schaeffer et al. 2025 position paper)",
+    "缓解策略：数据验证/过滤 (Escaping Model Collapse 2025)"
+  ],
+  "searches_total": 16,
+  "sources_extracted": 6,
+  "arxiv_papers": 5,
+  "images_saved": 0,
+  "svg_diagrams": 3,
+  "tools_used": ["web_search", "terminal_curl_extract"],
+  "search_queries": [
+    "model collapse recursive training synthetic data theory",
+    "\"model collapse\" Shumailov curse of recursion arxiv",
+    "model collapse Nature 2024 AI models collapse recursively generated data",
+    "model collapse statistical analysis language model degradation theory arxiv",
+    "\"model collapse\" accumulate data avoid mitigation arxiv 2024",
+    "model collapse variance loss tail distribution disappear proof",
+    "site:arxiv.org model collapse synthetic data theoretical analysis",
+    "模型坍缩 合成数据 递归训练 原理",
+    "model collapse functional analysis test error scaling law violation",
+    "model collapse early sampling error truncation error statistical error variance",
+    "model collapse GPT internet AI generated text pollution 2025 2026 impact",
+    "\"model collapse\" refuted criticism \"does not mean\" position paper",
+    "synthetic data training frontier models avoid collapse curation verification 2025",
+    "model collapse watermarking provenance detect AI content mitigation",
+    "model collapse VAE Gaussian Mixture Model tail disappear experiment result"
+  ]
+}
