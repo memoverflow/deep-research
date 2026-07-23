@@ -98,3 +98,4 @@
 - 2026-07-23: 梯度噪声尺度与临界批量大小 (Gradient Noise Scale/Critical Batch Size/McCandlish 2018/OLMo Batch Size Warmup/GPT-3应用/Adam平方根缩放) — 为什么不能无限加大 Batch Size？梯度噪声尺度里藏着训练提速的天花板
 - 2026-07-24: LoRA 低秩适应理论 (Intrinsic Dimension/rank-deficiency/subspace similarity/LoRA+/DoRA/QLoRA/Illusion of Equivalence) — LoRA 低秩适应：为什么微调一个千亿参数模型，只需要动千分之一的参数？
 - 2026-07-25: 模型坍缩 (Model Collapse/Curse of Recursion/累积vs替换训练协议/Position paper反驳/Verifier缓解) — AI 吃 AI 会变傻吗？模型坍缩的数学真相与被夸大的恐慌
+- 2026-07-26: 知识编辑 (ROME/MEMIT/因果追踪/秩一矩阵编辑/连锁效应批评/PMET) — 手术刀式改写大模型的记忆：ROME 与 MEMIT 的知识编辑术

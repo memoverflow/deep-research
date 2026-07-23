@@ -1,0 +1,36 @@
+{
+  "topic": "ROME/MEMIT 知识编辑：如何精确定位并改写大模型的事实记忆",
+  "refined_question": "大模型的事实性知识存储在哪个位置？ROME 如何用秩一矩阵编辑实现精确知识修改？MEMIT 如何将其扩展到大规模批量编辑？这套方法有哪些局限？",
+  "level": 3,
+  "date": "2026-07-26",
+  "duration_minutes": 35,
+  "searches_total": 18,
+  "sources_extracted": 8,
+  "arxiv_papers": 7,
+  "images_saved": 0,
+  "sub_questions": [
+    "因果追踪如何定位事实知识存储位置",
+    "ROME 秩一编辑的数学原理",
+    "MEMIT 如何规模化到数千条编辑",
+    "定位是否能指导最优编辑层选择（批评）",
+    "知识编辑是否能正确传播连锁效应（批评）",
+    "FFN 键值记忆理论基础",
+    "PMET 对 ROME/MEMIT 的精细化改进"
+  ],
+  "tools_used": ["web_search", "terminal_curl_extract"],
+  "search_queries": [
+    "ROME Locating and Editing Factual Associations in GPT arxiv",
+    "MEMIT Mass-Editing Memory in a Transformer arxiv",
+    "knowledge editing large language models causal tracing",
+    "causal tracing MLP layers factual recall transformer",
+    "rank-one model editing key value memory FFN",
+    "知识编辑 大模型 事实修改 ROME MEMIT 原理",
+    "knowledge neurons Dai et al integrated gradients transformer facts",
+    "Does Localization Inform Editing NeurIPS 2023 critique ROME",
+    "ROME editing side effects specificity generalization ripple effect",
+    "Cohen evaluating ripple effects knowledge editing RippleEdits arxiv 2307",
+    "PMET precise model editing transformers attention MLP arxiv",
+    "Transformer Feed-Forward Layers Are Key-Value Memories Geva 2021",
+    "知识编辑 causal tracing 因果追踪 中文解读 rome memit"
+  ]
+}
