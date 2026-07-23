@@ -4,7 +4,7 @@ date: 2026-07-22
 level: 3
 series: "LLM 原理深度解析"
 series_order: 46
-series_total: 46
+series_total: 53
 tags: [long-context, attention, transformer, position-bias, RAG]
 summary: "把答案放在10篇文档的第1篇或第10篇，模型几乎全对；放在第5篇，正确率断崖式下跌——这不是训练数据的问题,是残差连接和因果掩码在数学上必然造成的几何盲区。"
 ---

@@ -4,7 +4,7 @@ date: 2026-07-09
 level: 3
 series: "LLM 原理深度解析"
 series_order: 30
-series_total: 43
+series_total: 53
 tags: [transformer, conditional-computation, mixture-of-depths, moe, efficiency, routing]
 summary: "为什么每个 token 都要经过 Transformer 的每一层？Mixture of Depths 用一个巧妙的路由机制告诉我们：其实没必要，模型可以自己学会「该省力气的地方省力气」。"
 ---

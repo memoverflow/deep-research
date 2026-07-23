@@ -4,7 +4,7 @@ date: 2026-07-13
 level: 3
 series: "LLM 原理深度解析"
 series_order: 39
-series_total: 43
+series_total: 53
 tags: [rank-collapse, over-smoothing, residual-connection, self-attention, token-uniformity, transformer-depth]
 summary: "纯注意力网络会以双指数速度把所有 token 的表示压成同一个向量——这不是训练事故，是数学定理。残差连接和 MLP 才是真正阻止这件事发生的英雄。"
 ---

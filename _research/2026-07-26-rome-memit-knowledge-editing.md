@@ -4,7 +4,7 @@ date: 2026-07-26
 level: 3
 series: "LLM 原理深度解析"
 series_order: 52
-series_total: 52
+series_total: 53
 tags: [知识编辑, ROME, MEMIT, 可解释性, 因果追踪, FFN]
 summary: "如果一个大模型记错了一件事——比如以为现任某国总统还是三年前那个人——除了重新训练整个模型，我们还能不能像做一次微创手术一样，只改掉这一条记忆，而不动其他一切？"
 ---

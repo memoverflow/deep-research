@@ -4,7 +4,7 @@ date: 2025-05-16
 level: 3
 series: "LLM 原理深度解析"
 series_order: 3
-series_total: 43
+series_total: 53
 tags: [LoRA, 微调, 低秩适应, 参数高效, PEFT]
 summary: "从内在维度假说出发，解释 LoRA 低秩适应为什么能用万分之一的参数达到全量微调的效果，以及 rank、alpha、初始化背后的数学直觉。"
 ---

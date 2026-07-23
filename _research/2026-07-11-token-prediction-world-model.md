@@ -4,7 +4,7 @@ date: 2026-07-11
 level: 3
 series: "LLM 原理深度解析"
 series_order: 33
-series_total: 43
+series_total: 53
 tags: [world-model, interpretability, othello-gpt, philosophy-of-mind, probing, linear-representation, stochastic-parrots]
 summary: "一个只被要求『预测下一个词』的模型，会不会在不知不觉中学会理解这个世界？从一个玩黑白棋的玩具模型说起，看两派顶尖研究者如何用完全不同的方式回答这个问题——以及为什么这个争论比看起来复杂得多。"
 ---

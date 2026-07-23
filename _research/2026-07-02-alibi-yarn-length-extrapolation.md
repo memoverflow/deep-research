@@ -4,7 +4,7 @@ date: 2026-07-02
 level: 3
 series: "LLM 原理深度解析"
 series_order: 22
-series_total: 43
+series_total: 53
 tags: [ALiBi, YaRN, NTK-aware, position-encoding, length-extrapolation, RoPE]
 summary: "为什么一个在 4096 长度上训练的模型，一旦输入超过这个长度就开始胡言乱语？ALiBi 用一个近乎粗暴的线性惩罚绕开了这个问题，而 YaRN 则把 RoPE 的频率结构拆开重新校准——这两条路线揭示了「长度外推」背后一个被长期低估的真相：模型不是不会数数，而是从没见过那些数字。"
 ---

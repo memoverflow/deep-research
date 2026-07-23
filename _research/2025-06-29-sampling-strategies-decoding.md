@@ -4,7 +4,7 @@ date: 2025-06-29
 level: 3
 series: "LLM 原理深度解析"
 series_order: 18
-series_total: 43
+series_total: 53
 tags: [sampling, decoding, temperature, top-k, top-p, min-p, nucleus-sampling, information-theory]
 summary: "从物理学的玻尔兹曼分布到现代 LLM 的采样策略：理解 temperature、top-k、top-p、min-p 如何在创造力与连贯性之间走钢丝。"
 ---

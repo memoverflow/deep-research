@@ -4,7 +4,7 @@ date: 2026-07-24
 level: 3
 series: "LLM 原理深度解析"
 series_order: 48
-series_total: 48
+series_total: 53
 tags: [LoRA, 微调, 低秩适应, PEFT, QLoRA, DoRA]
 summary: "从「Intrinsic Dimension」的惊人发现出发，讲清楚 LoRA 为什么能用千分之一的参数量微调大模型，以及它的几何直觉、数学细节和现实中的局限。"
 ---

@@ -4,7 +4,7 @@ date: 2026-07-20
 level: 3
 series: "LLM 原理深度解析"
 series_order: 44
-series_total: 44
+series_total: 53
 tags: [model-merging, task-arithmetic, TIES-Merging, DARE, SLERP, mode-connectivity, mergekit]
 summary: "从 Model Soups 到 Task Arithmetic、TIES-Merging、DARE 与 SLERP：模型合并背后有一套关于损失地形（loss landscape）的几何直觉——把权重直接相加，为什么不会把模型搞崩，反而经常变强。"
 ---

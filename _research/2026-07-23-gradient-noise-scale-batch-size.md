@@ -4,7 +4,7 @@ date: 2026-07-23
 level: 3
 series: "LLM 原理深度解析"
 series_order: 47
-series_total: 47
+series_total: 53
 tags: [batch-size, gradient-noise-scale, 训练优化, scaling, OpenAI]
 summary: "GPU 越多，能不能把 batch size 开得越大来加速训练？OpenAI 2018 年的一篇论文告诉我们：存在一个叫「梯度噪声尺度」的数字，它决定了继续加大 batch 到底还有没有意义。"
 ---

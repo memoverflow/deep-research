@@ -99,3 +99,4 @@
 - 2026-07-24: LoRA 低秩适应理论 (Intrinsic Dimension/rank-deficiency/subspace similarity/LoRA+/DoRA/QLoRA/Illusion of Equivalence) — LoRA 低秩适应：为什么微调一个千亿参数模型，只需要动千分之一的参数？
 - 2026-07-25: 模型坍缩 (Model Collapse/Curse of Recursion/累积vs替换训练协议/Position paper反驳/Verifier缓解) — AI 吃 AI 会变傻吗？模型坍缩的数学真相与被夸大的恐慌
 - 2026-07-26: 知识编辑 (ROME/MEMIT/因果追踪/秩一矩阵编辑/连锁效应批评/PMET) — 手术刀式改写大模型的记忆：ROME 与 MEMIT 的知识编辑术
+- 2026-07-27: 激活转向/表征工程 (Activation Steering/RepE/CAA/Refusal Direction/Abliteration/权重正交化/线性表征假说) — 激活转向：不用重新训练，只靠一个向量就能让大模型「变心」

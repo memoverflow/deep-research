@@ -4,7 +4,7 @@ date: 2025-05-20
 level: 3
 series: "LLM 原理深度解析"
 series_order: 10
-series_total: 43
+series_total: 53
 tags: [FFN, MLP, transformer, 知识存储, 机制可解释性, SwiGLU]
 summary: "Transformer 中 2/3 的参数都在 FFN 层——它不是简单的非线性变换，而是一个巨大的键值记忆库，存储着模型学到的所有事实知识。"
 ---

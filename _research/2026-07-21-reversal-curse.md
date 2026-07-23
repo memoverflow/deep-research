@@ -4,7 +4,7 @@ date: 2026-07-21
 level: 3
 series: "LLM 原理深度解析"
 series_order: 45
-series_total: 45
+series_total: 53
 tags: [reversal-curse, generalization, training-dynamics, autoregressive, LLM]
 summary: "GPT-4 能准确说出汤姆·克鲁斯的母亲是谁，却答不出「玛丽·李是谁的母亲」——这不是记忆不够,而是自回归训练的一个结构性盲区。"
 ---

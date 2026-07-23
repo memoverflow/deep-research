@@ -4,7 +4,7 @@ date: 2026-07-08
 level: 3
 series: "LLM 原理深度解析"
 series_order: 29
-series_total: 43
+series_total: 53
 tags: [scaling-laws, chinchilla, compute-optimal, pretraining, llm-training]
 summary: "DeepMind 用 400 多个模型的实验告诉我们：过去几年大家一直把 GPT-3、Gopher 这样的巨兽训练得太大、喂得太少了——而修正这个错误后诞生的 70B 参数 Chinchilla，靠着更多的数据，把四倍大的 Gopher 打得没有还手之力。"
 ---

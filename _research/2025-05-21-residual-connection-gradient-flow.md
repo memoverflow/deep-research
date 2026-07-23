@@ -4,7 +4,7 @@ date: 2025-05-21
 level: 3
 series: "LLM 原理深度解析"
 series_order: 12
-series_total: 43
+series_total: 53
 tags: [residual-connection, gradient-flow, transformer, deep-learning, resnet]
 summary: "残差连接看似只是一条「跳线」，实则彻底改变了深度网络的优化景观——它让梯度拥有了不经过任何非线性的高速通道，让网络从「学变换」变成「学修正」，甚至暗含了指数级路径集成和连续微分方程的深刻数学。"
 ---

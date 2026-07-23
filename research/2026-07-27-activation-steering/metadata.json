@@ -1,0 +1,30 @@
+{
+  "topic": "Activation Steering / Representation Engineering — 激活转向与表征工程",
+  "refined_question": "如何用差值均值法从对比样本中提取残差流方向，通过激活加法/消除/权重正交化来控制或移除LLM的行为（以拒绝行为为核心案例），以及这一技术揭示的线性表征假说与其安全隐患",
+  "level": 3,
+  "date": "2026-07-27",
+  "duration_minutes": 35,
+  "searches_total": 9,
+  "sources_extracted": 5,
+  "arxiv_papers": 3,
+  "images_saved": 0,
+  "svg_diagrams": 3,
+  "sub_questions": [
+    "线性表征假说与激活空间中概念的方向表示",
+    "差值均值法如何提取拒绝方向",
+    "激活加法 vs 方向消除的区别",
+    "权重正交化 (abliteration) 的数学等价性",
+    "CAA 作为通用行为拨盘的应用",
+    "abliteration 的副作用与非纯净性批评"
+  ],
+  "tools_used": ["web_search", "web_extract", "terminal_curl_pdf_extraction", "pdfminer"],
+  "search_queries": [
+    "activation steering representation engineering LLM control behavior",
+    "\"refusal is mediated by a single direction\" arxiv",
+    "Contrastive Activation Addition CAA steering vector arxiv",
+    "representation engineering top-down approach to AI transparency arxiv",
+    "abliteration remove refusal direction orthogonalization model weights",
+    "linear representation hypothesis superposition steering vectors interpretability",
+    "activation steering sycophancy honesty golden gate claude feature clamping anthropic"
+  ]
+}

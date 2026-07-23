@@ -4,7 +4,7 @@ date: 2026-07-17
 level: 4
 series: "LLM 原理深度解析"
 series_order: 41
-series_total: 43
+series_total: 53
 tags: [知识蒸馏, knowledge distillation, KL散度, DeepSeek-R1, 模型压缩]
 summary: "从 Hinton 的暗知识到 DeepSeek-R1 蒸馏出的小模型：为什么让学生模型模仿老师的错误分布，比只学正确答案效果更好？"
 ---

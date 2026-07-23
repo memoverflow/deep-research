@@ -4,7 +4,7 @@ date: 2026-07-25
 level: 3
 series: "LLM 原理深度解析"
 series_order: 34
-series_total: 34
+series_total: 53
 tags: [model-collapse, synthetic-data, 训练数据, 统计学习理论, scaling-law]
 summary: "当模型开始吃自己生成的数据训练自己，会发生什么？'模型坍缩'背后有严谨的数学证明，但现实世界的坍缩风险，可能没有新闻标题说得那么可怕。"
 ---

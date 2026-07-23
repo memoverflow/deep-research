@@ -4,7 +4,7 @@ date: 2025-05-17
 level: 3
 series: "LLM 原理深度解析"
 series_order: 4
-series_total: 43
+series_total: 53
 tags: [softmax, temperature, numerical-stability, attention, transformer]
 summary: "Softmax 看似简单——exp 再归一化——但它在 Transformer 里引发的连锁反应远比你想象的深刻：从梯度消失到注意力坍缩，从数值爆炸到知识蒸馏。"
 ---

@@ -4,7 +4,7 @@ date: 2025-05-17
 level: 3
 series: "LLM 原理深度解析"
 series_order: 5
-series_total: 43
+series_total: 53
 tags: [mixed-precision, FP16, BF16, FP8, 数值计算, 训练优化]
 summary: "为什么把 32 位浮点砍成 16 位甚至 8 位，模型照样能训好？深入浮点数的比特世界，理解 loss scaling 的数学必要性，以及 BF16 为何成为 LLM 训练的事实标准。"
 ---

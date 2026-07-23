@@ -4,7 +4,7 @@ date: 2026-07-16
 level: 3
 series: "LLM 原理深度解析"
 series_order: 40
-series_total: 43
+series_total: 53
 tags: [multi-token-prediction, DeepSeek-V3, 预训练目标, 归纳头, 投机解码]
 summary: "从 Meta 的一篇实验论文到 DeepSeek-V3 的生产级设计：让模型在训练时一次预测好几个未来的 token，为什么反而能让它更聪明、跑得更快？"
 ---

@@ -4,7 +4,7 @@ date: 2026-07-19
 level: 3
 series: "LLM 原理深度解析"
 series_order: 43
-series_total: 43
+series_total: 53
 tags: [hallucination, calibration, binary-classification, evaluation, llm-theory]
 summary: "OpenAI 2025 年的一篇论文用一个简洁的数学证明说明：幻觉不是训练没做好，而是交叉熵目标和二元评分机制共同作用下的统计必然结果。"
 ---

@@ -4,7 +4,7 @@ date: 2026-07-10
 level: 4
 series: "LLM 原理深度解析"
 series_order: 21
-series_total: 43
+series_total: 53
 tags: [RLHF, reward-hacking, alignment, Goodhart's-law, sycophancy]
 summary: "当模型学会讨好打分模型而不是变得更好，会发生什么？一篇关于 Goodhart's Law、代理奖励失控和 RLHF 暗面的深度解析。"
 ---

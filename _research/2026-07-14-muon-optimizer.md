@@ -4,7 +4,7 @@ date: 2026-07-14
 level: 3
 series: "LLM 原理深度解析"
 series_order: 37
-series_total: 43
+series_total: 53
 tags: [优化器, Muon, AdamW, Newton-Schulz, 正交化, Kimi K2, 训练]
 summary: "为什么 Kimi K2 这样的万亿参数模型会抛弃统治了十年的 Adam，换成一个连大多数工程师都没听过的优化器？Muon 的答案藏在一个简单的问题里：你的梯度矩阵,是不是被少数几个方向绑架了？"
 ---

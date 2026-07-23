@@ -4,7 +4,7 @@ date: 2025-05-21
 level: 3
 series: "LLM 原理深度解析"
 series_order: 13
-series_total: 43
+series_total: 53
 sources_count: 12
 tags: [quantization, GPTQ, AWQ, GGUF, compression, inference]
 summary: "从量化的基本数学出发，深入 GPTQ（二阶信息补偿）、AWQ（激活感知缩放）、GGUF（K-Quant 层级结构）三种方法的核心思想与数学直觉"
