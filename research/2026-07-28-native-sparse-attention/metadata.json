@@ -1,0 +1,34 @@
+{
+  "topic": "原生稀疏注意力 NSA (DeepSeek) 与 MoBA (Kimi)",
+  "refined_question": "为什么稀疏注意力必须在训练阶段学习,而不能只在推理阶段事后施加?NSA 和 MoBA 各自如何实现原生可训练的稀疏注意力?",
+  "level": 3,
+  "date": "2026-07-28",
+  "duration_minutes": 35,
+  "searches_total": 12,
+  "sources_extracted": 5,
+  "arxiv_papers": 5,
+  "images_saved": 0,
+  "svg_diagrams": 3,
+  "sub_questions": [
+    "稀疏注意力的历史脉络:静态规则 vs 事后剪枝 vs 原生可训练",
+    "NSA 三分支架构(压缩/选择/滑动窗口)与硬件对齐 kernel 设计",
+    "MoBA 无参数门控 top-k block 路由与理论泛化性证明",
+    "两条路线共同的范式转变意义"
+  ],
+  "tools_used": ["web_search", "terminal curl+pdfplumber", "write_file"],
+  "search_queries": [
+    "DeepSeek Native Sparse Attention NSA arxiv 2025",
+    "Longformer sliding window attention arxiv local global",
+    "Mistral sliding window attention mechanism paper",
+    "Kimi MoBA Mixture of Block Attention arxiv",
+    "\"native sparse attention\" hardware aligned NSA blockwise selection compression",
+    "sparse attention long context inference O(n^2) bottleneck training",
+    "BigBird sparse attention random global local arxiv theoretical",
+    "稀疏注意力 长上下文 训练推理 不一致 静态稀疏",
+    "\"training-inference mismatch\" sparse attention retrofitted post-hoc pruning",
+    "arithmetic intensity balanced sparse attention GQA group-aware kernel design",
+    "H2O heavy hitter oracle KV cache eviction attention sparsity arxiv abstract",
+    "InfLLM v2 MiniCPM4 稀疏注意力 训练 可训练",
+    "sparse attention retrieval heads pruning vulnerable Chen 2024 top 20% attention scores"
+  ]
+}
