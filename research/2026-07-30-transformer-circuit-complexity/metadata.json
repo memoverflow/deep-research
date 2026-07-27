@@ -1,0 +1,38 @@
+{
+  "topic": "Transformer 电路复杂度理论：为什么固定深度架构算不出 PARITY，以及 CoT 为什么能突破这个上限",
+  "refined_question": "从电路复杂性理论（AC0/TC0/P）出发，证明标准 Transformer 一次前向传播的计算能力上限，并解释 Chain-of-Thought 如何通过增加有效深度来打破这个上限",
+  "level": 3,
+  "date": "2026-07-30",
+  "duration_minutes": 35,
+  "searches_total": 18,
+  "sources_extracted": 10,
+  "arxiv_papers": 9,
+  "images_saved": 0,
+  "sub_questions": [
+    "Transformer 前向传播为什么能被建模为常数深度电路",
+    "AC0 / TC0 的定义和 PARITY 不在 AC0 中的直觉",
+    "硬注意力 vs 饱和注意力对应的电路复杂度上界",
+    "log-precision transformer 与 uniform TC0 的精确关系 (Merrill & Sabharwal)",
+    "为什么多位数乘法/图连通性等任务超出边界，实证验证 (Faith and Fate)",
+    "Chain-of-Thought 如何把常数深度变成随步数线性增长的深度",
+    "CoT 步数(log/linear/poly)与复杂度类(AC0/regular languages/P)的精确对应",
+    "pause tokens 的表达力提升——即使内容无意义"
+  ],
+  "tools_used": ["web_search", "terminal_curl_extract", "write_file"],
+  "search_queries": [
+    "transformers circuit complexity TC0 expressive power theory",
+    "Merrill Sabharwal transformers parallelism tradeoff log precision",
+    "site:arxiv.org transformers expressive power formal language theory",
+    "transformer cannot solve problems outside NC1 P-completeness uniform TC0",
+    "\"saturated attention\" transformer AC0 hard attention Hahn 2020 formal language",
+    "Chain of Thought empowers transformers solve inherently serial problems arxiv Feng Li",
+    "transformer parity problem cannot count uniform attention log-depth theory",
+    "\"Tighter Bounds on the Expressivity of Transformer Encoders\" Chiang uniform TC0",
+    "transformers can express AC0 recognize regular languages depth bound PARITY counting",
+    "why transformers can't multiply large numbers can't solve parity theoretical explanation blog",
+    "Hahn 2020 theoretical limitations self-attention neural sequence models Dyk languages",
+    "CoT increases transformer expressivity to P PSPACE serial computation Merrill Sabharwal",
+    "threshold circuit majority gate example simple explanation depth",
+    "why can't transformers compute PARITY function attention averaging softmax explanation intuitive"
+  ]
+}
