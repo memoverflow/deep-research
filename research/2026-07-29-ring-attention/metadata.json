@@ -1,0 +1,32 @@
+{
+  "topic": "Ring Attention 与上下文并行",
+  "refined_question": "Ring Attention 如何通过环形拓扑与计算通信重叠实现近乎无限的上下文长度扩展？其数学原理、因果注意力下的负载均衡问题（Striped Attention）以及与 DeepSpeed Ulysses 的对比",
+  "level": 3,
+  "date": "2026-07-29",
+  "duration_minutes": 35,
+  "searches_total": 12,
+  "sources_extracted": 5,
+  "arxiv_papers": 3,
+  "images_saved": 0,
+  "sub_questions": [
+    "Ring Attention 的核心机制与内存分析",
+    "为什么因果掩码会打破 Ring Attention 的负载均衡（Striped Attention）",
+    "Ring Attention vs DeepSpeed Ulysses 的架构差异",
+    "Ring Attention 的实际应用（Large World Model）"
+  ],
+  "tools_used": ["web_search", "terminal_curl_pdf_extract"],
+  "search_queries": [
+    "Ring Attention long context distributed transformer arxiv",
+    "Blockwise Parallel Transformer memory efficient long context",
+    "DeepSpeed Ulysses sequence parallelism attention",
+    "Striped Attention causal masking load balancing ring attention",
+    "Ring Attention memory wall block size communication overlap",
+    "Ring Attention causal masking zigzag load balance implementation",
+    "Large World Model Ring Attention 1 million tokens Liu Abbeel",
+    "DeepSpeed Ulysses vs Ring Attention comparison sequence parallelism head parallelism",
+    "Ring Attention flash attention online softmax key value block recurrence",
+    "context parallelism production LLM training Llama context length ring attention 2024 2025",
+    "Ring Attention limitations criticism bandwidth requirement",
+    "环形注意力 Ring Attention 长上下文 分布式训练 原理"
+  ]
+}

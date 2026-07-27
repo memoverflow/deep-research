@@ -101,3 +101,4 @@
 - 2026-07-26: 知识编辑 (ROME/MEMIT/因果追踪/秩一矩阵编辑/连锁效应批评/PMET) — 手术刀式改写大模型的记忆：ROME 与 MEMIT 的知识编辑术
 - 2026-07-27: 激活转向/表征工程 (Activation Steering/RepE/CAA/Refusal Direction/Abliteration/权重正交化/线性表征假说) — 激活转向：不用重新训练，只靠一个向量就能让大模型「变心」
 - 2026-07-28: 原生稀疏注意力 (NSA/MoBA/DeepSeek/Kimi/静态规则vs事后剪枝vs原生可训练/GQA组内共享选择/无参数门控top-k路由) — 原生稀疏注意力：当模型自己决定该看哪里
+- 2026-07-29: Ring Attention/上下文并行 (Ring Attention/Striped Attention/DeepSpeed Ulysses/Blockwise Parallel Transformer/因果负载均衡) — Ring Attention：把一条无限长的序列，切成一个环
