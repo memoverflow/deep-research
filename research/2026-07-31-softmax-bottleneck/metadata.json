@@ -1,0 +1,31 @@
+{
+  "topic": "Softmax 瓶颈 (Softmax Bottleneck)",
+  "refined_question": "为什么语言模型输出层的 softmax 存在数学上的表达能力上限？这个上限如何影响小模型性能，业界又是如何缓解的？",
+  "level": 3,
+  "date": "2026-07-31",
+  "duration_minutes": 30,
+  "searches_total": 16,
+  "sources_extracted": 5,
+  "arxiv_papers": 2,
+  "images_saved": 0,
+  "sub_questions": [
+    "Softmax bottleneck 的数学定义与矩阵分解证明",
+    "2024年 saturation 论文对小模型的实证验证",
+    "多峰分布表达能力限制 (ACL 2022)",
+    "缓解方法: Mixture of Softmaxes, Sigsoftmax, weight tying, MoE, 加宽输出层"
+  ],
+  "tools_used": ["web_search", "web_extract", "browser_navigate", "terminal_pdftotext"],
+  "search_queries": [
+    "Breaking the Softmax Bottleneck language modeling",
+    "softmax bottleneck low rank output layer language model arxiv",
+    "Mixture of Softmaxes Yang et al 2018 arxiv",
+    "softmax bottleneck rank of context embeddings word embeddings",
+    "softmax bottleneck GPT-2 empirical study large vocabulary rank",
+    "Studying Language Model Saturation softmax bottleneck small models 2024 findings",
+    "weight tying input output embedding softmax bottleneck effect",
+    "GPT-2 language model saturation embedding dimension anisotropy hidden dimension rank",
+    "MoE mixture of experts alleviate softmax bottleneck effective rank",
+    "gated linear unit alternative softmax output layer sigsoftmax",
+    "softmax bottleneck 中文 解释 语言模型 矩阵分解 秩"
+  ]
+}

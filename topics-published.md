@@ -104,3 +104,4 @@
 - 2026-07-29: Ring Attention/上下文并行 (Ring Attention/Striped Attention/DeepSpeed Ulysses/Blockwise Parallel Transformer/因果负载均衡) — Ring Attention：把一条无限长的序列，切成一个环
 - 2026-07-30: Transformer 电路复杂度理论 (AC0/TC0/uniform TC0/log-precision/硬注意力vs饱和注意力/CoT表达力精确刻画/pause tokens) — Transformer 算不出奇偶校验：一个模型架构的数学天花板
 - 2026-07-28: In-Context Learning 理论解释 (隐式梯度下降/mesa-optimization/贝叶斯概念定位/GINC/任务向量Task Vectors/Function Vectors/随机标签实验) — In-Context Learning 的理论解释：为什么不更新一个参数，模型也能学会新任务？
+- 2026-07-31: Softmax 瓶颈 (Softmax Bottleneck/Mixture of Softmaxes/矩阵分解/语言模型饱和/多峰分布限制) — Softmax 瓶颈：为什么再大的模型，输出层也可能是「智力天花板」
