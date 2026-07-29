@@ -1,0 +1,35 @@
+{
+  "topic": "LLM 记忆容量与记忆-泛化关系原理",
+  "refined_question": "语言模型的记忆容量如何精确测量？记忆与泛化在信息论意义上如何区分？记忆容量与成员推断、双重下降、长尾理论有何关系？",
+  "level": 3,
+  "date": "2026-08-01",
+  "duration_minutes": 35,
+  "searches_total": 18,
+  "sources_extracted": 7,
+  "arxiv_papers": 7,
+  "images_saved": 0,
+  "sub_questions": [
+    "记忆容量如何定义与测量（Morris et al. 2025）",
+    "长尾理论：为什么记忆对泛化有益（Feldman 2019/2020）",
+    "记忆的实证测量方法演进（Carlini extraction/quantifying/counterfactual memorization）",
+    "记忆容量与双重下降、grokking、成员推断的关系"
+  ],
+  "tools_used": ["web_search", "web_extract", "terminal(curl+pdftotext)", "read_file"],
+  "search_queries": [
+    "Feldman \"Does learning require memorization\" long-tail theory",
+    "Carlini quantifying memorization neural language models arxiv",
+    "site:arxiv.org extractable memorization large language models training data",
+    "memorization vs generalization LLM long tail rare examples",
+    "Feldman Zhang \"what neural networks memorize and why\" arxiv",
+    "GPT-4 technical report memorization capacity bits per parameter Morris",
+    "\"how much do language models memorize\" Meta arxiv 2025",
+    "membership inference attack scaling laws grokking capacity fills",
+    "Carlini \"does deep learning learn to memorize\" secret sharer canary",
+    "记忆容量 大语言模型 每参数比特 长尾理论",
+    "\"How much do language models memorize\" Meta grokking capacity fills unintended memorization details",
+    "Feldman long tail memorization necessary optimal generalization theory explanation",
+    "counterfactual memorization language models Zhang influence function",
+    "memorization is necessary for generalization Brown Bun Feldman Herrera-Esposito 2021",
+    "extraction attacks near-duplicate documents memorization frequency Carlini quantifying memorization"
+  ]
+}
