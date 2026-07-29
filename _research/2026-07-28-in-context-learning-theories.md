@@ -4,7 +4,7 @@ date: 2026-07-28
 level: 3
 series: "LLM 原理深度解析"
 series_order: 57
-series_total: 57
+series_total: 60
 tags: [in-context-learning, mesa-optimization, bayesian-inference, task-vectors, mechanistic-interpretability]
 summary: "GPT-3 展示了一个违反直觉的现象：给它看几个例子，它就能"学会"一个新任务——但权重一个字节都没有改变。这篇文章梳理三种主流理论解释：隐式梯度下降、贝叶斯概念定位、任务向量压缩，看看它们各自解释了什么、又留下了什么谜。"
 ---

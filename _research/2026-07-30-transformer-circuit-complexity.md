@@ -4,7 +4,7 @@ date: 2026-07-30
 level: 3
 series: "LLM 原理深度解析"
 series_order: 56
-series_total: 56
+series_total: 60
 tags: [circuit-complexity, TC0, AC0, transformer-theory, chain-of-thought, parallelism]
 summary: "从电路复杂性理论出发，解释为什么无论把 Transformer 训练得多大、多久，它都无法保证学会像「数一串 01 里 1 的个数是奇是偶」这样看起来极其简单的任务——除非你允许它多写几步。"
 ---

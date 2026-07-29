@@ -1,0 +1,39 @@
+{
+  "topic": "Neural Tangent Kernel (NTK) 神经切线核理论",
+  "refined_question": "无限宽神经网络的训练动力学为何等价于核回归？NTK 理论解释了什么，又暴露了深度学习的什么局限（懒惰训练 vs 特征学习）？",
+  "level": 3,
+  "date": "2026-08-02",
+  "duration_minutes": 35,
+  "searches_total": 18,
+  "sources_extracted": 6,
+  "arxiv_papers": 2,
+  "images_saved": 0,
+  "svg_diagrams": 2,
+  "sub_questions": [
+    "NTK 的数学定义与核心定理是什么",
+    "为什么无限宽网络训练等价于核回归",
+    "NTK 与 NNGP 的关系",
+    "NTK 理论的实践局限（lazy training vs feature learning）",
+    "μP (Maximal Update Parametrization) 如何解决特征学习问题"
+  ],
+  "tools_used": ["web_search", "web_extract", "terminal_curl"],
+  "search_queries": [
+    "Neural Tangent Kernel intuition explained infinite width neural network",
+    "Jacot Neural Tangent Kernel 2018 paper arxiv",
+    "lazy training vs feature learning neural networks Chizat",
+    "NTK regime vs mean field regime feature learning transformers",
+    "why does NTK matter for deep learning practice criticism",
+    "Neural Tangent Kernel gradient descent linearization function space intuition",
+    "infinite width neural network converges to linear model kernel gradient descent explained simply",
+    "Neural Tangent Kernel Gaussian Process NNGP relationship",
+    "NTK parameterization vs standard parameterization width scaling",
+    "NTK explains why wide neural networks train easily converge global minimum",
+    "tangent kernel first order Taylor expansion neural network training analogy",
+    "µP maximal update parameterization feature learning infinite width Greg Yang",
+    "NTK theory practice gap real networks don't behave like NTK criticism finite width",
+    "Neural Tangent Kernel Transformer attention arxiv application",
+    "NTK early stopping implicit regularization kernel principal components eigenvalues",
+    "神经切线核 NTK 直觉 通俗解释",
+    "why do wide neural networks converge to global minimum overparameterization NTK 2019"
+  ]
+}

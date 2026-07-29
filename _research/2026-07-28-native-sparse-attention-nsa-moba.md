@@ -4,7 +4,7 @@ date: 2026-07-28
 level: 3
 series: "LLM 原理深度解析"
 series_order: 54
-series_total: 54
+series_total: 60
 tags: [attention, sparse-attention, NSA, MoBA, long-context, DeepSeek, transformer]
 summary: "从 H2O 的事后剪枝到 DeepSeek 的 NSA、Kimi 的 MoBA，稀疏注意力经历了一次范式转变：不再是训练完再砍，而是让模型在训练时就学会该看哪里。"
 ---

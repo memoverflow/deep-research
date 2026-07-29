@@ -4,7 +4,7 @@ date: 2026-07-27
 level: 3
 series: "LLM 原理深度解析"
 series_order: 53
-series_total: 54
+series_total: 60
 tags: [interpretability, activation-steering, representation-engineering, alignment, safety, mechanistic-interpretability]
 summary: "只用几十对『正例/反例』提示词提取一个方向向量，加进模型的残差流里，就能让模型变得更乐观、更诚实、更愿意拒绝——甚至彻底失去拒绝能力。这篇讲清楚激活转向背后的几何直觉和它掀起的安全争议。"
 ---

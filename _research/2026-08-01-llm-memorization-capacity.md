@@ -4,7 +4,7 @@ date: 2026-08-01
 level: 3
 series: "LLM 原理深度解析"
 series_order: 59
-series_total: 59
+series_total: 60
 tags: [memorization, capacity, generalization, long-tail-theory, membership-inference, information-theory]
 summary: "一个模型到底能'记住'多少东西？Meta 和 DeepMind 的研究给出了一个惊人精确的答案：大约每个参数 3.6 比特。这篇文章讲清楚这个数字是怎么测出来的，以及为什么'记忆'本身，可能正是模型能泛化的原因。"
 ---

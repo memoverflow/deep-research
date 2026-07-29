@@ -4,7 +4,7 @@ date: 2026-07-31
 level: 3
 series: "LLM 原理深度解析"
 series_order: 58
-series_total: 58
+series_total: 60
 tags: [softmax, 语言模型, 矩阵分解, 秩, Mixture of Softmaxes, 表达能力]
 summary: "语言模型的最后一层——那个把隐藏向量变成词表概率分布的 softmax——藏着一个几乎无人在意的数学限制：它的输出被死死限制在一个「秩」的天花板之下，而人类语言的复杂度，天生就会撞上这个天花板。"
 ---

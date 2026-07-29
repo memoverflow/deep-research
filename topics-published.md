@@ -106,3 +106,4 @@
 - 2026-07-28: In-Context Learning 理论解释 (隐式梯度下降/mesa-optimization/贝叶斯概念定位/GINC/任务向量Task Vectors/Function Vectors/随机标签实验) — In-Context Learning 的理论解释：为什么不更新一个参数，模型也能学会新任务？
 - 2026-07-31: Softmax 瓶颈 (Softmax Bottleneck/Mixture of Softmaxes/矩阵分解/语言模型饱和/多峰分布限制) — Softmax 瓶颈：为什么再大的模型，输出层也可能是「智力天花板」
 - 2026-08-01: LLM 记忆容量/记忆-泛化边界 (Feldman长尾理论/Morris et al. 3.6 bits-per-parameter/Kolmogorov压缩/grokking与双重下降关系/成员推断规模定律) — 语言模型记忆容量：为什么每个参数只值 3.6 比特？
+- 2026-08-02: Neural Tangent Kernel 神经切线核 (无限宽网络训练动力学/懒惰训练/特征学习/muP对比) — 神经切线核：为什么一个几百万参数的神经网络，训练起来却像做了一道凸优化题？

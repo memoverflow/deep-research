@@ -4,7 +4,7 @@ date: 2026-07-29
 level: 3
 series: "LLM 原理深度解析"
 series_order: 55
-series_total: 55
+series_total: 60
 tags: [Ring Attention, 上下文并行, 分布式训练, FlashAttention, Striped Attention, 长上下文]
 summary: "当一条序列长到连拆开算都装不进一张显卡时,Ring Attention 用一个环形拓扑把计算和通信叠在一起,让上下文长度随显卡数量线性增长,几乎不花额外代价。"
 ---
