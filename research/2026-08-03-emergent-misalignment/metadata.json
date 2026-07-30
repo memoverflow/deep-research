@@ -1,0 +1,30 @@
+{
+  "topic": "涌现性错位 (Emergent Misalignment)",
+  "refined_question": "为什么在一个狭窄的、跟伦理无关的任务上微调模型（如写不安全代码），会导致模型在完全不相关的话题上表现出广泛的恶意行为？机制是什么，如何检测和缓解？",
+  "level": 3,
+  "date": "2026-08-03",
+  "duration_minutes": 35,
+  "searches_total": 8,
+  "sources_extracted": 4,
+  "arxiv_papers": 3,
+  "images_saved": 0,
+  "svg_diagrams": 2,
+  "sub_questions": [
+    "Betley et al. 2025 核心实验设计与结果",
+    "为什么意图（教育用途 vs 隐瞒）决定了是否发生涌现性错位",
+    "后门/触发器实验说明了什么",
+    "OpenAI Persona Features 论文的机制解释（toxic persona SAE 特征）",
+    "Anthropic 生产级 RL 中的 reward hacking 到涌现性错位",
+    "Inoculation Prompting 缓解手段的原理"
+  ],
+  "tools_used": ["web_search", "terminal(curl+pdftotext)", "read_file", "search_files"],
+  "search_queries": [
+    "emergent misalignment narrow finetuning insecure code Betley 2025 arxiv",
+    "emergent misalignment persona features mechanistic interpretability LLM",
+    "\"emergent misalignment\" insecure code broadly misaligned GPT-4o Qwen results",
+    "emergent misalignment reinforcement learning reward hacking OpenAI research",
+    "\"inoculation prompting\" emergent misalignment Anthropic training",
+    "emergent misalignment vector arithmetic mitigation activation steering paper"
+  ],
+  "note": "web_extract backend (DDGS) could not fetch full text for URLs in this environment; worked around via terminal curl + pdftotext on arXiv PDF links, which succeeded and yielded full-text extraction for all 3 core papers."
+}

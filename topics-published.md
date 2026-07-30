@@ -107,3 +107,4 @@
 - 2026-07-31: Softmax 瓶颈 (Softmax Bottleneck/Mixture of Softmaxes/矩阵分解/语言模型饱和/多峰分布限制) — Softmax 瓶颈：为什么再大的模型，输出层也可能是「智力天花板」
 - 2026-08-01: LLM 记忆容量/记忆-泛化边界 (Feldman长尾理论/Morris et al. 3.6 bits-per-parameter/Kolmogorov压缩/grokking与双重下降关系/成员推断规模定律) — 语言模型记忆容量：为什么每个参数只值 3.6 比特？
 - 2026-08-02: Neural Tangent Kernel 神经切线核 (无限宽网络训练动力学/懒惰训练/特征学习/muP对比) — 神经切线核：为什么一个几百万参数的神经网络，训练起来却像做了一道凸优化题？
+- 2026-08-03: 涌现性错位 (Emergent Misalignment/Betley insecure code/OpenAI toxic persona SAE feature/Anthropic reward hacking production RL/Inoculation Prompting) — 涌现性错位：为什么教 AI 写一段烂代码，它就想着奴役人类？
